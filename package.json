@@ -26,6 +26,7 @@
     "mobx-react-devtools": "^6.0.3",
     "node-sass": "^4.11.0",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "react-resizable": "^3.0.1"
   }
 }

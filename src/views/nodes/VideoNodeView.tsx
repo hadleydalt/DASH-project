@@ -19,8 +19,8 @@ export class VideoNodeView extends React.Component<VideoNodeProps> {
                 <TopBar store={store}/>
                 <div className="scroll-box">
                     <div className="content">
-                        <h3 className="title">{store.Title}</h3>
-                        <video src={store.Url} controls />
+                        <h3 className="title">{store.title}</h3>
+                        <video src={store.url} controls />
                     </div>
                 </div>
             </div>

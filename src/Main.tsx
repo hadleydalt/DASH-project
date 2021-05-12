@@ -24,6 +24,6 @@ for (let i = 0; i < numNodes; i++) {
 }
 
 for (let i = 0; i < 20; i++) {
-    nodes.push(new VideoNodeStore({ type: StoreType.Video, x: Math.random() * maxX, y: Math.random() * maxY, Title: "Video Node Title", Url: "http://cs.brown.edu/people/peichman/downloads/cted.mp4" }));
+    nodes.push(new VideoNodeStore({ type: StoreType.Video, x: Math.random() * maxX, y: Math.random() * maxY, title: "Video Node Title", url: "http://cs.brown.edu/people/peichman/downloads/cted.mp4" }));
 }
 mainNodeCollection.addNodes(nodes);

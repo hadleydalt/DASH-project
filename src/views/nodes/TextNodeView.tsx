@@ -21,7 +21,7 @@ export class TextNodeView extends React.Component<TextNodeProps> {
                 e.preventDefault();
             }}>
                 <TopBar store={store}/>
-                <ResizeIcon />
+                <ResizeIcon store={store}/>
                 <div className="react-resizeable">hi</div>
                 <div className="scroll-box">
                     <div className="content">

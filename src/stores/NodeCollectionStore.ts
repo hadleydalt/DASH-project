@@ -8,7 +8,7 @@ export class NodeCollectionStore extends NodeStore {
 
     @computed
     public get transform(): string {
-        return "translate(" + this.x + "px," + this.y + "px)"; // for CSS trnsform property
+        return "translate(" + this.x + "px, " + this.y + "px)"; // for CSS trnsform property
     }
 
     @action

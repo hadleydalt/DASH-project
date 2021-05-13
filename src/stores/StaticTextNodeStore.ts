@@ -19,6 +19,9 @@ export class StaticTextNodeStore extends NodeStore {
         this.title = initializer.title;
         this.text = initializer.text;
         */
+
+        this.w = 300;
+        this.h = 300;
     }
 
     @observable

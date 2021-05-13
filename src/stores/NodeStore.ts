@@ -18,10 +18,10 @@ export class NodeStore {
     public y: number = 0;
 
     @observable
-    public width: number = 0;
+    public w: number = 0;
 
     @observable
-    public height: number = 0;
+    public h: number = 0;
 
     @computed
     public get transform(): string {

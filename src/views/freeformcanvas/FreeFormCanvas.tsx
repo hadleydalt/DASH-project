@@ -3,9 +3,11 @@ import { NodeCollectionStore } from "../../stores/NodeCollectionStore";
 import "./FreeFormCanvas.scss";
 import * as React from 'react';
 import { StaticTextNodeStore } from "../../stores/StaticTextNodeStore";
+import { ImageNodeStore } from "../../stores/ImageNodeStore";
 import { VideoNodeStore } from "../../stores/VideoNodeStore";
 import { TextNodeView } from "../nodes/TextNodeView";
 import { VideoNodeView } from "../nodes/VideoNodeView";
+import { ImageNodeView } from "../nodes/ImageNodeView";
 import { StoreType } from "../../stores/NodeStore";
 
 interface FreeFormProps {
@@ -58,6 +60,9 @@ export class FreeFormCanvas extends React.Component<FreeFormProps> {
 
                                 case StoreType.Video:
                                     return (<VideoNodeView key={nodeStore.Id} store={nodeStore as VideoNodeStore}/>)
+
+                                case StoreType.Image:
+                                    return (<ImageNodeView key={nodeStore.Id} store={nodeStore as ImageNodeStore}/>)
 
                                 default:
                                     break;

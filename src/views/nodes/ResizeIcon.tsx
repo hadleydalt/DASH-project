@@ -2,7 +2,6 @@ import { observer } from "mobx-react";
 import "./NodeView.scss";
 import { NodeStore } from "../../stores/NodeStore";
 import * as React from 'react';
-import { TextNodeView } from "./TextNodeView";
 
 interface ResizeIProps {
     store: NodeStore;

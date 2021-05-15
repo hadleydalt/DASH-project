@@ -1,19 +1,19 @@
 import { observer } from "mobx-react";
-import { VideoNodeStore } from "../../stores/VideoNodeStore";
+import { ImageNodeStore } from "../../stores/ImageNodeStore";
 import "./NodeView.scss";
 import { TopBar } from "./TopBar";
 import "./VideoNodeView.scss";
 import { ResizeIcon } from "./ResizeIcon";
 import * as React from 'react';
-import AddVideo from '../nodes/AddVideo';
+import AddImage from '../nodes/AddImage';
 
-interface VideoNodeProps {
-    store: VideoNodeStore;
+interface ImageNodeProps {
+    store: ImageNodeStore;
 }
 
 
 @observer
-export class VideoNodeView extends React.Component<VideoNodeProps> {
+export class ImageNodeView extends React.Component<ImageNodeProps> {
 
     private isPointerDown = false;
 
@@ -55,7 +55,7 @@ export class VideoNodeView extends React.Component<VideoNodeProps> {
                 <ResizeIcon store={store}></ResizeIcon>
                 <div className="scroll-box">
                     <div className="content">
-                    <AddVideo />
+                    <AddImage />
                     </div>
                 </div>
             </div>

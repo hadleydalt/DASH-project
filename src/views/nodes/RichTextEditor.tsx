@@ -20,7 +20,7 @@ export default function RichTextEditor() {
         theme='snow'
         onChange={handleConvertedText}
         value={convertedText}
-        style={{minHeight: '200px'}}
+        style={{height:"65%"}}
       />
     </div>
   );

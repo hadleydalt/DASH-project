@@ -6,6 +6,7 @@ import { StoreType } from './stores/NodeStore';
 import { StaticTextNodeStore } from './stores/StaticTextNodeStore';
 import { VideoNodeStore } from './stores/VideoNodeStore';
 import { ImageNodeStore } from './stores/ImageNodeStore';
+import { IframeNodeStore } from "./stores/IframeNodeStore";
 import { FreeFormCanvas } from './views/freeformcanvas/FreeFormCanvas';
 
 
@@ -30,5 +31,9 @@ for (let i = 0; i < 2; i++) {
 
 for (let i = 0; i < 2; i++) {
     nodes.push(new ImageNodeStore({ type: StoreType.Image, x: Math.random() * maxX, y: Math.random() * maxY }));
+}
+
+for (let i = 0; i < 2; i++) {
+    nodes.push(new IframeNodeStore({ type: StoreType.Iframe, x: Math.random() * maxX, y: Math.random() * maxY }));
 }
 mainNodeCollection.addNodes(nodes);

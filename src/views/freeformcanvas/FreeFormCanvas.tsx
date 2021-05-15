@@ -9,6 +9,8 @@ import { TextNodeView } from "../nodes/TextNodeView";
 import { VideoNodeView } from "../nodes/VideoNodeView";
 import { ImageNodeView } from "../nodes/ImageNodeView";
 import { StoreType } from "../../stores/NodeStore";
+import { IframeNodeView } from "../nodes/IframeNodeView";
+import { IframeNodeStore } from "../../stores/IframeNodeStore";
 
 interface FreeFormProps {
     store: NodeCollectionStore
@@ -63,6 +65,9 @@ export class FreeFormCanvas extends React.Component<FreeFormProps> {
 
                                 case StoreType.Image:
                                     return (<ImageNodeView key={nodeStore.Id} store={nodeStore as ImageNodeStore}/>)
+
+                                case StoreType.Iframe:
+                                    return (<IframeNodeView key={nodeStore.Id} store={nodeStore as IframeNodeStore}/>)
 
                                 default:
                                     break;

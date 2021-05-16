@@ -11,7 +11,7 @@ import { ImageNodeView } from "../nodes/ImageNodeView";
 import { StoreType } from "../../stores/NodeStore";
 import { IframeNodeView } from "../nodes/IframeNodeView";
 import { IframeNodeStore } from "../../stores/IframeNodeStore";
-import { NodeForm } from "./AddNewNode";
+import { NodeForm } from "./TopBar";
 
 interface FreeFormProps {
     store: NodeCollectionStore

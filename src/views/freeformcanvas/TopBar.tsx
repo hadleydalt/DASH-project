@@ -28,9 +28,9 @@ export function NodeForm() {
 
   return(
     <div>
+      <div className = "title">DASH!</div>
+      <div className="add-label1">ADD NEW</div>
       <div className = "button-menu">
-      <div className = "menu-bg"></div>
-      <div className="add-label1">Add New:</div>
       <button className = "button-style" onClick={
         addTextNode
       }>Note</button>
@@ -44,7 +44,8 @@ export function NodeForm() {
         addIframeNode
       }>Website</button>
       </div>
-    </div>
+      <div className = "menu-bg"></div>
+      </div>
   )
 
   /*const [nodeState, setNodeState] = useState("")

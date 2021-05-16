@@ -1,10 +1,73 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Select from 'react-select';
 import { observable, action } from "mobx";
 import { NodeStore, StoreType } from '../../stores/NodeStore';
 import { StaticTextNodeStore } from '../../stores/StaticTextNodeStore'; 
 import mainNodeCollection from '../../Main';
 
+function addTextNode(){
+    mainNodeCollection.addTextNode();
+}
+
+function addImageNode(){
+  mainNodeCollection.addImageNode();
+}
+
+function addVideoNode(){
+  mainNodeCollection.addVideoNode();
+}
+
+function addIframeNode(){
+  mainNodeCollection.addIframeNode();
+}
+
+
+
+export function NodeForm() {
+
+  return(
+    <div>
+      <div className = "button-menu">
+      <div className = "menu-bg"></div>
+      <div className="add-label1">Add New:</div>
+      <button className = "button-style" onClick={
+        addTextNode
+      }>Note</button>
+      <button className = "button-style" onClick={
+        addImageNode
+      }>Image</button>
+      <button className = "button-style" onClick={
+        addVideoNode
+      }>Video</button>
+      <button className = "button-style" onClick={
+        addIframeNode
+      }>Website</button>
+      </div>
+    </div>
+  )
+
+  /*const [nodeState, setNodeState] = useState("")
+  let nodes = [];
+
+  return (
+  <div>
+    <select onChange={(e) => {
+      const selectedNode = e.target.value;
+      setNodeState(selectedNode);
+      mainNodeCollection.addNodes(nodes);
+    }}>
+      <option value="text">Text</option>
+      <option value="image">Image</option>
+      <option value="video">Video</option>
+      <option value="website">Website</option>
+    </select>
+    {nodeState}
+  </div>
+  ); */
+}
+
+/*
 
 const options = [
   { value: 'text', label: 'Text' },
@@ -50,3 +113,5 @@ export class NodeForm extends React.Component {
     );
   }
 }
+
+*/

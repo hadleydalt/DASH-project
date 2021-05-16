@@ -19,6 +19,7 @@ export default function AddVideo() {
         formats={AddVideo.formats}
         onChange={handleConvertedText}
         value={convertedText}
+        style={{height:"65%"}}
         theme='snow'
       />
     </div>

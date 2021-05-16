@@ -1,6 +1,14 @@
-.freeformcanvas-container {
+.ffc-and-menu-container{
     position: absolute;
     top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    overflow:hidden;
+
+.freeformcanvas-container {
+    position: absolute;
+    top: 50px;
     left: 0;
     width: 100%;
     height: 100%;
@@ -12,4 +20,4 @@
         left: 0;
     }
 }
-
+}

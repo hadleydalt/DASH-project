@@ -21,7 +21,7 @@ let numNodes = 300;
 let maxX = 1000;
 let maxY = 1000;
 let nodes = []
-for (let i = 0; i < 2; i++) {
+/*for (let i = 0; i < 2; i++) {
     nodes.push(new StaticTextNodeStore({ type: StoreType.Text, x: Math.random() * maxX, y: Math.random() * maxY, title: "", text: "" }));
 }
 
@@ -36,4 +36,6 @@ for (let i = 0; i < 2; i++) {
 for (let i = 0; i < 2; i++) {
     nodes.push(new IframeNodeStore({ type: StoreType.Iframe, x: Math.random() * maxX, y: Math.random() * maxY }));
 }
-mainNodeCollection.addNodes(nodes);
+mainNodeCollection.addNodes(nodes); */
+
+export default mainNodeCollection;

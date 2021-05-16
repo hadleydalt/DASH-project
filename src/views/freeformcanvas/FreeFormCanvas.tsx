@@ -11,6 +11,7 @@ import { ImageNodeView } from "../nodes/ImageNodeView";
 import { StoreType } from "../../stores/NodeStore";
 import { IframeNodeView } from "../nodes/IframeNodeView";
 import { IframeNodeStore } from "../../stores/IframeNodeStore";
+import { NodeForm } from "./AddNewNode";
 
 interface FreeFormProps {
     store: NodeCollectionStore
@@ -51,6 +52,7 @@ export class FreeFormCanvas extends React.Component<FreeFormProps> {
     render() {
         let store = this.props.store;
         return (
+            <div className="ffc-and-menu-container">
             <div className="freeformcanvas-container" onPointerDown={this.onPointerDown}>
                 <div className="freeformcanvas" style={{ transform: store.transform }}>
                     {   
@@ -75,6 +77,8 @@ export class FreeFormCanvas extends React.Component<FreeFormProps> {
                         })
                     }
                 </div>
+            </div>
+            <NodeForm />
             </div>
         );
     }

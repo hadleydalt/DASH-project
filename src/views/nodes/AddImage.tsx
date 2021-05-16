@@ -20,7 +20,7 @@ export default function AddImage() {
         onChange={handleConvertedText}
         value={convertedText}
         theme='snow'
-        style={{minHeight: '200px'}}
+        style={{height:"65%"}}
       />
     </div>
   );

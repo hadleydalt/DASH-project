@@ -5,6 +5,7 @@ import { observable, action } from "mobx";
 import { NodeStore, StoreType } from '../../stores/NodeStore';
 import { StaticTextNodeStore } from '../../stores/StaticTextNodeStore'; 
 import mainNodeCollection from '../../Main';
+import { CreateCollection } from './Collections/CreateCollection'
 
 function addTextNode(){
     mainNodeCollection.addTextNode();
@@ -28,8 +29,10 @@ export function NodeForm() {
 
   return(
     <div>
+      <div className = "name-collection"><CreateCollection /></div>
+      <div className="youre-using">YOU'RE USING</div>
       <div className = "title">DASH!</div>
-      <div className="add-label1">ADD NEW</div>
+      <div className="add-new">ADD NEW</div>
       <div className = "button-menu">
       <button className = "button-style" onClick={
         addTextNode
@@ -44,6 +47,8 @@ export function NodeForm() {
         addIframeNode
       }>Website</button>
       </div>
+      <div className="create-collection">CREATE COLLECTION</div>
+      <div className="my-collections">MY COLLECTIONS</div>
       <div className = "menu-bg"></div>
       </div>
   )

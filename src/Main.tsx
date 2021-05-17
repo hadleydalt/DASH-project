@@ -17,10 +17,6 @@ ReactDOM.render((
     </div>), document.getElementById('root'));
 
 // create a bunch of text and video nodes (you probably want to delete this at some point)
-let numNodes = 300;
-let maxX = 1000;
-let maxY = 1000;
-let nodes = []
 /*for (let i = 0; i < 2; i++) {
     nodes.push(new StaticTextNodeStore({ type: StoreType.Text, x: Math.random() * maxX, y: Math.random() * maxY, title: "", text: "" }));
 }

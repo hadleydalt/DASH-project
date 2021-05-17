@@ -30,11 +30,18 @@ export class TextNodeView extends React.Component<TextNodeProps> {
     private isPointerDown = false;
 
     handleClick(){
-        this.setState({clicked: true});
+        if (this.state.clicked === false){
+            this.setState({clicked: true});
+            }
+    
+            if (this.state.clicked === true){
+                this.setState({clicked: false});
+            }
 
         if (nca.collections[0].isNamed = true) {
             ml.c1 = nca.collections[0].name + ' - ';
         }
+
         if (nca.collections[1].isNamed = true) {
             ml.c2 = nca.collections[1].name + ' - ';
         }
@@ -97,7 +104,7 @@ export class TextNodeView extends React.Component<TextNodeProps> {
                 e.preventDefault();
             }}>
                 <TopBar store={store}/>
-                <button className="atc-button" title = "Add to Collection" onClick={this.handleClick}>+</button>
+                <button className="atc-button" title = "Add to Collection" onClick={this.handleClick}>{this.state.clicked ? "-": "+"}</button>
                 {this.state.clicked ? <Menu id={this.props.id}/> : null}
                 <ResizeIcon store={store}></ResizeIcon>
                 <div className="scroll-box">

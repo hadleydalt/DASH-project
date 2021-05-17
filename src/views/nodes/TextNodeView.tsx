@@ -11,6 +11,7 @@ import { ml } from "../freeformcanvas/Collections/CollectionMenu";
 
 interface TextNodeProps {
     store: StaticTextNodeStore;
+    id: StaticTextNodeStore;
 }
 
 @observer
@@ -30,7 +31,7 @@ export class TextNodeView extends React.Component<TextNodeProps> {
 
     handleClick(){
         this.setState({clicked: true});
-        
+
         if (nca.collections[0].isNamed = true) {
             ml.c1 = nca.collections[0].name;
         }
@@ -97,7 +98,7 @@ export class TextNodeView extends React.Component<TextNodeProps> {
             }}>
                 <TopBar store={store}/>
                 <button className="atc-button" title = "Add to Collection" onClick={this.handleClick}>+</button>
-                {this.state.clicked ? <Menu /> : null}
+                {this.state.clicked ? <Menu id={this.props.id}/> : null}
                 <ResizeIcon store={store}></ResizeIcon>
                 <div className="scroll-box">
                     <div className="content">

@@ -62,16 +62,16 @@ export class FreeFormCanvas extends React.Component<FreeFormProps> {
                         store.nodes.map(nodeStore => {
                             switch (nodeStore.type) {
                                 case StoreType.Text:
-                                    return (<TextNodeView key={nodeStore.Id} store={nodeStore as StaticTextNodeStore}/>)
+                                    return (<TextNodeView id = {this.props.store.n} key={nodeStore.Id} store={nodeStore as StaticTextNodeStore}/>)
 
                                 case StoreType.Video:
-                                    return (<VideoNodeView key={nodeStore.Id} store={nodeStore as VideoNodeStore}/>)
+                                    return (<VideoNodeView id = {this.props.store.n} key={nodeStore.Id} store={nodeStore as VideoNodeStore}/>)
 
                                 case StoreType.Image:
-                                    return (<ImageNodeView key={nodeStore.Id} store={nodeStore as ImageNodeStore}/>)
+                                    return (<ImageNodeView id = {this.props.store.n} key={nodeStore.Id} store={nodeStore as ImageNodeStore}/>)
 
                                 case StoreType.Iframe:
-                                    return (<IframeNodeView key={nodeStore.Id} store={nodeStore as IframeNodeStore}/>)
+                                    return (<IframeNodeView id = {this.props.store.n} key={nodeStore.Id} store={nodeStore as IframeNodeStore}/>)
 
                                 default:
                                     break;

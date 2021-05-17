@@ -6,6 +6,7 @@ import { VideoNodeStore } from "./VideoNodeStore";
 import { IframeNodeStore } from "./IframeNodeStore";
 
 export class NodeCollectionStore extends NodeStore {
+    public n;
 
     @observable
     public nodes: NodeStore[] = new Array<NodeStore>();
@@ -17,21 +18,25 @@ export class NodeCollectionStore extends NodeStore {
 
     @action
     public addTextNode(): void {
-        this.nodes.push(new StaticTextNodeStore({ type: StoreType.Text, x: Math.random() * 500, y: Math.random() * 500, title: "", text: "" }));
+        this.n = new StaticTextNodeStore({ type: StoreType.Text, x: Math.random() * 500, y: Math.random() * 500, title: "", text: "" });
+        this.nodes.push(this.n);
     }
 
     @action
     public addImageNode(): void {
-        this.nodes.push(new ImageNodeStore({ type: StoreType.Image, x: Math.random() * 500, y: Math.random() * 500 }));
+        this.n = new ImageNodeStore({ type: StoreType.Image, x: Math.random() * 500, y: Math.random() * 500 });
+        this.nodes.push(this.n);
     }
 
     @action
     public addVideoNode(): void {
-        this.nodes.push(new VideoNodeStore({ type: StoreType.Video, x: Math.random() * 500, y: Math.random() * 500 }));
+        this.n = new VideoNodeStore({ type: StoreType.Video, x: Math.random() * 500, y: Math.random() * 500 });
+        this.nodes.push(this.n);
     }
 
     @action
     public addIframeNode(): void {
-        this.nodes.push(new IframeNodeStore({ type: StoreType.Iframe, x: Math.random() * 500, y: Math.random() * 500 }));
+        this.n = new IframeNodeStore({ type: StoreType.Iframe, x: Math.random() * 500, y: Math.random() * 500 });
+        this.nodes.push(this.n);
     }
 }

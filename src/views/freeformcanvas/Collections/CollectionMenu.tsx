@@ -56,15 +56,15 @@ export class Menu extends React.Component<MenuProps> {
             <div>
                 <div className="atc-menu-wrapper">
                 <div className="add-to">Add To:</div>
-                <span className="atc-menu" onClick={this.push1}>{ml.c1} - </span> 
-                <span className="atc-menu" onClick={this.push2}>{ml.c2} - </span>
-                <span className="atc-menu" onClick={this.push3}>{ml.c3} - </span>
-                <span className="atc-menu" onClick={this.push4}>{ml.c4} - </span>
-                <span className="atc-menu" onClick={this.push5}>{ml.c5} - </span>
-                <span className="atc-menu" onClick={this.push6}>{ml.c6} - </span>
-                <span className="atc-menu" onClick={this.push7}>{ml.c7} - </span>
-                <span className="atc-menu" onClick={this.push8}>{ml.c8} - </span>
-                <span className="atc-menu" onClick={this.push9}>{ml.c9} - </span>
+                <span className="atc-menu" onClick={this.push1}>{ml.c1}</span> 
+                <span className="atc-menu" onClick={this.push2}>{ml.c2}</span>
+                <span className="atc-menu" onClick={this.push3}>{ml.c3}</span>
+                <span className="atc-menu" onClick={this.push4}>{ml.c4}</span>
+                <span className="atc-menu" onClick={this.push5}>{ml.c5}</span>
+                <span className="atc-menu" onClick={this.push6}>{ml.c6}</span>
+                <span className="atc-menu" onClick={this.push7}>{ml.c7}</span>
+                <span className="atc-menu" onClick={this.push8}>{ml.c8}</span>
+                <span className="atc-menu" onClick={this.push9}>{ml.c9}</span>
                 <span className="atc-menu" onClick={this.push10}>{ml.c10}</span>
                 </div>
             </div>

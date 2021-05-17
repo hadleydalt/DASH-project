@@ -33,34 +33,34 @@ export class TextNodeView extends React.Component<TextNodeProps> {
         this.setState({clicked: true});
 
         if (nca.collections[0].isNamed = true) {
-            ml.c1 = nca.collections[0].name;
+            ml.c1 = nca.collections[0].name + ' - ';
         }
         if (nca.collections[1].isNamed = true) {
-            ml.c2 = nca.collections[1].name;
+            ml.c2 = nca.collections[1].name + ' - ';
         }
         if (nca.collections[2].isNamed = true) {
-            ml.c3 = nca.collections[2].name;
+            ml.c3 = nca.collections[2].name + ' - ';
         }
         if (nca.collections[3].isNamed = true) {
-            ml.c4 = nca.collections[3].name;
+            ml.c4 = nca.collections[3].name + ' - ';
         }
         if (nca.collections[4].isNamed = true) {
-            ml.c5 = nca.collections[4].name;
+            ml.c5 = nca.collections[4].name + ' - ';
         }
         if (nca.collections[5].isNamed = true) {
-            ml.c6 = nca.collections[5].name;
+            ml.c6 = nca.collections[5].name + ' - ';
         }
         if (nca.collections[6].isNamed = true) {
-            ml.c7 = nca.collections[6].name;
+            ml.c7 = nca.collections[6].name + ' - ';
         }
         if (nca.collections[7].isNamed = true) {
-            ml.c8 = nca.collections[7].name;
+            ml.c8 = nca.collections[7].name + ' - ';
         }
         if (nca.collections[8].isNamed = true) {
-            ml.c9 = nca.collections[8].name;
+            ml.c9 = nca.collections[8].name + ' - ';
         }
         if (nca.collections[9].isNamed = true) {
-            ml.c10 = nca.collections[9].name; 
+            ml.c10 = nca.collections[9].name + ' - '; 
     }
 }
 

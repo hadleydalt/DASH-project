@@ -6,6 +6,8 @@ import { NodeStore, StoreType } from '../../stores/NodeStore';
 import { StaticTextNodeStore } from '../../stores/StaticTextNodeStore'; 
 import mainNodeCollection from '../../Main';
 import { CreateCollection } from './Collections/CreateCollection'
+import { NewCollection } from './Collections/NewCollection';
+import { NewCollectionArray } from './Collections/NewCollectionArray';
 
 function addTextNode(){
     mainNodeCollection.addTextNode();
@@ -23,13 +25,15 @@ function addIframeNode(){
   mainNodeCollection.addIframeNode();
 }
 
+export const nca = new NewCollectionArray();
 
 
 export function NodeForm() {
 
+
   return(
     <div>
-      <div className = "name-collection"><CreateCollection /></div>
+      <div className = "name-collection"><CreateCollection c={nca}/></div>
       <div className="youre-using">YOU'RE USING</div>
       <div className = "title">DASH!</div>
       <div className="add-new">ADD NEW</div>

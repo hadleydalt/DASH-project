@@ -5,10 +5,15 @@ import mainNodeCollection from "../../../Main";
 import { NodeCollectionStore } from "../../../stores/NodeCollectionStore";
 import { NodeStore } from "../../../stores/NodeStore";
 import { NewCollection } from "./NewCollection";
+import { NewCollectionArray } from "./NewCollectionArray";
 
-export class CreateCollection extends React.Component {
+interface CCProps {
+  c: NewCollectionArray;
+}
 
-  public collections = new Array<NewCollection>();
+export class CreateCollection extends React.Component<CCProps> {
+
+  public collections = this.props.c.collections;
   public one: string = "You haven't created any collections yet.";
   public two: string = "";
   public three: string = "";
@@ -41,6 +46,7 @@ export class CreateCollection extends React.Component {
       newCollection.name = this.state.value;
       newCollection.isNamed = true;
       this.collections.push(newCollection); 
+      
       if (this.state.count === 1){
         this.one = newCollection.name;
       }

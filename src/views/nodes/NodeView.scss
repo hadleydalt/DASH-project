@@ -13,8 +13,8 @@
     }
 
     .top {
-        background: #232323;
-        height: 20px;
+        background: black;
+        height: 25px;
         cursor: pointer;
     }
 
@@ -46,5 +46,14 @@
     font-style:italic;
     font-size: 13px;
     color: #4f4f4f;
+}
+
+.atc-button{
+    margin-top:-22px;
+    margin-left:2px;
+    height: 20px;
+    text-align:center;
+    border:1px solid black;
+    border-radius:20px;
 }
 

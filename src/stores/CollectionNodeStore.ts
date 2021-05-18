@@ -6,7 +6,7 @@ export class CollectionNodeStore extends NodeStore {
         super();
         Object.assign(this, initializer);
         this.w = 300;
-        this.h = 200;
+        this.h = 190;
     }
 
 }

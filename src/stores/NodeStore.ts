@@ -2,7 +2,7 @@ import { computed, observable } from "mobx";
 import { Utils } from "../Utils";
 
 export enum StoreType {
-    Text, Video, Image, Iframe, Collection
+    Text, Video, Image, Iframe, Collection, SubCollection
 }
 
 export class NodeStore {

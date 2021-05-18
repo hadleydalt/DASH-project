@@ -2,7 +2,7 @@ import { observer } from "mobx-react";
 import { NodeStore } from "../../stores/NodeStore";
 import "./NodeView.scss";
 import * as React from 'react';
-import { x, y, changeLoc } from "../../stores/NodeCollectionStore";
+import { x, y, changeLoc, newCollection } from "../../stores/NodeCollectionStore";
 
 interface TopBarProps {
     store: NodeStore;
@@ -44,7 +44,7 @@ export class CollectionTopBar extends React.Component<TopBarProps> {
         for (var i = 0; i < this.props.collection.length; i++) {
             this.props.collection[i].x += e.movementX;
             this.props.collection[i].y += e.movementY;
-        }
+        } 
     }
 
     render() {

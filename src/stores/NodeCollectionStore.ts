@@ -7,8 +7,17 @@ import { IframeNodeStore } from "./IframeNodeStore";
 import { CollectionNodeStore } from "./CollectionNodeStore";
 
 export let newCollection;
+export function passNewCollection(x){
+    newCollection = x;
+}
 export let x;
 export let y;
+export function changeX(z){
+    x = z;
+}
+export function changeY(z){
+    y = z;
+}
 
 export class NodeCollectionStore extends NodeStore {
     public count: number = 0;
@@ -61,7 +70,7 @@ export class NodeCollectionStore extends NodeStore {
         y = c.y;
         c.nodeID = this.count;
         this.nodes.push(c);
-        newCollection = new Array<NodeStore>();
+        newCollection = new Array<NodeCollectionStore>();
     }
 
 }

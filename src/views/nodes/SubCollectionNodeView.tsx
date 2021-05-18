@@ -10,7 +10,7 @@ import { Menu, ml, changeType } from "../freeformcanvas/Folders/FolderMenu";
 import mainNodeCollection from "../../Main";
 import { CollectionNodeStore } from "../../stores/CollectionNodeStore";
 import { observable } from "mobx";
-import { x, y, newCollection, NodeCollectionStore, passNewCollection, changeX, changeY } from "../../stores/NodeCollectionStore";
+import { x, y, newCollection, NodeCollectionStore, passNewCollection, changeY, changeX } from "../../stores/NodeCollectionStore";
 import { NodeStore, StoreType } from "../../stores/NodeStore";
 import { StaticTextNodeStore } from "../../stores/StaticTextNodeStore";
 import { TextNodeView } from "./TextNodeView";
@@ -18,21 +18,17 @@ import { CollectionTopBar } from "./CollectionTopBar";
 import { ImageNodeStore } from "../../stores/ImageNodeStore";
 import { VideoNodeStore } from "../../stores/VideoNodeStore";
 import { SubCollectionNodeStore } from "../../stores/SubCollectionNodeStore";
+import { cCounter, subCounter, incS } from "./CollectionNodeView";
 
-interface CollectionNodeProps {
-    store: CollectionNodeStore;
+interface SubCollectionNodeProps {
+    store: SubCollectionNodeStore;
     id: number;
 }
 
 let id;
-export let subCounter: number = 0;
-export let cCounter: number = 0;
-export function incS(number){
-    subCounter += number;
-}
 
 @observer
-export class CollectionNodeView extends React.Component<CollectionNodeProps> {
+export class SubCollectionNodeView extends React.Component<SubCollectionNodeProps> {
 
     constructor(props){
         super(props);
@@ -47,7 +43,7 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
 
     addTextNode(){
         mainNodeCollection.count += 1;
-        subCounter += 1;
+        incS(1);
         let t = new StaticTextNodeStore({ type: StoreType.Text, x: (x+310), y: (y+60), title: "", text: "" });
         changeX(t.x);
         t.nodeID = mainNodeCollection.count;
@@ -57,7 +53,7 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
 
     addImageNode(){
         mainNodeCollection.count += 1;
-        subCounter += 1;
+        incS(1);
         let i = new ImageNodeStore({ type: StoreType.Image, x: (x+310), y: (y+60) });
         changeX(i.x);
         i.nodeID = mainNodeCollection.count;
@@ -67,7 +63,7 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
 
     addVideoNode(){
         mainNodeCollection.count += 1;
-        subCounter += 1;
+        incS(1);
         let v = new VideoNodeStore({ type: StoreType.Video, x: (x+310), y: (y+60) });
         changeX(v.x);
         v.nodeID = mainNodeCollection.count;
@@ -77,7 +73,7 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
 
     addIframeNode(){
         mainNodeCollection.count += 1;
-        subCounter += 1;
+        incS(1);
         let f = new IframeNodeStore({ type: StoreType.Iframe, x: (x+310), y: (y+60) });
         changeX(f.x);
         f.nodeID = mainNodeCollection.count;
@@ -87,11 +83,11 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
 
     addCollectionNode(){
         mainNodeCollection.count += 1;
-        subCounter += 1;
-        cCounter += 1;
-        let c = new SubCollectionNodeStore({ type: StoreType.SubCollection, x: (x+310), y: (y+60) });
-        changeX(c.x);
+        incS(1);
+        incS(cCounter);
+        let c = new SubCollectionNodeStore({ type: StoreType.Collection, x: (x+310), y: (y+60) });
         changeY(c.y);
+        changeX(c.x);
         c.nodeID = mainNodeCollection.count;
         mainNodeCollection.nodes.push(c);
         newCollection.push(c);
@@ -174,7 +170,7 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
                 e.stopPropagation();
                 e.preventDefault();
             }}>
-                <CollectionTopBar store={store} collection={newCollection}/>
+                <TopBar store={store} />
                 <div className="scroll-box">
                     <div className="content">
                         <div className="collection-name">COLLECTION →</div>
@@ -187,20 +183,10 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
                             <div>
                             <button className="node-button-c" onClick={this.addCollectionNode}>Collection</button>
                             </div>
-                            <div className="c-note"><p>Move me to move this entire collection!</p></div>
                         </div>
                     </div>
                 </div>
             </div>
         );
-    }
-}
-
-export function pushCollectionNode(x){
-    for (var i = 0; i < mainNodeCollection.nodes.length; i++){
-        if (mainNodeCollection.nodes[i].nodeID === id){
-            nca.folders[x].folder.push(mainNodeCollection.nodes[i]);
-            alert('Added to ' + nca.folders[x].name + '!');
-        }
     }
 }

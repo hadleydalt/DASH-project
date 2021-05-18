@@ -22,6 +22,7 @@ export class StaticTextNodeStore extends NodeStore {
 
         this.w = 300;
         this.h = 300;
+
     }
 
     @observable

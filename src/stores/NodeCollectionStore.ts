@@ -6,6 +6,10 @@ import { VideoNodeStore } from "./VideoNodeStore";
 import { IframeNodeStore } from "./IframeNodeStore";
 import { CollectionNodeStore } from "./CollectionNodeStore";
 
+export let newCollection;
+export let x;
+export let y;
+
 export class NodeCollectionStore extends NodeStore {
     public count: number = 0;
 
@@ -53,8 +57,16 @@ export class NodeCollectionStore extends NodeStore {
     public addCollectionNode(): void {
         this.count += 1;
         let c = new CollectionNodeStore({ type: StoreType.Collection, x: Math.random() * 500, y: Math.random() * 500 });
+        x = c.x;
+        y = c.y;
         c.nodeID = this.count;
         this.nodes.push(c);
+        newCollection = new Array<NodeStore>();
     }
 
+}
+
+export function changeLoc(xnum, ynum) {
+    x += xnum;
+    y += ynum;
 }

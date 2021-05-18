@@ -23,6 +23,21 @@
 }
 }
 
+.subcanvas-container {
+    top: 10px;
+    left: 10px;
+    width: 300px;
+    height: 100px;
+    overflow: hidden;
+
+    .subcanvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background:white;
+    }
+}
+
 .button-menu {
     position:fixed;
     margin-left: 1px;

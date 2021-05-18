@@ -10,6 +10,11 @@ import { Menu, ml, changeType } from "../freeformcanvas/Folders/FolderMenu";
 import mainNodeCollection from "../../Main";
 import { CollectionNodeStore } from "../../stores/CollectionNodeStore";
 import { observable } from "mobx";
+import { x, y, newCollection, NodeCollectionStore } from "../../stores/NodeCollectionStore";
+import { StoreType } from "../../stores/NodeStore";
+import { StaticTextNodeStore } from "../../stores/StaticTextNodeStore";
+import { TextNodeView } from "./TextNodeView";
+import { CollectionTopBar } from "./CollectionTopBar";
 
 interface CollectionNodeProps {
     store: CollectionNodeStore;
@@ -30,6 +35,14 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
 
     state = {
         clicked: false,
+    }
+
+    addTextNode(){
+        mainNodeCollection.count += 1;
+        let t = new StaticTextNodeStore({ type: StoreType.Text, x: x, y: y+210, title: "", text: "" });
+        t.nodeID = mainNodeCollection.count;
+        mainNodeCollection.nodes.push(t);
+        newCollection.push(t);
     }
 
     handleClick(){
@@ -109,16 +122,15 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
                 e.stopPropagation();
                 e.preventDefault();
             }}>
-                <TopBar store={store}/>
+                <CollectionTopBar store={store} collection = {newCollection}/>
                 <button className="atc-button" title = "Add to Folder" onClick={this.handleClick}>{this.state.clicked ? "-": "+"}</button>
                 {this.state.clicked ? <Menu /> : null}
-                <ResizeIcon store={store}></ResizeIcon>
                 <div className="scroll-box">
                     <div className="content">
                         <div className="collection-name">COLLECTION!</div>
                         <div className="node-atc">ADD NEW:</div>
                         <div className="node-button-wrapper">
-                            <button className = "node-button-each">Note</button>
+                            <button className = "node-button-each" onClick={this.addTextNode}>Note</button>
                             <button className = "node-button-each">Image</button>
                             <button className = "node-button-each">Video</button>
                             <button className = "node-button-each">Website</button>
@@ -126,7 +138,7 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
                             <button className="node-button-c">Collection</button>
                             </div>
                         </div>
-                        <div className="node-atc">MY COLLECTION:</div>
+                        <div className="node-atc">IN THIS COLLECTION:</div>
                     </div>
                 </div>
             </div>

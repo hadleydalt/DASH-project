@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { NodeStore } from '../../../stores/NodeStore';
+import { pushCollectionNode } from '../../nodes/CollectionNodeView';
 import { pushIframeNode } from '../../nodes/IframeNodeView';
 import { pushImageNode } from '../../nodes/ImageNodeView';
 import { pushTextNode } from '../../nodes/TextNodeView';
@@ -8,13 +9,12 @@ import { pushVideoNode } from '../../nodes/VideoNodeView';
 import { nca } from '../Sidebar';
 import { MenuLabels } from './MenuLabels';
 
-export const ml = new MenuLabels();
 let type: string = "";
+
+export const ml = new MenuLabels();
+
 export function changeType(x:string){
     type = x;
-}
-
-interface MenuProps {
 }
 
 export class Menu extends React.Component {
@@ -32,6 +32,9 @@ export class Menu extends React.Component {
         if (type === "iframe"){
             pushIframeNode(0);
         }
+        if (type === "collection"){
+            pushCollectionNode(0);
+        }
     }
 
     push2(){
@@ -46,6 +49,9 @@ export class Menu extends React.Component {
         }
         if (type === "iframe"){
             pushIframeNode(1);
+        }
+        if (type === "collection"){
+            pushCollectionNode(1);
         }
     }
 
@@ -62,6 +68,9 @@ export class Menu extends React.Component {
         if (type === "iframe"){
             pushIframeNode(2);
         }
+        if (type === "collection"){
+            pushCollectionNode(2);
+        }
     }
 
     push4(){
@@ -76,6 +85,9 @@ export class Menu extends React.Component {
         }
         if (type === "iframe"){
             pushIframeNode(3);
+        }
+        if (type === "collection"){
+            pushCollectionNode(3);
         }
     }
 
@@ -92,6 +104,9 @@ export class Menu extends React.Component {
         if (type === "iframe"){
             pushIframeNode(4);
         }
+        if (type === "collection"){
+            pushCollectionNode(4);
+        }
     }
 
     push6(){
@@ -106,6 +121,9 @@ export class Menu extends React.Component {
         }
         if (type === "iframe"){
             pushIframeNode(5);
+        }
+        if (type === "collection"){
+            pushCollectionNode(5);
         }
     }
 
@@ -122,6 +140,9 @@ export class Menu extends React.Component {
         if (type === "iframe"){
             pushIframeNode(6);
         }
+        if (type === "collection"){
+            pushCollectionNode(6);
+        }
     }
 
     push8(){
@@ -136,6 +157,9 @@ export class Menu extends React.Component {
         }
         if (type === "iframe"){
             pushIframeNode(7);
+        }
+        if (type === "collection"){
+            pushCollectionNode(7);
         }
     }
 
@@ -152,6 +176,9 @@ export class Menu extends React.Component {
         if (type === "iframe"){
             pushIframeNode(8);
         }
+        if (type === "collection"){
+            pushCollectionNode(8);
+        }
     }
 
     push10(){
@@ -166,6 +193,9 @@ export class Menu extends React.Component {
         }
         if (type === "iframe"){
             pushIframeNode(9);
+        }
+        if (type === "collection"){
+            pushCollectionNode(9);
         }
     }
 

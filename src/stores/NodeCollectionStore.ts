@@ -4,6 +4,7 @@ import { StaticTextNodeStore } from "./StaticTextNodeStore";
 import { ImageNodeStore } from "./ImageNodeStore";
 import { VideoNodeStore } from "./VideoNodeStore";
 import { IframeNodeStore } from "./IframeNodeStore";
+import { CollectionNodeStore } from "./CollectionNodeStore";
 
 export class NodeCollectionStore extends NodeStore {
     public count: number = 0;
@@ -47,4 +48,13 @@ export class NodeCollectionStore extends NodeStore {
         f.nodeID = this.count;
         this.nodes.push(f);
     }
+
+    @action
+    public addCollectionNode(): void {
+        this.count += 1;
+        let c = new CollectionNodeStore({ type: StoreType.Collection, x: Math.random() * 500, y: Math.random() * 500 });
+        c.nodeID = this.count;
+        this.nodes.push(c);
+    }
+
 }

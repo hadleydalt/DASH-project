@@ -25,6 +25,10 @@ function addIframeNode(){
   mainNodeCollection.addIframeNode();
 }
 
+function addCollectionNode(){
+  mainNodeCollection.addCollectionNode();
+}
+
 export const nca = new NewFolderArray();
 
 
@@ -51,77 +55,10 @@ export function NodeForm() {
         addIframeNode
       }>Website</button>
       </div>
+      <button className = "col-button" onClick={addCollectionNode}>Collection</button>
       <div className="create-folder">CREATE FOLDER</div>
       <div className="my-folders">MY FOLDERS</div>
       <div className = "menu-bg"></div>
       </div>
   )
-
-  /*const [nodeState, setNodeState] = useState("")
-  let nodes = [];
-
-  return (
-  <div>
-    <select onChange={(e) => {
-      const selectedNode = e.target.value;
-      setNodeState(selectedNode);
-      mainNodeCollection.addNodes(nodes);
-    }}>
-      <option value="text">Text</option>
-      <option value="image">Image</option>
-      <option value="video">Video</option>
-      <option value="website">Website</option>
-    </select>
-    {nodeState}
-  </div>
-  ); */
 }
-
-/*
-
-const options = [
-  { value: 'text', label: 'Text' },
-  { value: 'image', label: 'Image' },
-  { value: 'video', label: 'Video' },
-  { value: 'website', label: 'Website' },
-];
-
-const styles = {
-  control: base => ({
-    ...base,
-    fontFamily: "Arial, Helvetica, sans-serif"
-  }),
-  menu: base => ({
-    ...base,
-    fontFamily: "Arial, Helvetica, sans-serif"
-  })
-};
-
-let nodes = [];
-
-
-export class NodeForm extends React.Component {
-
-  state = {
-    value: null
-  };
-
-
-  handleChange = selectedOption => {
-    this.setState({ value: selectedOption });
-    mainNodeCollection.addNodes(nodes);
-  }; 
-
-  render() {
-    return (
-      <Select
-        value={this.state.value}
-        onChange={this.handleChange}
-        options={options}
-        styles={styles}
-      />
-    );
-  }
-}
-
-*/

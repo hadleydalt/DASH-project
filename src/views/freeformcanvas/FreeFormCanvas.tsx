@@ -14,6 +14,8 @@ import { IframeNodeStore } from "../../stores/IframeNodeStore";
 import { NodeForm } from "./Sidebar";
 import { Menu } from "./Folders/FolderMenu";
 import { CreateFolder } from "./Folders/CreateFolder";
+import { CollectionNodeStore } from "../../stores/CollectionNodeStore";
+import { CollectionNodeView } from "../nodes/CollectionNodeView";
 
 interface FreeFormProps {
     store: NodeCollectionStore
@@ -72,6 +74,9 @@ export class FreeFormCanvas extends React.Component<FreeFormProps> {
 
                                 case StoreType.Iframe:
                                     return (<IframeNodeView id = {store.count} key={nodeStore.Id} store={nodeStore as IframeNodeStore}/>)
+
+                                case StoreType.Collection:
+                                    return (<CollectionNodeView id = {store.count} key={nodeStore.Id} store={nodeStore as CollectionNodeStore}/>)
 
                                 default:
                                     break;

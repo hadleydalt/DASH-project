@@ -7,6 +7,8 @@ export enum StoreType {
 
 export class NodeStore {
 
+    public nodeID: number;
+
     public Id: string = Utils.GenerateGuid();
 
     public type: StoreType = null;

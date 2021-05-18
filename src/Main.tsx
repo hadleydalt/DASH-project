@@ -11,6 +11,7 @@ import { FreeFormCanvas } from './views/freeformcanvas/FreeFormCanvas';
 
 
 const mainNodeCollection = new NodeCollectionStore();
+
 ReactDOM.render((
     <div>
         <FreeFormCanvas store={mainNodeCollection} />

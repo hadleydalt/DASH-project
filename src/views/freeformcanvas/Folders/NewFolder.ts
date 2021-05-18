@@ -1,10 +1,10 @@
 import { NodeStore } from "../../../stores/NodeStore";
 
-export class NewCollection {
+export class NewFolder {
 
-    public collection: NodeStore[];
+    public folder: NodeStore[];
 
-    public collections: NewCollection[];
+    public folders: NewFolder[];
     
     public name: string;
 

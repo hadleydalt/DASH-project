@@ -12,8 +12,8 @@ import { StoreType } from "../../stores/NodeStore";
 import { IframeNodeView } from "../nodes/IframeNodeView";
 import { IframeNodeStore } from "../../stores/IframeNodeStore";
 import { NodeForm } from "./Sidebar";
-import { Menu } from "../../views/freeformcanvas/Collections/CollectionMenu";
-import { CreateCollection } from "./Collections/CreateCollection";
+import { Menu } from "./Folders/FolderMenu";
+import { CreateFolder } from "./Folders/CreateFolder";
 
 interface FreeFormProps {
     store: NodeCollectionStore
@@ -62,16 +62,16 @@ export class FreeFormCanvas extends React.Component<FreeFormProps> {
                         store.nodes.map(nodeStore => {
                             switch (nodeStore.type) {
                                 case StoreType.Text:
-                                    return (<TextNodeView id = {this.props.store.n} key={nodeStore.Id} store={nodeStore as StaticTextNodeStore}/>)
+                                    return (<TextNodeView id = {store.count} key={nodeStore.Id} store={nodeStore as StaticTextNodeStore}/>)
 
                                 case StoreType.Video:
-                                    return (<VideoNodeView id = {this.props.store.n} key={nodeStore.Id} store={nodeStore as VideoNodeStore}/>)
+                                    return (<VideoNodeView id = {store.count} key={nodeStore.Id} store={nodeStore as VideoNodeStore}/>)
 
                                 case StoreType.Image:
-                                    return (<ImageNodeView id = {this.props.store.n} key={nodeStore.Id} store={nodeStore as ImageNodeStore}/>)
+                                    return (<ImageNodeView id = {store.count} key={nodeStore.Id} store={nodeStore as ImageNodeStore}/>)
 
                                 case StoreType.Iframe:
-                                    return (<IframeNodeView id = {this.props.store.n} key={nodeStore.Id} store={nodeStore as IframeNodeStore}/>)
+                                    return (<IframeNodeView id = {store.count} key={nodeStore.Id} store={nodeStore as IframeNodeStore}/>)
 
                                 default:
                                     break;

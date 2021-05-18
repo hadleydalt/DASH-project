@@ -1,5 +1,5 @@
 export class MenuLabels {
-    public c1: string = "You haven't made any collections yet!";
+    public c1: string = "You haven't made any folders yet!";
     public c2: string = "";
     public c3: string = "";
     public c4: string = "";

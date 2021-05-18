@@ -4,17 +4,17 @@ import * as React from "react";
 import mainNodeCollection from "../../../Main";
 import { NodeCollectionStore } from "../../../stores/NodeCollectionStore";
 import { NodeStore } from "../../../stores/NodeStore";
-import { NewCollection } from "./NewCollection";
-import { NewCollectionArray } from "./NewCollectionArray";
+import { NewFolder } from "./NewFolder";
+import { NewFolderArray } from "./NewFolderArray";
 
 interface CCProps {
-  c: NewCollectionArray;
+  c: NewFolderArray;
 }
 
-export class CreateCollection extends React.Component<CCProps> {
+export class CreateFolder extends React.Component<CCProps> {
 
-  public collections = this.props.c.collections;
-  public one: string = "You haven't created any collections yet.";
+  public folders = this.props.c.folders;
+  public one: string = "You haven't created any folders yet.";
   public two: string = "";
   public three: string = "";
   public four: string = "";
@@ -41,41 +41,41 @@ export class CreateCollection extends React.Component<CCProps> {
   
     handleSubmit() {
       this.setState({count: this.state.count += 1});
-      const newCollection = new NewCollection();
-      newCollection.collection = new Array<NodeStore>();
-      newCollection.name = this.state.value;
-      newCollection.isNamed = true;
-      this.collections.push(newCollection); 
+      const newFolder = new NewFolder();
+      newFolder.folder = new Array<NodeStore>();
+      newFolder.name = this.state.value;
+      newFolder.isNamed = true;
+      this.folders.push(newFolder); 
       
       if (this.state.count === 1){
-        this.one = newCollection.name;
+        this.one = newFolder.name;
       }
       if (this.state.count === 2){
-        this.two = newCollection.name;
+        this.two = newFolder.name;
       }
       if (this.state.count === 3){
-        this.three = newCollection.name;
+        this.three = newFolder.name;
       }
       if (this.state.count === 4){
-        this.four = newCollection.name;
+        this.four = newFolder.name;
       }
       if (this.state.count === 5){
-        this.five = newCollection.name;
+        this.five = newFolder.name;
       }
       if (this.state.count === 6){
-        this.six = newCollection.name;
+        this.six = newFolder.name;
       }
       if (this.state.count === 7){
-        this.seven = newCollection.name;
+        this.seven = newFolder.name;
       }
       if (this.state.count === 8){
-        this.eight = newCollection.name;
+        this.eight = newFolder.name;
       }
       if (this.state.count === 9){
-        this.nine = newCollection.name;
+        this.nine = newFolder.name;
       }
       if (this.state.count === 10){
-        this.ten = newCollection.name;
+        this.ten = newFolder.name;
       }
     }
   
@@ -89,17 +89,17 @@ export class CreateCollection extends React.Component<CCProps> {
           </label>
         </form>
         <button className = "create-button" onClick={this.handleSubmit}>Create</button>
-        <div className = "collections">
-        <div className = "collections-each">{this.one}</div>
-        <div className = "collections-each">{this.two}</div>
-        <div className = "collections-each">{this.three}</div>
-        <div className = "collections-each">{this.four}</div>
-        <div className = "collections-each">{this.five}</div>
-        <div className = "collections-each">{this.six}</div>
-        <div className = "collections-each">{this.seven}</div>
-        <div className = "collections-each">{this.eight}</div>
-        <div className = "collections-each">{this.nine}</div>
-        <div className = "collections-each">{this.ten}</div>
+        <div className = "folders">
+        <div className = "folders-each">{this.one}</div>
+        <div className = "folders-each">{this.two}</div>
+        <div className = "folders-each">{this.three}</div>
+        <div className = "folders-each">{this.four}</div>
+        <div className = "folders-each">{this.five}</div>
+        <div className = "folders-each">{this.six}</div>
+        <div className = "folders-each">{this.seven}</div>
+        <div className = "folders-each">{this.eight}</div>
+        <div className = "folders-each">{this.nine}</div>
+        <div className = "folders-each">{this.ten}</div>
         </div>
         </div>
       );

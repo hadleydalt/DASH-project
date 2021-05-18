@@ -3,7 +3,7 @@ import { NodeStore } from '../../../stores/NodeStore';
 import { pushCollectionNode } from '../../nodes/CollectionNodeView';
 import { pushIframeNode } from '../../nodes/IframeNodeView';
 import { pushImageNode } from '../../nodes/ImageNodeView';
-import { pushTextNode } from '../../nodes/TextNodeView';
+import { addedToFolder, pushTextNode, atf } from '../../nodes/TextNodeView';
 import { TopBar } from '../../nodes/TopBar';
 import { pushVideoNode } from '../../nodes/VideoNodeView';
 import { nca } from '../Sidebar';
@@ -16,6 +16,17 @@ export const ml = new MenuLabels();
 export function changeType(x:string){
     type = x;
 }
+
+let one = false;
+let two = false;
+let three = false;
+let four = false;
+let five = false;
+let six = false;
+let seven = false;
+let eight = false;
+let nine = false;
+let ten = false;
 
 export class Menu extends React.Component {
 
@@ -35,6 +46,9 @@ export class Menu extends React.Component {
         if (type === "collection"){
             pushCollectionNode(0);
         }
+
+        atf();
+        one = true;
     }
 
     push2(){
@@ -53,6 +67,9 @@ export class Menu extends React.Component {
         if (type === "collection"){
             pushCollectionNode(1);
         }
+
+        atf();
+        two = true;
     }
 
     push3(){
@@ -71,6 +88,9 @@ export class Menu extends React.Component {
         if (type === "collection"){
             pushCollectionNode(2);
         }
+
+        atf();
+        three = true;
     }
 
     push4(){
@@ -89,6 +109,9 @@ export class Menu extends React.Component {
         if (type === "collection"){
             pushCollectionNode(3);
         }
+
+        atf();
+        four = true;
     }
 
     push5(){
@@ -107,6 +130,9 @@ export class Menu extends React.Component {
         if (type === "collection"){
             pushCollectionNode(4);
         }
+
+        atf();
+        five = true;
     }
 
     push6(){
@@ -125,6 +151,9 @@ export class Menu extends React.Component {
         if (type === "collection"){
             pushCollectionNode(5);
         }
+
+        atf();
+        six = true;
     }
 
     push7(){
@@ -143,6 +172,9 @@ export class Menu extends React.Component {
         if (type === "collection"){
             pushCollectionNode(6);
         }
+
+        atf();
+        seven = true;
     }
 
     push8(){
@@ -161,6 +193,9 @@ export class Menu extends React.Component {
         if (type === "collection"){
             pushCollectionNode(7);
         }
+
+        atf();
+        eight = true;
     }
 
     push9(){
@@ -179,6 +214,9 @@ export class Menu extends React.Component {
         if (type === "collection"){
             pushCollectionNode(8);
         }
+
+        atf();
+        nine = true;
     }
 
     push10(){
@@ -197,6 +235,9 @@ export class Menu extends React.Component {
         if (type === "collection"){
             pushCollectionNode(9);
         }
+
+        atf();
+        ten = true;
     }
 
     render(){
@@ -215,6 +256,18 @@ export class Menu extends React.Component {
                 <span className="atc-menu" onClick={this.push9}>{ml.c9}</span>
                 <span className="atc-menu" onClick={this.push10}>{ml.c10}</span>
                 </div>
+            </div>
+        )
+    }
+}
+
+export class LinkedNodes extends React.Component {
+    render(){
+        return(
+            <div>
+                <div className="atc-menu-wrapper">
+                <div className="add-to">{one? ml.c1 : two? ml. c2 : three? ml.c3 : four? ml.c4 : five? ml.c5 : six? ml.c6 : seven? ml.c7 : eight? ml.c8 : nine? ml.c9 : ml.c10} Contents</div>
+            </div>
             </div>
         )
     }

@@ -128,7 +128,7 @@ export function pushVideoNode(x){
     for (var i = 0; i < mainNodeCollection.nodes.length; i++){
         if (mainNodeCollection.nodes[i].nodeID === id){
             nca.folders[x].folder.push(mainNodeCollection.nodes[i]);
-            alert('Added to ' + nca.folders[x].name + '!');
+            alert('Added to ' + nca.folders[x].name + '! Press the "-" button to close the Add To box.');
         }
     }
 }

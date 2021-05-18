@@ -187,7 +187,7 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
                             <div>
                             <button className="node-button-c" onClick={this.addCollectionNode}>Collection</button>
                             </div>
-                            <div className="c-note"><p>Move me to move this entire collection!</p></div>
+                            <div className="c-note">Move me to move this entire collection!</div>
                         </div>
                     </div>
                 </div>
@@ -200,7 +200,7 @@ export function pushCollectionNode(x){
     for (var i = 0; i < mainNodeCollection.nodes.length; i++){
         if (mainNodeCollection.nodes[i].nodeID === id){
             nca.folders[x].folder.push(mainNodeCollection.nodes[i]);
-            alert('Added to ' + nca.folders[x].name + '!');
+            alert('Added to ' + nca.folders[x].name + '! Press the "-" button to close the Add To box.');
         }
     }
 }

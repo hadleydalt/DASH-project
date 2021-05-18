@@ -6,7 +6,7 @@ import { TopBar } from "./TopBar";
 import * as React from 'react';
 import RichTextEditor from '../nodes/RichTextEditor';
 import { nca } from '../freeformcanvas/Sidebar';
-import { Menu, ml, changeType } from "../freeformcanvas/Folders/FolderMenu";
+import { Menu, ml, changeType, LinkedNodes } from "../freeformcanvas/Folders/FolderMenu";
 import mainNodeCollection from "../../Main";
 
 interface TextNodeProps {
@@ -15,6 +15,10 @@ interface TextNodeProps {
 }
 
 let id;
+export let addedToFolder = false;
+export function atf(){
+    addedToFolder = true;
+}
 
 @observer
 export class TextNodeView extends React.Component<TextNodeProps> {
@@ -23,11 +27,13 @@ export class TextNodeView extends React.Component<TextNodeProps> {
         super(props);
 
         this.handleClick = this.handleClick.bind(this);
+        this.handleClick2 = this.handleClick2.bind(this);
         id = this.props.id;
     }
 
     state = {
-        clicked: false
+        clicked: false,
+        clicked2: false
     }
 
     private isPointerDown = false;
@@ -76,6 +82,16 @@ export class TextNodeView extends React.Component<TextNodeProps> {
     }
 }
 
+handleClick2(){
+    if (this.state.clicked2 === false){
+        this.setState({clicked2: true});
+        }
+
+        if (this.state.clicked2 === true){
+            this.setState({clicked2: false});
+        }
+}
+
     onPointerDown = (e: React.PointerEvent): void => {
         e.stopPropagation();
         e.preventDefault();
@@ -109,8 +125,10 @@ export class TextNodeView extends React.Component<TextNodeProps> {
                 e.preventDefault();
             }}>
                 <TopBar store={store}/>
+                {addedToFolder ? <button className="show-list" onClick={this.handleClick2}>View Folder Contents</button> : null}
                 <button className="atc-button" title = "Add to Folder" onClick={this.handleClick}>{this.state.clicked ? "-": "+"}</button>
                 {this.state.clicked ? <Menu /> : null}
+                {this.state.clicked2 ? <LinkedNodes /> : null}
                 <ResizeIcon store={store}></ResizeIcon>
                 <div className="scroll-box">
                     <div className="content">
@@ -126,7 +144,7 @@ export function pushTextNode(x){
     for (var i = 0; i < mainNodeCollection.nodes.length; i++){
         if (mainNodeCollection.nodes[i].nodeID === id){
             nca.folders[x].folder.push(mainNodeCollection.nodes[i]);
-            alert('Added to ' + nca.folders[x].name + '!');
+            alert('Added to ' + nca.folders[x].name + '! Press the "-" button to close the Add To box.');
         }
     }
 }

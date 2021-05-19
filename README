@@ -1,0 +1,16 @@
+I updated this README at 12:01 because I realized I had not saved before committing but everything else was committed at 11:59!
+
+
+My code does not successfully implement linking. 
+
+My intention was for the user to be able to create folders and name them. If a node is on the canvas, the user is able to add
+it to a certain folder. This happens with the node, marked with an ID upon instantiation, being added to an array for that folder.
+
+The user can then press "View Folder Contents" and a message pops up indicating how many nodes have been added to that folder. 
+
+This is all implemented successfully and the message returns the correct amount of nodes! It also lists the nodes that 
+have been added for the folder. 
+
+I intended for the user to be able to click on the nodes in this list and that would display the node in question. 
+
+However, I was unable to implement this successfully due to time constrictions. 

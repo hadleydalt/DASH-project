@@ -37,7 +37,6 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
     constructor(props){
         super(props);
 
-        this.handleClick = this.handleClick.bind(this);
         id = this.props.id;
     }
 

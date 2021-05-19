@@ -1,11 +1,12 @@
 import * as React from 'react';
+import mainNodeCollection from '../../../Main';
 import { NodeStore } from '../../../stores/NodeStore';
 import { pushCollectionNode } from '../../nodes/CollectionNodeView';
-import { pushIframeNode } from '../../nodes/IframeNodeView';
-import { pushImageNode } from '../../nodes/ImageNodeView';
-import { addedToFolder, pushTextNode, atf } from '../../nodes/TextNodeView';
+import { atfIframe, pushIframeNode } from '../../nodes/IframeNodeView';
+import { atfImage, pushImageNode } from '../../nodes/ImageNodeView';
+import { addedToFolder, pushTextNode, atfText } from '../../nodes/TextNodeView';
 import { TopBar } from '../../nodes/TopBar';
-import { pushVideoNode } from '../../nodes/VideoNodeView';
+import { atfVideo, pushVideoNode } from '../../nodes/VideoNodeView';
 import { nca } from '../Sidebar';
 import { MenuLabels } from './MenuLabels';
 
@@ -41,215 +42,217 @@ export function turnfalse(){
     ten = false;
 }
 
+function showNode(n: NodeStore, x, y){
+    n.x = x;
+    n.y = y;
+}
+
 export class Menu extends React.Component {
 
     push1(){
         if (type === "text"){
             pushTextNode(0);
+            atfText();
         }
         if (type === "image"){
             pushImageNode(0);
+            atfImage();
         }
         if (type === "video"){
             pushVideoNode(0);
+            atfVideo();
         }
         if (type === "iframe"){
             pushIframeNode(0);
+            atfIframe();
         }
-        if (type === "collection"){
-            pushCollectionNode(0);
-        }
-
-        atf();
         one = true;
     }
 
     push2(){
         if (type === "text"){
             pushTextNode(1);
+            atfText();
         }
         if (type === "image"){
             pushImageNode(1);
+            atfImage();
         }
         if (type === "video"){
             pushVideoNode(1);
+            atfVideo();
         }
         if (type === "iframe"){
             pushIframeNode(1);
+            atfIframe();
         }
-        if (type === "collection"){
-            pushCollectionNode(1);
-        }
-
-        atf();
         two = true;
     }
 
     push3(){
         if (type === "text"){
             pushTextNode(2);
+            atfText();
         }
         if (type === "image"){
             pushImageNode(2);
+            atfImage();
         }
         if (type === "video"){
             pushVideoNode(2);
+            atfVideo();
         }
         if (type === "iframe"){
             pushIframeNode(2);
-        }
-        if (type === "collection"){
-            pushCollectionNode(2);
+            atfIframe();
         }
 
-        atf();
         three = true;
     }
 
     push4(){
         if (type === "text"){
             pushTextNode(3);
+            atfText();
         }
         if (type === "image"){
             pushImageNode(3);
+            atfImage();
         }
         if (type === "video"){
             pushVideoNode(3);
+            atfVideo();
         }
         if (type === "iframe"){
             pushIframeNode(3);
-        }
-        if (type === "collection"){
-            pushCollectionNode(3);
+            atfIframe()
         }
 
-        atf();
         four = true;
     }
 
     push5(){
         if (type === "text"){
             pushTextNode(4);
+            atfText();
         }
         if (type === "image"){
             pushImageNode(4);
+            atfImage();
         }
         if (type === "video"){
             pushVideoNode(4);
+            atfVideo();
         }
         if (type === "iframe"){
             pushIframeNode(4);
+            atfIframe();
         }
-        if (type === "collection"){
-            pushCollectionNode(4);
-        }
-
-        atf();
         five = true;
     }
 
     push6(){
         if (type === "text"){
             pushTextNode(5);
+            atfText();
         }
         if (type === "image"){
             pushImageNode(5);
+            atfImage();
         }
         if (type === "video"){
             pushVideoNode(5);
+            atfVideo();
         }
         if (type === "iframe"){
             pushIframeNode(5);
-        }
-        if (type === "collection"){
-            pushCollectionNode(5);
+            atfIframe();
         }
 
-        atf();
         six = true;
     }
 
     push7(){
         if (type === "text"){
             pushTextNode(6);
+            atfText();
         }
         if (type === "image"){
             pushImageNode(6);
+            atfImage();
         }
         if (type === "video"){
             pushVideoNode(6);
+            atfVideo();
         }
         if (type === "iframe"){
             pushIframeNode(6);
-        }
-        if (type === "collection"){
-            pushCollectionNode(6);
+            atfIframe();
         }
 
-        atf();
         seven = true;
     }
 
     push8(){
         if (type === "text"){
             pushTextNode(7);
+            atfText();
         }
         if (type === "image"){
             pushImageNode(7);
+            atfImage();
         }
         if (type === "video"){
             pushVideoNode(7);
+            atfVideo();
         }
         if (type === "iframe"){
             pushIframeNode(7);
-        }
-        if (type === "collection"){
-            pushCollectionNode(7);
+            atfIframe();
         }
 
-        atf();
         eight = true;
     }
 
     push9(){
         if (type === "text"){
             pushTextNode(8);
+            atfText();
         }
         if (type === "image"){
             pushImageNode(8);
+            atfImage();
         }
         if (type === "video"){
             pushVideoNode(8);
+            atfVideo();
         }
         if (type === "iframe"){
             pushIframeNode(8);
-        }
-        if (type === "collection"){
-            pushCollectionNode(8);
+            atfIframe();
         }
 
-        atf();
         nine = true;
     }
 
     push10(){
         if (type === "text"){
             pushTextNode(9);
+            atfText();
         }
         if (type === "image"){
             pushImageNode(9);
+            atfImage();
         }
         if (type === "video"){
             pushVideoNode(9);
+            atfVideo();
         }
         if (type === "iframe"){
             pushIframeNode(9);
-        }
-        if (type === "collection"){
-            pushCollectionNode(9);
+            atfIframe();
         }
 
-        atf();
         ten = true;
     }
 
@@ -280,7 +283,7 @@ export class LinkedNodes extends React.Component {
         return(
             <div>
                 <div className="atc-menu-wrapper">
-                <div className="add-to">{one? ml.c1 + " contains " + nca.folders[0].folder.length + " notes": two? ml.c1 + " contains " + nca.folders[1].folder.length + " notes" : three? ml.c1 + " contains " + nca.folders[2].folder.length + " notes" : four? ml.c1 + " contains " + nca.folders[3].folder.length + " notes" : five? ml.c1 + " contains " + nca.folders[4].folder.length + " notes" : six? ml.c1 + " contains " + nca.folders[5].folder.length + " notes" : seven? ml.c1 + " contains " + nca.folders[6].folder.length + " notes" : eight? ml.c1 + " contains " + nca.folders[7].folder.length + " notes" : nine? ml.c1 + " contains " + nca.folders[8].folder.length + " notes" : ml.c1 + " contains " + nca.folders[9].folder.length + " notes"} :</div>
+                <div className="add-to" >{one? ml.c1 + " contains " + nca.folders[0].folder.length + " notes": two? ml.c1 + " contains " + nca.folders[1].folder.length + " notes" : three? ml.c1 + " contains " + nca.folders[2].folder.length + " notes" : four? ml.c1 + " contains " + nca.folders[3].folder.length + " notes" : five? ml.c1 + " contains " + nca.folders[4].folder.length + " notes" : six? ml.c1 + " contains " + nca.folders[5].folder.length + " notes" : seven? ml.c1 + " contains " + nca.folders[6].folder.length + " notes" : eight? ml.c1 + " contains " + nca.folders[7].folder.length + " notes" : nine? ml.c1 + " contains " + nca.folders[8].folder.length + " notes" : ml.c1 + " contains " + nca.folders[9].folder.length + " notes"} :</div>
                 {one? 
                 <div><div className="atc-menu">{nca.folders[0].folder.length === 0? "": ""}</div> 
                 <div className="atc-menu">{nca.folders[0].folder.length > 0? "Click to view note": ""}</div>

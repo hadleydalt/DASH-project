@@ -6,7 +6,7 @@ import { TopBar } from "./TopBar";
 import * as React from 'react';
 import { WebsiteForm } from './addIframe';
 import { nca } from "../freeformcanvas/Sidebar";
-import { Menu, ml, changeType } from "../freeformcanvas/Folders/FolderMenu";
+import { Menu, ml, changeType, LinkedNodes, turnfalse } from "../freeformcanvas/Folders/FolderMenu";
 import mainNodeCollection from "../../Main";
 
 interface IframeNodeProps {
@@ -16,7 +16,7 @@ interface IframeNodeProps {
 
 let id;
 export let addedToFolder = false;
-export function atf(){
+export function atfIframe(){
     addedToFolder = true;
 }
 
@@ -27,11 +27,13 @@ export class IframeNodeView extends React.Component<IframeNodeProps> {
         super(props);
 
         this.handleClick = this.handleClick.bind(this);
+        this.handleClick2 = this.handleClick2.bind(this);
         id = this.props.id;
     }
 
     state = {
         clicked: false,
+        clicked2: false
     }
 
     handleClick(){
@@ -48,6 +50,7 @@ export class IframeNodeView extends React.Component<IframeNodeProps> {
         if (nca.folders[0].isNamed = true) {
             ml.c1 = nca.folders[0].name + '  ';
         }
+
         if (nca.folders[1].isNamed = true) {
             ml.c2 = nca.folders[1].name + '  ';
         }
@@ -64,17 +67,30 @@ export class IframeNodeView extends React.Component<IframeNodeProps> {
             ml.c6 = nca.folders[5].name + '  ';
         }
         if (nca.folders[6].isNamed = true) {
-            ml.c7 = nca.folders[6].name + ' ';
+            ml.c7 = nca.folders[6].name + '  ';
         }
         if (nca.folders[7].isNamed = true) {
-            ml.c8 = nca.folders[7].name+ '  ';
+            ml.c8 = nca.folders[7].name + '  ';
         }
         if (nca.folders[8].isNamed = true) {
-            ml.c9 = nca.folders[8].name+ '  ';
+            ml.c9 = nca.folders[8].name + '  ';
         }
         if (nca.folders[9].isNamed = true) {
-            ml.c10 = nca.folders[9].name+ '  '; 
+            ml.c10 = nca.folders[9].name + '  '; 
     }
+}
+
+handleClick2(){
+    if (this.state.clicked2 === false){
+        this.setState({clicked2: true});
+        }
+
+        if (this.state.clicked2 === true){
+            this.setState({clicked2: false});
+            turnfalse();
+            addedToFolder = false;
+        }
+    
 }
 
     private isPointerDown = false;
@@ -112,8 +128,10 @@ export class IframeNodeView extends React.Component<IframeNodeProps> {
                 e.preventDefault();
             }}>
                 <TopBar store={store}/>
+                {addedToFolder ? <button className="show-list" onClick={this.handleClick2}>{this.state.clicked2 ? "Close Folder Contnts": "View Folder Contents"}</button> : null}
                 <button className="atc-button" title = "Add to Folder" onClick={this.handleClick}>{this.state.clicked ? "-": "+"}</button>
                 {this.state.clicked ? <Menu /> : null}
+                {this.state.clicked2 ? <LinkedNodes /> : null}
                 <ResizeIcon store={store}></ResizeIcon>
                 <div className="scroll-box">
                     <div className="content">

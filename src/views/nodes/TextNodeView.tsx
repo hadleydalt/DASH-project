@@ -16,7 +16,8 @@ interface TextNodeProps {
 
 let id;
 export let addedToFolder = false;
-export function atf(){
+
+export function atfText(){
     addedToFolder = true;
 }
 

@@ -6,7 +6,7 @@ import "./VideoNodeView.scss";
 import { ResizeIcon } from "./ResizeIcon";
 import * as React from 'react';
 import AddImage from '../nodes/AddImage';
-import { Menu, ml, changeType } from "../freeformcanvas/Folders/FolderMenu";
+import { Menu, ml, changeType, LinkedNodes, turnfalse } from "../freeformcanvas/Folders/FolderMenu";
 import { nca } from "../freeformcanvas/Sidebar";
 import mainNodeCollection from "../../Main";
 
@@ -16,6 +16,10 @@ interface ImageNodeProps {
 }
 
 let id;
+export let addedToFolder = false;
+export function atfImage(){
+    addedToFolder = true;
+}
 
 @observer
 export class ImageNodeView extends React.Component<ImageNodeProps> {
@@ -24,29 +28,32 @@ export class ImageNodeView extends React.Component<ImageNodeProps> {
         super(props);
 
         this.handleClick = this.handleClick.bind(this);
+        this.handleClick2 = this.handleClick2.bind(this);
         id = this.props.id;
     }
 
     state = {
-        clicked: false
+        clicked: false,
+        clicked2: false
     }
 
     private isPointerDown = false;
 
     handleClick(){
         if (this.state.clicked === false){
-        this.setState({clicked: true});
-        }
+            this.setState({clicked: true});
+            }
+    
+            if (this.state.clicked === true){
+                this.setState({clicked: false});
+            }
 
-        if (this.state.clicked === true){
-            this.setState({clicked: false});
-        }
-
-        changeType("image");
+            changeType("image");
 
         if (nca.folders[0].isNamed = true) {
             ml.c1 = nca.folders[0].name + '  ';
         }
+
         if (nca.folders[1].isNamed = true) {
             ml.c2 = nca.folders[1].name + '  ';
         }
@@ -74,6 +81,19 @@ export class ImageNodeView extends React.Component<ImageNodeProps> {
         if (nca.folders[9].isNamed = true) {
             ml.c10 = nca.folders[9].name + '  '; 
     }
+}
+
+handleClick2(){
+    if (this.state.clicked2 === false){
+        this.setState({clicked2: true});
+        }
+
+        if (this.state.clicked2 === true){
+            this.setState({clicked2: false});
+            turnfalse();
+            addedToFolder = false;
+        }
+    
 }
 
     onPointerDown = (e: React.PointerEvent): void => {
@@ -111,8 +131,10 @@ export class ImageNodeView extends React.Component<ImageNodeProps> {
                 e.preventDefault();
             }}>
                 <TopBar store={store}/>
+                {addedToFolder ? <button className="show-list" onClick={this.handleClick2}>{this.state.clicked2 ? "Close Folder Contnts": "View Folder Contents"}</button> : null}
                 <button className="atc-button" title = "Add to Folder" onClick={this.handleClick}>{this.state.clicked ? "-": "+"}</button>
                 {this.state.clicked ? <Menu/> : null}
+                {this.state.clicked2 ? <LinkedNodes /> : null}
                 <ResizeIcon store={store}></ResizeIcon>
                 <div className="scroll-box">
                     <div className="content">

@@ -44,7 +44,8 @@ export function turnfalse(){
 
 function showNode(n: NodeStore, x, y){
     n.x = x;
-    n.y = y;
+    n.x = y;
+    return null;
 }
 
 export class Menu extends React.Component {
@@ -285,8 +286,8 @@ export class LinkedNodes extends React.Component {
                 <div className="atc-menu-wrapper">
                 <div className="add-to" >{one? ml.c1 + " contains " + nca.folders[0].folder.length + " notes": two? ml.c1 + " contains " + nca.folders[1].folder.length + " notes" : three? ml.c1 + " contains " + nca.folders[2].folder.length + " notes" : four? ml.c1 + " contains " + nca.folders[3].folder.length + " notes" : five? ml.c1 + " contains " + nca.folders[4].folder.length + " notes" : six? ml.c1 + " contains " + nca.folders[5].folder.length + " notes" : seven? ml.c1 + " contains " + nca.folders[6].folder.length + " notes" : eight? ml.c1 + " contains " + nca.folders[7].folder.length + " notes" : nine? ml.c1 + " contains " + nca.folders[8].folder.length + " notes" : ml.c1 + " contains " + nca.folders[9].folder.length + " notes"} :</div>
                 {one? 
-                <div><div className="atc-menu">{nca.folders[0].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu">{nca.folders[0].folder.length > 0? "Click to view note": ""}</div>
+                <div><span className="atc-menu" >{nca.folders[0].folder.length === 0? "": ""}</span> 
+                <div className="atc-menu"><label onClick={showNode(nca.folders[0].folder[0], 10, 10)}>{nca.folders[0].folder.length > 0? "Click to view note": ""}</label></div>
                 <div className="atc-menu">{nca.folders[0].folder.length > 1? "Click to view note": ""}</div>
                 <div className="atc-menu">{nca.folders[0].folder.length > 2? "Click to view note": ""}</div>
                 </div> : 

@@ -13,6 +13,8 @@ export class NodeStore {
 
     public type: StoreType = null;
 
+    public nodeName = "";
+
     @observable
     public x: number = 0;
 

@@ -10,6 +10,7 @@ export let newCollection;
 export function passNewCollection(x){
     newCollection = x;
 }
+
 export let x;
 export let y;
 export function changeX(z){

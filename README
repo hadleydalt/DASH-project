@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 My code does not successfully implement linking. 
 
 My intention was for the user to be able to create folders and name them. If a node is on the canvas, the user is able to add
@@ -11,3 +12,36 @@ have been added for the folder.
 I intended for the user to be able to click on the nodes in this list and that would display the node in question. 
 
 However, I was unable to implement this successfully due to time constrictions. 
+=======
+I updated this README at 12:01 because I realized I had not saved before committing but everything else was committed at 11:59!
+
+
+My code does not successfully implement linking. 
+
+My intention was for the user to be able to create folders and name them. If a node is on the canvas, the user is able to add
+it to a certain folder. This happens with the node, marked with an ID upon instantiation, being added to an array for that folder.
+
+The user can then press "View Folder Contents" and a message pops up indicating how many nodes have been added to that folder. 
+
+This is all implemented successfully and the message returns the correct amount of nodes! It also lists the nodes that 
+have been added for the folder. 
+
+I intended for the user to be able to click on the nodes in this list and that would display the node in question. 
+
+However, I was unable to implement this successfully due to time constrictions. 
+
+
+
+------------
+EDIT: specifications and commentary
+(I unfortunately did not have time to clean up the code or add detailed annotations. I know this is my fault and I would be happy to 
+provide annotations within the next few days). 
+
+When adding an iFrame, you have to click ON the word "HERE" before you can type in the website. 
+
+Do not add a node to multiple folders - this is a bug.
+
+You can create a collection within a collection infinitely but you cannot create multiple collections within a collection. This is because I was 
+unaware of how to use the Map function to nest. I have an entire plan and pseudo code written out for re-implementation with the Map function so that you
+can create multiple collections within a collection. 
+>>>>>>> 513dc80b92df20d078a1abf8c9edf325c00dc85c

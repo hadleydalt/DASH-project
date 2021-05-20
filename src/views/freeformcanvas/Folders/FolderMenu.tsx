@@ -281,54 +281,54 @@ export class LinkedNodes extends React.Component {
                 <div className="add-to" >{one? ml.c1 + " contains " + nca.folders[0].folder.length + " notes": two? ml.c1 + " contains " + nca.folders[1].folder.length + " notes" : three? ml.c1 + " contains " + nca.folders[2].folder.length + " notes" : four? ml.c1 + " contains " + nca.folders[3].folder.length + " notes" : five? ml.c1 + " contains " + nca.folders[4].folder.length + " notes" : six? ml.c1 + " contains " + nca.folders[5].folder.length + " notes" : seven? ml.c1 + " contains " + nca.folders[6].folder.length + " notes" : eight? ml.c1 + " contains " + nca.folders[7].folder.length + " notes" : nine? ml.c1 + " contains " + nca.folders[8].folder.length + " notes" : ml.c1 + " contains " + nca.folders[9].folder.length + " notes"} :</div>
                 {one? 
                 <div><span className="atc-menu" >{nca.folders[0].folder.length === 0? "": ""}</span> 
-                <div className="atc-menu">{nca.folders[0].folder.length > 0? "Click to view note": ""}</div>
-                <div className="atc-menu">{nca.folders[0].folder.length > 1? "Click to view note": ""}</div>
-                <div className="atc-menu">{nca.folders[0].folder.length > 2? "Click to view note": ""}</div>
+                <div className="atc-menu">{nca.folders[0].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu">{nca.folders[0].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu">{nca.folders[0].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
                 two? <div><div className="atc-menu">{nca.folders[1].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu">{nca.folders[1].folder.length > 0? "Click to view note": ""}</div>
-                <div className="atc-menu">{nca.folders[1].folder.length > 1? "Click to view note": ""}</div>
-                <div className="atc-menu">{nca.folders[1].folder.length > 2? "Click to view note": ""}</div>
+                <div className="atc-menu">{nca.folders[1].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu">{nca.folders[1].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu">{nca.folders[1].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
                 three? <div><div className="atc-menu">{nca.folders[2].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu">{nca.folders[2].folder.length > 0? "Click to view note": ""}</div>
-                <div className="atc-menu">{nca.folders[2].folder.length > 1? "Click to view note": ""}</div>
-                <div className="atc-menu">{nca.folders[2].folder.length > 2? "Click to view note": ""}</div>
+                <div className="atc-menu">{nca.folders[2].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu">{nca.folders[2].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu">{nca.folders[2].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
                 four? <div><div className="atc-menu">{nca.folders[3].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu">{nca.folders[3].folder.length > 0 ? "Click to view note": ""}</div>
-                <div className="atc-menu">{nca.folders[3].folder.length > 1? "Click to view note": ""}</div>
-                <div className="atc-menu">{nca.folders[3].folder.length > 2? "Click to view note": ""}</div>
+                <div className="atc-menu">{nca.folders[3].folder.length > 0 ? "Note 1": ""}</div>
+                <div className="atc-menu">{nca.folders[3].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu">{nca.folders[3].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
                 five? <div><div className="atc-menu">{nca.folders[4].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu">{nca.folders[4].folder.length > 0? "Click to view note": ""}</div>
-                <div className="atc-menu">{nca.folders[4].folder.length > 1? "Click to view note": ""}</div>
-                <div className="atc-menu">{nca.folders[4].folder.length > 2? "Click to view note": ""}</div>
+                <div className="atc-menu">{nca.folders[4].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu">{nca.folders[4].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu">{nca.folders[4].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
                 six? <div><div className="atc-menu">{nca.folders[5].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu">{nca.folders[5].folder.length > 0? "Click to view note": ""}</div>
-                <div className="atc-menu">{nca.folders[5].folder.length > 1? "Click to view note": ""}</div>
-                <div className="atc-menu">{nca.folders[5].folder.length > 2? "Click to view note": ""}</div>
+                <div className="atc-menu">{nca.folders[5].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu">{nca.folders[5].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu">{nca.folders[5].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
                 seven? <div><div className="atc-menu">{nca.folders[6].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu">{nca.folders[6].folder.length > 0? "Click to view note": ""}</div>
-                <div className="atc-menu">{nca.folders[6].folder.length > 1? "Click to view note": ""}</div>
-                <div className="atc-menu">{nca.folders[6].folder.length > 2? "Click to view note": ""}</div>
+                <div className="atc-menu">{nca.folders[6].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu">{nca.folders[6].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu">{nca.folders[6].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
                 eight? <div><div className="atc-menu">{nca.folders[7].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu">{nca.folders[7].folder.length > 0? "Click to view note": ""}</div>
-                <div className="atc-menu">{nca.folders[7].folder.length > 1? "Click to view note": ""}</div>
-                <div className="atc-menu">{nca.folders[7].folder.length > 2? "Click to view note": ""}</div>
+                <div className="atc-menu">{nca.folders[7].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu">{nca.folders[7].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu">{nca.folders[7].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
                 nine? <div><div className="atc-menu">{nca.folders[8].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu">{nca.folders[8].folder.length > 0? "Click to view note": ""}</div>
-                <div className="atc-menu">{nca.folders[8].folder.length > 1? "Click to view note": ""}</div>
-                <div className="atc-menu">{nca.folders[8].folder.length > 2? "Click to view note": ""}</div>
+                <div className="atc-menu">{nca.folders[8].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu">{nca.folders[8].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu">{nca.folders[8].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
                 <div><div className="atc-menu">{nca.folders[9].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu">{nca.folders[9].folder.length > 0? "Click to view note": ""}</div>
-                <div className="atc-menu">{nca.folders[9].folder.length > 1? "Click to view note": ""}</div>
-                <div className="atc-menu">{nca.folders[9].folder.length > 2? "Click to view note": ""}</div>
+                <div className="atc-menu">{nca.folders[9].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu">{nca.folders[9].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu">{nca.folders[9].folder.length > 2? "Note 3": ""}</div>
                 </div>
                 }
                 <div className="c-note">Please close Folder Contents before creating another note!</div>

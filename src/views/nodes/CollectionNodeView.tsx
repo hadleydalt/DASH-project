@@ -10,14 +10,16 @@ import { Menu, ml, changeType } from "../freeformcanvas/Folders/FolderMenu";
 import mainNodeCollection from "../../Main";
 import { CollectionNodeStore } from "../../stores/CollectionNodeStore";
 import { observable } from "mobx";
-import { x, y, newCollection, NodeCollectionStore, passNewCollection, changeX, changeY } from "../../stores/NodeCollectionStore";
+import { x, y, NodeCollectionStore, changeX, changeY } from "../../stores/NodeCollectionStore";
 import { NodeStore, StoreType } from "../../stores/NodeStore";
 import { StaticTextNodeStore } from "../../stores/StaticTextNodeStore";
 import { TextNodeView } from "./TextNodeView";
-import { CollectionTopBar } from "./CollectionTopBar";
 import { ImageNodeStore } from "../../stores/ImageNodeStore";
 import { VideoNodeStore } from "../../stores/VideoNodeStore";
-import { SubCollectionNodeStore } from "../../stores/SubCollectionNodeStore";
+import { VideoNodeView } from "./VideoNodeView";
+import { ImageNodeView } from "./ImageNodeView";
+import { IframeNodeView } from "./IframeNodeView";
+import { NodeCollectionView } from "./NodeCollectionView";
 
 interface CollectionNodeProps {
     store: CollectionNodeStore;
@@ -25,11 +27,7 @@ interface CollectionNodeProps {
 }
 
 let id;
-export let subCounter: number = 0;
-export let cCounter: number = 0;
-export function incS(number){
-    subCounter += number;
-}
+let store;
 
 @observer
 export class CollectionNodeView extends React.Component<CollectionNodeProps> {
@@ -38,62 +36,48 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
         super(props);
 
         id = this.props.id;
+        store = this.props.store;
     }
 
     state = {
         clicked: false,
+        newAdded: false
     }
 
     addTextNode(){
-        mainNodeCollection.count += 1;
-        subCounter += 1;
-        let t = new StaticTextNodeStore({ type: StoreType.Text, x: (x+310), y: (y+60), title: "", text: "" });
+        let t = new StaticTextNodeStore({ type: StoreType.Text, x: 5, y: 5, title: "", text: "" });
         changeX(t.x);
-        t.nodeID = mainNodeCollection.count;
-        mainNodeCollection.nodes.push(t);
-        newCollection.push(t);
+        t.nodeID = 0;
+        store.nodes.push(t);
     }
 
     addImageNode(){
-        mainNodeCollection.count += 1;
-        subCounter += 1;
-        let i = new ImageNodeStore({ type: StoreType.Image, x: (x+310), y: (y+60) });
+        let i = new ImageNodeStore({ type: StoreType.Image, x: 5, y: 5 });
         changeX(i.x);
-        i.nodeID = mainNodeCollection.count;
-        mainNodeCollection.nodes.push(i);
-        newCollection.push(i);
+        i.nodeID = 0;
+        store.nodes.push(i);
     }
 
     addVideoNode(){
-        mainNodeCollection.count += 1;
-        subCounter += 1;
-        let v = new VideoNodeStore({ type: StoreType.Video, x: (x+310), y: (y+60) });
+        let v = new VideoNodeStore({ type: StoreType.Video, x: 5, y: 5 });
         changeX(v.x);
-        v.nodeID = mainNodeCollection.count;
-        mainNodeCollection.nodes.push(v);
-        newCollection.push(v);
+        v.nodeID = 0;
+        store.nodes.push(v);
     }
 
     addIframeNode(){
-        mainNodeCollection.count += 1;
-        subCounter += 1;
-        let f = new IframeNodeStore({ type: StoreType.Iframe, x: (x+310), y: (y+60) });
+        let f = new IframeNodeStore({ type: StoreType.Iframe, x: 5, y: 5 });
         changeX(f.x);
-        f.nodeID = mainNodeCollection.count;
-        mainNodeCollection.nodes.push(f);
-        newCollection.push(f);
+        f.nodeID = 0;
+        store.nodes.push(f);
     }
 
     addCollectionNode(){
-        mainNodeCollection.count += 1;
-        subCounter += 1;
-        cCounter += 1;
-        let c = new SubCollectionNodeStore({ type: StoreType.SubCollection, x: (x+310), y: (y+60) });
+        let c = new CollectionNodeStore({ type: StoreType.Collection, x: 5, y: 5 });
         changeX(c.x);
         changeY(c.y);
-        c.nodeID = mainNodeCollection.count;
-        mainNodeCollection.nodes.push(c);
-        newCollection.push(c);
+        c.nodeID = 0;
+        store.nodes.push(c);
     }
 
     handleClick(){
@@ -166,14 +150,14 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
     }
 
     render() {
-        let store = this.props.store;
 
         return (
             <div className="node text-node" onPointerDown={this.onPointerDown} style={{ transform: store.transform, width: store.w + 'px', height: store.h + 'px' }} onWheel={(e: React.WheelEvent) => {
                 e.stopPropagation();
                 e.preventDefault();
             }}>
-                <CollectionTopBar store={store} collection={newCollection}/>
+                <TopBar store={store} />
+                <ResizeIcon store={store}></ResizeIcon>
                 <div className="scroll-box">
                     <div className="content">
                         <div className="collection-name">COLLECTION →</div>
@@ -186,8 +170,8 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
                             <div>
                             <button className="node-button-c" onClick={this.addCollectionNode}>Collection</button>
                             </div>
-                            <div className="c-note">Move me to move this entire collection!</div>
                         </div>
+                        <NodeCollectionView store = {store}/>
                     </div>
                 </div>
             </div>

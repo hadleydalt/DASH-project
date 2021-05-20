@@ -6,11 +6,6 @@ import { VideoNodeStore } from "./VideoNodeStore";
 import { IframeNodeStore } from "./IframeNodeStore";
 import { CollectionNodeStore } from "./CollectionNodeStore";
 
-export let newCollection;
-export function passNewCollection(x){
-    newCollection = x;
-}
-
 export let x;
 export let y;
 export function changeX(z){
@@ -71,7 +66,6 @@ export class NodeCollectionStore extends NodeStore {
         y = c.y;
         c.nodeID = this.count;
         this.nodes.push(c);
-        newCollection = new Array<NodeCollectionStore>();
     }
 
 }

@@ -16,12 +16,12 @@ import { Menu } from "./Folders/FolderMenu";
 import { CreateFolder } from "./Folders/CreateFolder";
 import { CollectionNodeStore } from "../../stores/CollectionNodeStore";
 import { CollectionNodeView } from "../nodes/CollectionNodeView";
-import { SubCollectionNodeStore } from "../../stores/SubCollectionNodeStore";
-import { SubCollectionNodeView } from "../nodes/SubCollectionNodeView";
 
 interface FreeFormProps {
     store: NodeCollectionStore
 }
+
+const subNodeCollection = new NodeCollectionStore();
 
 @observer
 export class FreeFormCanvas extends React.Component<FreeFormProps> {
@@ -78,10 +78,7 @@ export class FreeFormCanvas extends React.Component<FreeFormProps> {
                                     return (<IframeNodeView id = {store.count} key={nodeStore.Id} store={nodeStore as IframeNodeStore}/>)
 
                                 case StoreType.Collection:
-                                    return (<CollectionNodeView id = {store.count} key={nodeStore.Id} store={nodeStore as CollectionNodeStore}/>)
-                                
-                                case StoreType.SubCollection:
-                                    return (<SubCollectionNodeView id = {store.count} key={nodeStore.Id} store={nodeStore as SubCollectionNodeStore}/>)
+                                    return (<CollectionNodeView id = {store.count} key={nodeStore.Id} store={nodeStore as CollectionNodeStore} />)
 
                                 default:
                                     break;
@@ -95,3 +92,5 @@ export class FreeFormCanvas extends React.Component<FreeFormProps> {
         );
     }
 }
+
+export default subNodeCollection;

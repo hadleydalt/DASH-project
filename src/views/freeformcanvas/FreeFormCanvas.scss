@@ -23,18 +23,16 @@
 }
 }
 
-.subcanvas-container {
-    top: 10px;
-    left: 10px;
-    width: 300px;
-    height: 100px;
-    overflow: hidden;
+.nodecanvas-container {
+    position: absolute;
+    margin-top:30px;
+    width: 100%;
+    height:100%;
 
-    .subcanvas {
+    .nodecanvas {
         position: absolute;
         top: 0;
         left: 0;
-        background:white;
     }
 }
 

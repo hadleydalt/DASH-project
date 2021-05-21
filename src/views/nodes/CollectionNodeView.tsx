@@ -146,7 +146,10 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
     onPointerMove = (e: PointerEvent): void => {
         e.stopPropagation();
         e.preventDefault();
-        return;
+        if (!this.isPointerDown) return;
+
+        this.props.store.x += e.movementX;
+        this.props.store.y += e.movementY;
     }
 
     render() {

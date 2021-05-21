@@ -1,7 +1,7 @@
 import * as React from 'react';
 import mainNodeCollection from '../../../Main';
 import { NodeStore } from '../../../stores/NodeStore';
-import { pushCollectionNode } from '../../nodes/CollectionNodeView';
+import { atfCollection, pushCollectionNode } from '../../nodes/CollectionNodeView';
 import { atfIframe, pushIframeNode } from '../../nodes/IframeNodeView';
 import { atfImage, pushImageNode } from '../../nodes/ImageNodeView';
 import { addedToFolder, pushTextNode, atfText } from '../../nodes/TextNodeView';
@@ -61,6 +61,10 @@ export class Menu extends React.Component {
             pushIframeNode(0);
             atfIframe();
         }
+        if (type === "collection"){
+            pushCollectionNode(0);
+            atfCollection();
+        }
         one = true;
     }
 
@@ -81,6 +85,10 @@ export class Menu extends React.Component {
             pushIframeNode(1);
             atfIframe();
         }
+        if (type === "collection"){
+            pushCollectionNode(1);
+            atfCollection();
+        }
         two = true;
     }
 
@@ -100,6 +108,10 @@ export class Menu extends React.Component {
         if (type === "iframe"){
             pushIframeNode(2);
             atfIframe();
+        }
+        if (type === "collection"){
+            pushCollectionNode(2);
+            atfCollection();
         }
 
         three = true;
@@ -122,6 +134,10 @@ export class Menu extends React.Component {
             pushIframeNode(3);
             atfIframe()
         }
+        if (type === "collection"){
+            pushCollectionNode(3);
+            atfCollection();
+        }
 
         four = true;
     }
@@ -143,6 +159,10 @@ export class Menu extends React.Component {
             pushIframeNode(4);
             atfIframe();
         }
+        if (type === "collection"){
+            pushCollectionNode(4);
+            atfCollection();
+        }
         five = true;
     }
 
@@ -162,6 +182,10 @@ export class Menu extends React.Component {
         if (type === "iframe"){
             pushIframeNode(5);
             atfIframe();
+        }
+        if (type === "collection"){
+            pushCollectionNode(5);
+            atfCollection();
         }
 
         six = true;
@@ -184,6 +208,10 @@ export class Menu extends React.Component {
             pushIframeNode(6);
             atfIframe();
         }
+        if (type === "collection"){
+            pushCollectionNode(6);
+            atfCollection();
+        }
 
         seven = true;
     }
@@ -204,6 +232,10 @@ export class Menu extends React.Component {
         if (type === "iframe"){
             pushIframeNode(7);
             atfIframe();
+        }
+        if (type === "collection"){
+            pushCollectionNode(7);
+            atfCollection();
         }
 
         eight = true;
@@ -226,6 +258,10 @@ export class Menu extends React.Component {
             pushIframeNode(8);
             atfIframe();
         }
+        if (type === "collection"){
+            pushCollectionNode(8);
+            atfCollection();
+        }
 
         nine = true;
     }
@@ -246,6 +282,10 @@ export class Menu extends React.Component {
         if (type === "iframe"){
             pushIframeNode(9);
             atfIframe();
+        }
+        if (type === "collection"){
+            pushCollectionNode(9);
+            atfCollection();
         }
 
         ten = true;

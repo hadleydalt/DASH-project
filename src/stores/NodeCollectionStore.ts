@@ -30,6 +30,7 @@ export class NodeCollectionStore extends NodeStore {
     public addTextNode(): void {
         this.count += 1;
         let t = new StaticTextNodeStore({ type: StoreType.Text, x: Math.random() * 500, y: Math.random() * 500, title: "", text: "" });
+        t.notNested = true;
         t.nodeID = this.count;
         this.nodes.push(t);
     }
@@ -38,6 +39,7 @@ export class NodeCollectionStore extends NodeStore {
     public addImageNode(): void {
         this.count += 1;
         let i = new ImageNodeStore({ type: StoreType.Image, x: Math.random() * 500, y: Math.random() * 500 });
+        i.notNested = true;
         i.nodeID = this.count;
         this.nodes.push(i);
     }
@@ -46,6 +48,7 @@ export class NodeCollectionStore extends NodeStore {
     public addVideoNode(): void {
         this.count += 1;
         let v = new VideoNodeStore({ type: StoreType.Video, x: Math.random() * 500, y: Math.random() * 500 });
+        v.notNested = true;
         v.nodeID = this.count;
         this.nodes.push(v);
     }
@@ -54,6 +57,7 @@ export class NodeCollectionStore extends NodeStore {
     public addIframeNode(): void {
         this.count += 1;
         let f = new IframeNodeStore({ type: StoreType.Iframe, x: Math.random() * 500, y: Math.random() * 500 });
+        f.notNested = true;
         f.nodeID = this.count;
         this.nodes.push(f);
     }
@@ -62,6 +66,7 @@ export class NodeCollectionStore extends NodeStore {
     public addCollectionNode(): void {
         this.count += 1;
         let c = new CollectionNodeStore({ type: StoreType.Collection, x: Math.random() * 500, y: Math.random() * 500 });
+        c.notNested = true;
         x = c.x;
         y = c.y;
         c.nodeID = this.count;

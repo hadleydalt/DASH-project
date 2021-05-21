@@ -2,6 +2,8 @@ import { NodeStore } from "./NodeStore";
 
 export class ImageNodeStore extends NodeStore {
 
+    public notNested;
+
     constructor(initializer: Partial<ImageNodeStore>) {
         super();
         Object.assign(this, initializer);

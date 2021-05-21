@@ -6,7 +6,7 @@ import { TopBar } from "./TopBar";
 import * as React from 'react';
 import { WebsiteForm } from './addIframe';
 import { nca } from "../freeformcanvas/Sidebar";
-import { Menu, ml, changeType } from "../freeformcanvas/Folders/FolderMenu";
+import { Menu, ml, changeType, turnfalse, LinkedNodes } from "../freeformcanvas/Folders/FolderMenu";
 import mainNodeCollection from "../../Main";
 import { CollectionNodeStore } from "../../stores/CollectionNodeStore";
 import { action, observable } from "mobx";
@@ -28,6 +28,10 @@ interface CollectionNodeProps {
 
 let id;
 let store;
+export let addedToFolder = false;
+export function atfCollection(){
+    addedToFolder = true;
+}
 
 @observer
 export class CollectionNodeView extends React.Component<CollectionNodeProps> {
@@ -37,15 +41,19 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
 
         id = this.props.id;
         store = this.props.store;
+
+        this.handleClick = this.handleClick.bind(this);
+        this.handleClick2 = this.handleClick2.bind(this);
     }
 
     state = {
         clicked: false,
-        newAdded: false
+        clicked2: false,
     }
 
     addTextNode(){
         let t = new StaticTextNodeStore({ type: StoreType.Text, x: 5, y: 5, title: "", text: "" });
+        t.notNested = false;
         changeX(t.x);
         t.nodeID = 0;
         store.nodes.push(t);
@@ -53,6 +61,7 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
 
     addImageNode(){
         let i = new ImageNodeStore({ type: StoreType.Image, x: 5, y: 5 });
+        i.notNested = false;
         changeX(i.x);
         i.nodeID = 0;
         store.nodes.push(i);
@@ -60,6 +69,7 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
 
     addVideoNode(){
         let v = new VideoNodeStore({ type: StoreType.Video, x: 5, y: 5 });
+        v.notNested = false;
         changeX(v.x);
         v.nodeID = 0;
         store.nodes.push(v);
@@ -67,6 +77,7 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
 
     addIframeNode(){
         let f = new IframeNodeStore({ type: StoreType.Iframe, x: 5, y: 5 });
+        f.notNested = false;
         changeX(f.x);
         f.nodeID = 0;
         store.nodes.push(f);
@@ -74,6 +85,7 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
 
     addCollectionNode(){
         let c = new CollectionNodeStore({ type: StoreType.Collection, x: 5, y: 5 });
+        c.notNested = false;
         changeX(c.x);
         changeY(c.y);
         c.nodeID = 0;
@@ -123,6 +135,19 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
     }
 }
 
+handleClick2(){
+    if (this.state.clicked2 === false){
+        this.setState({clicked2: true});
+        }
+
+        if (this.state.clicked2 === true){
+            this.setState({clicked2: false});
+            turnfalse();
+            addedToFolder = false;
+        }
+    
+}
+
     private isPointerDown = false;
 
     onPointerDown = (e: React.PointerEvent): void => {
@@ -162,6 +187,10 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
                 e.preventDefault();
             }}>
                 <TopBar store={store} />
+                {addedToFolder ? <button className="show-list" onClick={this.handleClick2}>{this.state.clicked2 ? "Close Folder Contnts": "View Folder Contents"}</button> : null}
+                {store.notNested? <button className="atc-button" title = "Add to Folder" onClick={this.handleClick}>{this.state.clicked ? "-": "+"}</button> : null}
+                {this.state.clicked ? <Menu /> : null}
+                {this.state.clicked2 ? <LinkedNodes /> : null}
                 <ResizeIcon store={store}></ResizeIcon>
                 <div className="scroll-box">
                     <div className="content">
@@ -176,6 +205,7 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
                             <button className="node-button-c" onClick={this.addCollectionNode}>Collection</button>
                             </div>
                         </div>
+                        <div className = "rb-wrapper"><button className ="rainbow-button">After adding, move or resize the collection to view the addition.</button></div>
                         <NodeCollectionView store = {store}/>
                     </div>
                 </div>

@@ -10,12 +10,13 @@ import { VideoNodeStore } from "./VideoNodeStore";
 export class CollectionNodeStore extends NodeStore {
 
     public nodes = new Array<NodeStore>();
+    public notNested;
 
     constructor(initializer: Partial<CollectionNodeStore>) {
         super();
         Object.assign(this, initializer);
         this.w = 300;
-        this.h = 200;
+        this.h = 222;
     }
 
     @computed

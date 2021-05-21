@@ -3,6 +3,8 @@ import { NodeStore } from "./NodeStore";
 
 export class VideoNodeStore extends NodeStore {
 
+    public notNested;
+
     constructor(initializer: Partial<VideoNodeStore>) {
         super();
         Object.assign(this, initializer);

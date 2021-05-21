@@ -2,7 +2,6 @@ import { action, computed, observable } from "mobx";
 import mainNodeCollection from "../Main";
 import { IframeNodeStore } from "./IframeNodeStore";
 import { ImageNodeStore } from "./ImageNodeStore";
-import { changeX, changeY, NodeCollectionStore } from "./NodeCollectionStore";
 import { NodeStore, StoreType } from "./NodeStore";
 import { StaticTextNodeStore } from "./StaticTextNodeStore";
 import { VideoNodeStore } from "./VideoNodeStore";

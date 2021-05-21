@@ -6,15 +6,6 @@ import { VideoNodeStore } from "./VideoNodeStore";
 import { IframeNodeStore } from "./IframeNodeStore";
 import { CollectionNodeStore } from "./CollectionNodeStore";
 
-export let x;
-export let y;
-export function changeX(z){
-    x = z;
-}
-export function changeY(z){
-    y = z;
-}
-
 export class NodeCollectionStore extends NodeStore {
     public count: number = 0;
 
@@ -67,15 +58,8 @@ export class NodeCollectionStore extends NodeStore {
         this.count += 1;
         let c = new CollectionNodeStore({ type: StoreType.Collection, x: Math.random() * 500, y: Math.random() * 500 });
         c.notNested = true;
-        x = c.x;
-        y = c.y;
         c.nodeID = this.count;
         this.nodes.push(c);
     }
 
-}
-
-export function changeLoc(xnum, ynum) {
-    x += xnum;
-    y += ynum;
 }

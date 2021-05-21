@@ -10,7 +10,6 @@ import { Menu, ml, changeType, turnfalse, LinkedNodes } from "../freeformcanvas/
 import mainNodeCollection from "../../Main";
 import { CollectionNodeStore } from "../../stores/CollectionNodeStore";
 import { action, observable } from "mobx";
-import { x, y, NodeCollectionStore, changeX, changeY } from "../../stores/NodeCollectionStore";
 import { NodeStore, StoreType } from "../../stores/NodeStore";
 import { StaticTextNodeStore } from "../../stores/StaticTextNodeStore";
 import { TextNodeView } from "./TextNodeView";
@@ -28,6 +27,10 @@ interface CollectionNodeProps {
 
 let id;
 let store;
+let x = -300;
+let y = 5;
+let count = 0;
+
 export let addedToFolder = false;
 export function atfCollection(){
     addedToFolder = true;
@@ -52,42 +55,63 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
     }
 
     addTextNode(){
-        let t = new StaticTextNodeStore({ type: StoreType.Text, x: 5, y: 5, title: "", text: "" });
+        count += 1;
+        let t = new StaticTextNodeStore({ type: StoreType.Text, x: x+305, y: y, title: "", text: "" });
         t.notNested = false;
-        changeX(t.x);
+        x=t.x;
         t.nodeID = 0;
+        if (count % 3 === 0){
+            x=-300;
+            y+=305;
+        }
         store.nodes.push(t);
     }
 
     addImageNode(){
-        let i = new ImageNodeStore({ type: StoreType.Image, x: 5, y: 5 });
+        count += 1;
+        let i = new ImageNodeStore({ type: StoreType.Image, x: x+305, y: y });
         i.notNested = false;
-        changeX(i.x);
+        x=i.x;
         i.nodeID = 0;
+        if (count % 3 === 0){
+            x=-300;
+            y+=305;
+        }
         store.nodes.push(i);
     }
 
     addVideoNode(){
-        let v = new VideoNodeStore({ type: StoreType.Video, x: 5, y: 5 });
+        count += 1;
+        let v = new VideoNodeStore({ type: StoreType.Video, x: x+305, y: y });
         v.notNested = false;
-        changeX(v.x);
+        x=v.x;
         v.nodeID = 0;
+        if (count % 3 === 0){
+            x=-300;
+            y+=305;
+        }
         store.nodes.push(v);
     }
 
     addIframeNode(){
-        let f = new IframeNodeStore({ type: StoreType.Iframe, x: 5, y: 5 });
+        count += 1;
+        let f = new IframeNodeStore({ type: StoreType.Iframe, x: x+305, y: y });
         f.notNested = false;
-        changeX(f.x);
+        x=f.x;
         f.nodeID = 0;
+        if (count % 3 === 0){
+            x=-300;
+            y+=305;
+        }
         store.nodes.push(f);
     }
 
     addCollectionNode(){
-        let c = new CollectionNodeStore({ type: StoreType.Collection, x: 5, y: 5 });
+        count +=1;
+        let c = new CollectionNodeStore({ type: StoreType.Collection, x: x+305, y: y });
         c.notNested = false;
-        changeX(c.x);
-        changeY(c.y);
+        x=-300;
+        y=5;
         c.nodeID = 0;
         store.nodes.push(c);
     } 
@@ -191,7 +215,6 @@ handleClick2(){
                 {store.notNested? <button className="atc-button" title = "Add to Folder" onClick={this.handleClick}>{this.state.clicked ? "-": "+"}</button> : null}
                 {this.state.clicked ? <Menu /> : null}
                 {this.state.clicked2 ? <LinkedNodes /> : null}
-                <ResizeIcon store={store}></ResizeIcon>
                 <div className="scroll-box">
                     <div className="content">
                         <div className="collection-name">COLLECTION →</div>
@@ -207,6 +230,7 @@ handleClick2(){
                         </div>
                         <div className = "rb-wrapper"><button className ="rainbow-button">After adding, move or resize the collection to view the addition.</button></div>
                         <NodeCollectionView store = {store}/>
+                        <ResizeIcon store={store}></ResizeIcon>
                     </div>
                 </div>
             </div>

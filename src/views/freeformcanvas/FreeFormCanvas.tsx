@@ -21,8 +21,6 @@ interface FreeFormProps {
     store: NodeCollectionStore
 }
 
-const subNodeCollection = new NodeCollectionStore();
-
 @observer
 export class FreeFormCanvas extends React.Component<FreeFormProps> {
 
@@ -92,5 +90,3 @@ export class FreeFormCanvas extends React.Component<FreeFormProps> {
         );
     }
 }
-
-export default subNodeCollection;

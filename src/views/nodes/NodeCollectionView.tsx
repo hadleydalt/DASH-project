@@ -24,7 +24,7 @@ export class NodeCollectionView extends React.Component<NCVProps> {
         let store = this.props.store;
         let staticID = 0;
 
-        return(  
+        return (  
                 // maps each item in the store to be rendered in the canvas based on the node type
                 store.nodes.map(nodeStore => {
                     switch (nodeStore.type) {

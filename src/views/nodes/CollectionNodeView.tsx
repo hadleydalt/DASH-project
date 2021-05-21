@@ -9,7 +9,7 @@ import { nca } from "../freeformcanvas/Sidebar";
 import { Menu, ml, changeType } from "../freeformcanvas/Folders/FolderMenu";
 import mainNodeCollection from "../../Main";
 import { CollectionNodeStore } from "../../stores/CollectionNodeStore";
-import { observable } from "mobx";
+import { action, observable } from "mobx";
 import { x, y, NodeCollectionStore, changeX, changeY } from "../../stores/NodeCollectionStore";
 import { NodeStore, StoreType } from "../../stores/NodeStore";
 import { StaticTextNodeStore } from "../../stores/StaticTextNodeStore";
@@ -78,7 +78,7 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
         changeY(c.y);
         c.nodeID = 0;
         store.nodes.push(c);
-    }
+    } 
 
     handleClick(){
         if (this.state.clicked === false){
@@ -150,6 +150,8 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
     }
 
     render() {
+
+        let store = this.props.store;
 
         return (
             <div className="node text-node" onPointerDown={this.onPointerDown} style={{ transform: store.transform, width: store.w + 'px', height: store.h + 'px' }} onWheel={(e: React.WheelEvent) => {

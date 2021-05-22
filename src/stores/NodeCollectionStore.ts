@@ -30,7 +30,7 @@ export class NodeCollectionStore extends NodeStore {
     @action
     public addImageNode(): void {
         this.count += 1;
-        let i = new ImageNodeStore({ type: StoreType.Image, x: Math.random() * 500, y: Math.random() * 500 });
+        let i = new ImageNodeStore({ type: StoreType.Image, x: ((Math.random() * 500) - amDisplacedX), y: ((Math.random() * 500) - amDisplacedY), });
         i.notNested = true;
         i.nodeID = this.count;
         this.nodes.push(i);
@@ -39,7 +39,7 @@ export class NodeCollectionStore extends NodeStore {
     @action
     public addVideoNode(): void {
         this.count += 1;
-        let v = new VideoNodeStore({ type: StoreType.Video, x: Math.random() * 500, y: Math.random() * 500 });
+        let v = new VideoNodeStore({ type: StoreType.Video, x: ((Math.random() * 500) - amDisplacedX), y: ((Math.random() * 500) - amDisplacedY), });
         v.notNested = true;
         v.nodeID = this.count;
         this.nodes.push(v);
@@ -48,7 +48,7 @@ export class NodeCollectionStore extends NodeStore {
     @action
     public addIframeNode(): void {
         this.count += 1;
-        let f = new IframeNodeStore({ type: StoreType.Iframe, x: Math.random() * 500, y: Math.random() * 500 });
+        let f = new IframeNodeStore({ type: StoreType.Iframe, x: ((Math.random() * 500) - amDisplacedX), y: ((Math.random() * 500) - amDisplacedY), });
         f.notNested = true;
         f.nodeID = this.count;
         this.nodes.push(f);
@@ -57,7 +57,7 @@ export class NodeCollectionStore extends NodeStore {
     @action
     public addCollectionNode(): void {
         this.count += 1;
-        let c = new CollectionNodeStore({ type: StoreType.Collection, x: Math.random() * 500, y: Math.random() * 500 });
+        let c = new CollectionNodeStore({ type: StoreType.Collection, x: ((Math.random() * 500) - amDisplacedX), y: ((Math.random() * 500) - amDisplacedY), });
         c.notNested = true;
         c.nodeID = this.count;
         this.nodes.push(c);

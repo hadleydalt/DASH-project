@@ -10,6 +10,7 @@ import { Menu, ml, changeType, LinkedNodes, turnfalse } from "../freeformcanvas/
 import mainNodeCollection from "../../Main";
 import { NodeStore, StoreType } from "../../stores/NodeStore";
 import { amDisplacedX, amDisplacedY } from "../freeformcanvas/FreeFormCanvas";
+import { decCount } from "./CollectionNodeView";
 
 interface TextNodeProps {
     store: StaticTextNodeStore;
@@ -37,6 +38,8 @@ export class TextNodeView extends React.Component<TextNodeProps> {
 
         this.handleClick = this.handleClick.bind(this);
         this.handleClick2 = this.handleClick2.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
+
         this.id = mainNodeCollection.count;
         this.f1 = "";
         this.f2 = "";
@@ -57,7 +60,8 @@ export class TextNodeView extends React.Component<TextNodeProps> {
         clicked2: false, 
         clicked3: false,
         added: false,
-        addedTo: null
+        addedTo: null,
+        deleted: false
     }
 
     private isPointerDown = false;
@@ -289,6 +293,13 @@ handleClick2(){
         }
     }
 
+    handleDelete(notNested:boolean){
+        this.setState({deleted: true});
+        if (notNested === false){
+            decCount();
+        }
+    }
+
     showNode(n: NodeStore){
         n.x = (10 - amDisplacedX);
         n.y = (10 - amDisplacedY);
@@ -298,7 +309,9 @@ handleClick2(){
         let store = this.props.store;
 
         return (
-            <div className="node text-node" onPointerDown={this.onPointerDown} style={{ transform: store.transform, width: store.w + 'px', height: store.h + 'px' }} onWheel={(e: React.WheelEvent) => {
+            <div>
+            {this.state.deleted? null: 
+                <div className="node text-node" onPointerDown={this.onPointerDown} style={{ transform: store.transform, width: store.w + 'px', height: store.h + 'px' }} onWheel={(e: React.WheelEvent) => {
                 e.stopPropagation();
                 e.preventDefault();
             }}>
@@ -394,6 +407,9 @@ handleClick2(){
                     <RichTextEditor />
                     </div>
                 </div>
+                {store.notNested? <button className="delete" onClick={() => this.handleDelete(true)}>X</button> : <button className="delete" onClick={() => this.handleDelete(false)}>X</button>}
+            </div>
+            }
             </div>
         );
     }

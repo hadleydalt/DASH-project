@@ -30,6 +30,18 @@ let count = 0;
 let x = -300;
 let y = 5;
 
+export function decCount(){
+    if (count % 3 === 0){
+        y -= 305;
+        x += 610;
+        count -=1;
+    }
+    else {
+        x -= 300;
+        count -=1;
+    }
+}
+
 @observer
 export class CollectionNodeView extends React.Component<CollectionNodeProps> {
 
@@ -47,9 +59,6 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
     public id;
 
     public store;
-
-    public x;
-    public y;
 
     constructor(props){
         super(props);

@@ -14,14 +14,6 @@ interface ImageNodeProps {
     store: ImageNodeStore;
     id: number;
 }
-//export let addedToFolder = false;
-export function atfImage(){
-    this.addedToFolder = true;
-}
-//let shouldBeClosed = false;
-export function sbcImage(){
-    this.shouldBeClosed = true;
-}
 
 @observer
 export class ImageNodeView extends React.Component<ImageNodeProps> {
@@ -77,8 +69,6 @@ export class ImageNodeView extends React.Component<ImageNodeProps> {
                 this.setState({clicked: false});
             }
 
-            //changeType("image");
-
         if (nca.folders[0].isNamed = true) {
             this.f1 = nca.folders[0].name + '  ';
         }
@@ -120,7 +110,6 @@ handleClick2(){
         if (this.state.clicked2 === true){
             this.setState({clicked2: false});
         }
-    
 }
 
     onPointerDown = (e: React.PointerEvent): void => {
@@ -153,7 +142,7 @@ handleClick2(){
                 if (nca.folders[0].folder.length < 3){
                 this.setState({added: true, addedTo: 1});
                 nca.folders[0].folder.push(mainNodeCollection.nodes[i]);
-                alert('Added to ' + nca.folders[0].name + '! Press the "-" button to close the Add To box.');
+                alert('Added to ' + nca.folders[0].name + '!');
                 }
                 else {
                 alert('Could not add to folder - maximum reached.')
@@ -168,7 +157,7 @@ handleClick2(){
                 if (nca.folders[1].folder.length < 3){
                 this.setState({added: true, addedTo: 2});
                 nca.folders[1].folder.push(mainNodeCollection.nodes[i]);
-                alert('Added to ' + nca.folders[1].name + '! Press the "-" button to close the Add To box.');
+                alert('Added to ' + nca.folders[1].name + '!');
                 }
                 else {
                 alert('Could not add to folder - maximum reached.')
@@ -183,7 +172,7 @@ handleClick2(){
                 if (nca.folders[2].folder.length < 3){
                 this.setState({added: true, addedTo: 3});
                 nca.folders[2].folder.push(mainNodeCollection.nodes[i]);
-                alert('Added to ' + nca.folders[2].name + '! Press the "-" button to close the Add To box.');
+                alert('Added to ' + nca.folders[2].name + '!');
                 }
                 else {
                 alert('Could not add to folder - maximum reached.')
@@ -198,7 +187,7 @@ handleClick2(){
                 if (nca.folders[3].folder.length < 3){
                 this.setState({added: true, addedTo: 4});
                 nca.folders[3].folder.push(mainNodeCollection.nodes[i]);
-                alert('Added to ' + nca.folders[3].name + '! Press the "-" button to close the Add To box.');
+                alert('Added to ' + nca.folders[3].name + '!');
                 }
                 else {
                 alert('Could not add to folder - maximum reached.')
@@ -213,7 +202,7 @@ handleClick2(){
                 if (nca.folders[4].folder.length < 3){
                 this.setState({added: true, addedTo: 5});
                 nca.folders[4].folder.push(mainNodeCollection.nodes[i]);
-                alert('Added to ' + nca.folders[4].name + '! Press the "-" button to close the Add To box.');
+                alert('Added to ' + nca.folders[4].name + '!');
                 }
                 else {
                 alert('Could not add to folder - maximum reached.')
@@ -228,7 +217,7 @@ handleClick2(){
                 if (nca.folders[5].folder.length < 3){
                 this.setState({added: true, addedTo: 6});
                 nca.folders[5].folder.push(mainNodeCollection.nodes[i]);
-                alert('Added to ' + nca.folders[5].name + '! Press the "-" button to close the Add To box.');
+                alert('Added to ' + nca.folders[5].name + '!');
                 }
                 else {
                 alert('Could not add to folder - maximum reached.')
@@ -243,7 +232,7 @@ handleClick2(){
                 if (nca.folders[6].folder.length < 3){
                 this.setState({added: true, addedTo: 7});
                 nca.folders[6].folder.push(mainNodeCollection.nodes[i]);
-                alert('Added to ' + nca.folders[6].name + '! Press the "-" button to close the Add To box.');
+                alert('Added to ' + nca.folders[6].name + '!');
                 }
                 else {
                 alert('Could not add to folder - maximum reached.')
@@ -258,7 +247,7 @@ handleClick2(){
                 if (nca.folders[7].folder.length < 3){
                 this.setState({added: true, addedTo: 8});
                 nca.folders[7].folder.push(mainNodeCollection.nodes[i]);
-                alert('Added to ' + nca.folders[7].name + '! Press the "-" button to close the Add To box.');
+                alert('Added to ' + nca.folders[7].name + '!');
                 }
                 else {
                 alert('Could not add to folder - maximum reached.')
@@ -273,7 +262,7 @@ handleClick2(){
                 if (nca.folders[8].folder.length < 3){
                 this.setState({added: true, addedTo: 9});
                 nca.folders[8].folder.push(mainNodeCollection.nodes[i]);
-                alert('Added to ' + nca.folders[8].name + '! Press the "-" button to close the Add To box.');
+                alert('Added to ' + nca.folders[8].name + '!');
                 }
                 else {
                 alert('Could not add to folder - maximum reached.')
@@ -288,7 +277,7 @@ handleClick2(){
                 if (nca.folders[9].folder.length < 3){
                 this.setState({added: true, addedTo: 10});
                 nca.folders[9].folder.push(mainNodeCollection.nodes[i]);
-                alert('Added to ' + nca.folders[9].name + '! Press the "-" button to close the Add To box.');
+                alert('Added to ' + nca.folders[9].name + '!');
                 }
                 else {
                 alert('Could not add to folder - maximum reached.')

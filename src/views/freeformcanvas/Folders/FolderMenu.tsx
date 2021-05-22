@@ -1,12 +1,7 @@
 import * as React from 'react';
 import mainNodeCollection from '../../../Main';
 import { NodeStore } from '../../../stores/NodeStore';
-import { atfCollection, pushCollectionNode } from '../../nodes/CollectionNodeView';
-import { atfIframe, pushIframeNode } from '../../nodes/IframeNodeView';
-import { atfImage, sbcImage } from '../../nodes/ImageNodeView';
-import { addedToFolder, pushTextNode, atfText } from '../../nodes/TextNodeView';
 import { TopBar } from '../../nodes/TopBar';
-import { atfVideo, pushVideoNode } from '../../nodes/VideoNodeView';
 import { nca } from '../Sidebar';
 import { MenuLabels } from './MenuLabels';
 

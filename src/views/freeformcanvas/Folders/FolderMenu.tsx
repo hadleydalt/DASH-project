@@ -3,7 +3,7 @@ import mainNodeCollection from '../../../Main';
 import { NodeStore } from '../../../stores/NodeStore';
 import { atfCollection, pushCollectionNode } from '../../nodes/CollectionNodeView';
 import { atfIframe, pushIframeNode } from '../../nodes/IframeNodeView';
-import { atfImage, pushImageNode } from '../../nodes/ImageNodeView';
+import { atfImage, pushImageNode, sbcImage } from '../../nodes/ImageNodeView';
 import { addedToFolder, pushTextNode, atfText } from '../../nodes/TextNodeView';
 import { TopBar } from '../../nodes/TopBar';
 import { atfVideo, pushVideoNode } from '../../nodes/VideoNodeView';
@@ -52,6 +52,7 @@ export class Menu extends React.Component {
         if (type === "image"){
             pushImageNode(0);
             atfImage();
+            sbcImage();
         }
         if (type === "video"){
             pushVideoNode(0);

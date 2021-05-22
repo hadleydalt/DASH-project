@@ -19,6 +19,19 @@ interface NCVProps {
 }
 
 export class NodeCollectionView extends React.Component<NCVProps> {
+
+    state = {
+        clicked: false
+    }
+
+    sS(){
+        if (this.state.clicked === false) {
+        this.setState({clicked: true});
+        }
+        if (this.state.clicked === true) {
+            this.setState({clicked: false});
+            }
+    }
     
     render(){
         let store = this.props.store;

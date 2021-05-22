@@ -35,6 +35,7 @@ export let addedToFolder = false;
 export function atfCollection(){
     addedToFolder = true;
 }
+export let clicked: boolean;
 
 @observer
 export class CollectionNodeView extends React.Component<CollectionNodeProps> {

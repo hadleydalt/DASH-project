@@ -20,6 +20,10 @@ export let addedToFolder = false;
 export function atfImage(){
     addedToFolder = true;
 }
+let shouldBeClosed = false;
+export function sbcImage(){
+    shouldBeClosed = true;
+}
 
 @observer
 export class ImageNodeView extends React.Component<ImageNodeProps> {
@@ -30,6 +34,9 @@ export class ImageNodeView extends React.Component<ImageNodeProps> {
         this.handleClick = this.handleClick.bind(this);
         this.handleClick2 = this.handleClick2.bind(this);
         id = this.props.id;
+        addedToFolder = false;
+        shouldBeClosed = false;
+        turnfalse();
     }
 
     state = {
@@ -90,8 +97,8 @@ handleClick2(){
 
         if (this.state.clicked2 === true){
             this.setState({clicked2: false});
-            turnfalse();
-            addedToFolder = false;
+            //turnfalse();
+            //addedToFolder = false;
         }
     
 }
@@ -131,8 +138,8 @@ handleClick2(){
                 e.preventDefault();
             }}>
                 <TopBar store={store}/>
-                {addedToFolder ? <button className="show-list" onClick={this.handleClick2}>{this.state.clicked2 ? "Close Folder Contnts": "View Folder Contents"}</button> : null}
-                {store.notNested? <button className="atc-button" title = "Add to Folder" onClick={this.handleClick}>{this.state.clicked ? "-": "+"}</button> : null}
+                {addedToFolder? <button className="show-list" onClick={this.handleClick2}>{this.state.clicked2 ? "Close Folder Contnts": "View Folder Contents"}</button> : null}
+                {store.notNested && !shouldBeClosed? <button className="atc-button" title = "Add to Folder" onClick={this.handleClick}>{this.state.clicked ? "-": "+"}</button> : null}
                 {this.state.clicked ? <Menu/> : null}
                 {this.state.clicked2 ? <LinkedNodes /> : null}
                 <ResizeIcon store={store}></ResizeIcon>

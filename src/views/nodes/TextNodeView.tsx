@@ -8,6 +8,7 @@ import RichTextEditor from '../nodes/RichTextEditor';
 import { nca } from '../freeformcanvas/Sidebar';
 import { Menu, ml, changeType, LinkedNodes, turnfalse } from "../freeformcanvas/Folders/FolderMenu";
 import mainNodeCollection from "../../Main";
+import { StoreType } from "../../stores/NodeStore";
 
 interface TextNodeProps {
     store: StaticTextNodeStore;
@@ -34,7 +35,8 @@ export class TextNodeView extends React.Component<TextNodeProps> {
 
     state = {
         clicked: false,
-        clicked2: false
+        clicked2: false, 
+        added: false
     }
 
     private isPointerDown = false;
@@ -131,7 +133,7 @@ handleClick2(){
                 <TopBar store={store}/>
                 <div className = "border"></div>
                 {addedToFolder ? <button className="show-list" onClick={this.handleClick2}>{this.state.clicked2 ? "Close Folder Contnts": "View Folder Contents"}</button> : null}
-                {store.notNested? <button className="atc-button" title = "Add to Folder" onClick={this.handleClick}>{this.state.clicked ? "-": "+"}</button> : null}
+                {store.notNested && !addedToFolder? <button className="atc-button" title = "Add to Folder" onClick={this.handleClick}>{this.state.clicked ? "-": "+"}</button> : null}
                 {this.state.clicked ? <Menu /> : null}
                 {this.state.clicked2 ? <LinkedNodes /> : null}
                 <ResizeIcon store={store}></ResizeIcon>
@@ -150,7 +152,7 @@ export function pushTextNode(x){
         if (mainNodeCollection.nodes[i].nodeID === id){
             if (nca.folders[x].folder.length < 3){
             nca.folders[x].folder.push(mainNodeCollection.nodes[i]);
-            alert('Added to ' + nca.folders[x].name + '! Press the "-" button to close the Add To box.');
+            alert('Added to ' + nca.folders[x].name + '!');
             }
             else {
             alert('Could not add to folder - maximum reached.')

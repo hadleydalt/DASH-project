@@ -21,6 +21,9 @@ interface FreeFormProps {
     store: NodeCollectionStore
 }
 
+export let amDisplacedX = 0;
+export let amDisplacedY = 0;
+
 @observer
 export class FreeFormCanvas extends React.Component<FreeFormProps> {
 
@@ -51,6 +54,8 @@ export class FreeFormCanvas extends React.Component<FreeFormProps> {
 
         this.props.store.x += e.movementX;
         this.props.store.y += e.movementY;
+        amDisplacedX += e.movementX;
+        amDisplacedY += e.movementY;
     }
 
     render() {

@@ -9,6 +9,7 @@ import { nca } from '../freeformcanvas/Sidebar';
 import { Menu, ml, changeType, LinkedNodes, turnfalse } from "../freeformcanvas/Folders/FolderMenu";
 import mainNodeCollection from "../../Main";
 import { NodeStore, StoreType } from "../../stores/NodeStore";
+import { amDisplacedX, amDisplacedY } from "../freeformcanvas/FreeFormCanvas";
 
 interface TextNodeProps {
     store: StaticTextNodeStore;
@@ -289,8 +290,8 @@ handleClick2(){
     }
 
     showNode(n: NodeStore){
-        n.x = 10;
-        n.y = 10;
+        n.x = (10 - amDisplacedX);
+        n.y = (10 - amDisplacedY);
     }
 
     render() {

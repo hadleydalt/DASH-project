@@ -19,6 +19,7 @@ import { VideoNodeView } from "./VideoNodeView";
 import { ImageNodeView } from "./ImageNodeView";
 import { IframeNodeView } from "./IframeNodeView";
 import { NodeCollectionView } from "./NodeCollectionView";
+import { amDisplacedX, amDisplacedY } from "../freeformcanvas/FreeFormCanvas";
 
 interface CollectionNodeProps {
     store: CollectionNodeStore;
@@ -374,6 +375,11 @@ pushNode10(id: number){
         this.props.store.y += e.movementY;
     }
 
+    showNode(n: NodeStore){
+        n.x = (10 - amDisplacedX);
+        n.y = (10 - amDisplacedY);
+    }
+
     render() {
 
         let store = this.props.store;
@@ -416,55 +422,55 @@ pushNode10(id: number){
                 this.state.addedTo===9? this.f9 + " contains " + nca.folders[8].folder.length + " notes" : 
                 this.f10 + " contains " + nca.folders[9].folder.length + " notes"}</div>
                 {this.state.addedTo===1? 
-                <div><span className="atc-menu" >{nca.folders[0].folder.length === 0? "": ""}</span> 
-                <div className="atc-menu">{nca.folders[0].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu">{nca.folders[0].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu">{nca.folders[0].folder.length > 2? "Note 3": ""}</div>
+                <div><span className="atc-menu">{nca.folders[0].folder.length === 0? "": ""}</span> 
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[0].folder[0])}>{nca.folders[0].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[0].folder[1])}>{nca.folders[0].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[0].folder[2])}>{nca.folders[0].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
                 this.state.addedTo===2? <div><div className="atc-menu">{nca.folders[1].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu">{nca.folders[1].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu">{nca.folders[1].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu">{nca.folders[1].folder.length > 2? "Note 3": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[1].folder[0])}>{nca.folders[1].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[1].folder[1])}>{nca.folders[1].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[1].folder[2])}>{nca.folders[1].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
                 this.state.addedTo===3? <div><div className="atc-menu">{nca.folders[2].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu">{nca.folders[2].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu">{nca.folders[2].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu">{nca.folders[2].folder.length > 2? "Note 3": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[2].folder[0])}>{nca.folders[2].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[2].folder[1])}>{nca.folders[2].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[2].folder[2])}>{nca.folders[2].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
                 this.state.addedTo===4? <div><div className="atc-menu">{nca.folders[3].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu">{nca.folders[3].folder.length > 0 ? "Note 1": ""}</div>
-                <div className="atc-menu">{nca.folders[3].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu">{nca.folders[3].folder.length > 2? "Note 3": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[3].folder[0])}>{nca.folders[3].folder.length > 0 ? "Note 1": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[3].folder[1])}>{nca.folders[3].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[3].folder[2])}>{nca.folders[3].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
                 this.state.addedTo===5? <div><div className="atc-menu">{nca.folders[4].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu">{nca.folders[4].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu">{nca.folders[4].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu">{nca.folders[4].folder.length > 2? "Note 3": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[4].folder[0])}>{nca.folders[4].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[4].folder[1])}>{nca.folders[4].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[4].folder[2])}>{nca.folders[4].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
                 this.state.addedTo===6? <div><div className="atc-menu">{nca.folders[5].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu">{nca.folders[5].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu">{nca.folders[5].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu">{nca.folders[5].folder.length > 2? "Note 3": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[5].folder[0])}>{nca.folders[5].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[5].folder[1])}>{nca.folders[5].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[5].folder[2])}>{nca.folders[5].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
                 this.state.addedTo===7? <div><div className="atc-menu">{nca.folders[6].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu">{nca.folders[6].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu">{nca.folders[6].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu">{nca.folders[6].folder.length > 2? "Note 3": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[6].folder[0])}>{nca.folders[6].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[6].folder[1])}>{nca.folders[6].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[6].folder[2])}>{nca.folders[6].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
                 this.state.addedTo===8? <div><div className="atc-menu">{nca.folders[7].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu">{nca.folders[7].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu">{nca.folders[7].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu">{nca.folders[7].folder.length > 2? "Note 3": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[7].folder[0])}>{nca.folders[7].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[7].folder[1])}>{nca.folders[7].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[7].folder[2])}>{nca.folders[7].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
                 this.state.addedTo===9? <div><div className="atc-menu">{nca.folders[8].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu">{nca.folders[8].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu">{nca.folders[8].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu">{nca.folders[8].folder.length > 2? "Note 3": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[8].folder[0])}>{nca.folders[8].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[8].folder[1])}>{nca.folders[8].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[8].folder[2])}>{nca.folders[8].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
                 <div><div className="atc-menu">{nca.folders[9].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu">{nca.folders[9].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu">{nca.folders[9].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu">{nca.folders[9].folder.length > 2? "Note 3": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[9].folder[0])}>{nca.folders[9].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[9].folder[1])}>{nca.folders[9].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(nca.folders[9].folder[2])}>{nca.folders[9].folder.length > 2? "Note 3": ""}</div>
                 </div>
                 }
                 </div>

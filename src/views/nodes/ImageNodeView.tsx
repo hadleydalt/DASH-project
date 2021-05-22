@@ -26,18 +26,6 @@ export function sbcImage(){
 @observer
 export class ImageNodeView extends React.Component<ImageNodeProps> {
 
-    public addedToFolder;
-    public one; 
-    public two;
-    public three;
-    public four;
-    public five;
-    public six;
-    public seven;
-    public eight;
-    public nine;
-    public ten;
-
     public f1;
     public f2;
     public f3;
@@ -57,17 +45,6 @@ export class ImageNodeView extends React.Component<ImageNodeProps> {
         this.handleClick = this.handleClick.bind(this);
         this.handleClick2 = this.handleClick2.bind(this);
         this.id = mainNodeCollection.count;
-        this.addedToFolder = false;
-        this.one = false;
-        this.two = false;
-        this.three = false;
-        this.four = false;
-        this.five = false;
-        this.six = false;
-        this.seven = false;
-        this.eight = false;
-        this.nine = false;
-        this.ten = false;
         this.f1 = "";
         this.f2 = "";
         this.f3 = "";
@@ -85,7 +62,8 @@ export class ImageNodeView extends React.Component<ImageNodeProps> {
     state = {
         clicked: false,
         clicked2: false, 
-        added: false
+        added: false,
+        addedTo: null
     }
 
     private isPointerDown = false;
@@ -173,7 +151,7 @@ handleClick2(){
         for (var i = 0; i < mainNodeCollection.nodes.length; i++){
             if (mainNodeCollection.nodes[i].nodeID === id){
                 if (nca.folders[0].folder.length < 3){
-                this.setState({added: true});
+                this.setState({added: true, addedTo: 1});
                 nca.folders[0].folder.push(mainNodeCollection.nodes[i]);
                 alert('Added to ' + nca.folders[0].name + '! Press the "-" button to close the Add To box.');
                 }
@@ -188,6 +166,7 @@ handleClick2(){
         for (var i = 0; i < mainNodeCollection.nodes.length; i++){
             if (mainNodeCollection.nodes[i].nodeID === id){
                 if (nca.folders[1].folder.length < 3){
+                this.setState({added: true, addedTo: 2});
                 nca.folders[1].folder.push(mainNodeCollection.nodes[i]);
                 alert('Added to ' + nca.folders[1].name + '! Press the "-" button to close the Add To box.');
                 }
@@ -196,14 +175,13 @@ handleClick2(){
                 }
             }
         }
-        this.addedToFolder = true;
-        this.two = true;
     }
 
     pushNode3(id: number){
         for (var i = 0; i < mainNodeCollection.nodes.length; i++){
             if (mainNodeCollection.nodes[i].nodeID === id){
                 if (nca.folders[2].folder.length < 3){
+                this.setState({added: true, addedTo: 3});
                 nca.folders[2].folder.push(mainNodeCollection.nodes[i]);
                 alert('Added to ' + nca.folders[2].name + '! Press the "-" button to close the Add To box.');
                 }
@@ -212,14 +190,13 @@ handleClick2(){
                 }
             }
         }
-        this.addedToFolder = true;
-        this.three = true;
     }
 
     pushNode4(id: number){
         for (var i = 0; i < mainNodeCollection.nodes.length; i++){
             if (mainNodeCollection.nodes[i].nodeID === id){
                 if (nca.folders[3].folder.length < 3){
+                this.setState({added: true, addedTo: 4});
                 nca.folders[3].folder.push(mainNodeCollection.nodes[i]);
                 alert('Added to ' + nca.folders[3].name + '! Press the "-" button to close the Add To box.');
                 }
@@ -228,14 +205,13 @@ handleClick2(){
                 }
             }
         }
-        this.addedToFolder = true;
-        this.four = true;
     }
 
     pushNode5(id: number){
         for (var i = 0; i < mainNodeCollection.nodes.length; i++){
             if (mainNodeCollection.nodes[i].nodeID === id){
                 if (nca.folders[4].folder.length < 3){
+                this.setState({added: true, addedTo: 5});
                 nca.folders[4].folder.push(mainNodeCollection.nodes[i]);
                 alert('Added to ' + nca.folders[4].name + '! Press the "-" button to close the Add To box.');
                 }
@@ -244,14 +220,13 @@ handleClick2(){
                 }
             }
         }
-        this.addedToFolder = true;
-        this.five = true;
     }
 
     pushNode6(id: number){
         for (var i = 0; i < mainNodeCollection.nodes.length; i++){
             if (mainNodeCollection.nodes[i].nodeID === id){
                 if (nca.folders[5].folder.length < 3){
+                this.setState({added: true, addedTo: 6});
                 nca.folders[5].folder.push(mainNodeCollection.nodes[i]);
                 alert('Added to ' + nca.folders[5].name + '! Press the "-" button to close the Add To box.');
                 }
@@ -260,14 +235,13 @@ handleClick2(){
                 }
             }
         }
-        this.addedToFolder = true;
-        this.six = true;
     }
 
     pushNode7(id: number){
         for (var i = 0; i < mainNodeCollection.nodes.length; i++){
             if (mainNodeCollection.nodes[i].nodeID === id){
                 if (nca.folders[6].folder.length < 3){
+                this.setState({added: true, addedTo: 7});
                 nca.folders[6].folder.push(mainNodeCollection.nodes[i]);
                 alert('Added to ' + nca.folders[6].name + '! Press the "-" button to close the Add To box.');
                 }
@@ -276,14 +250,13 @@ handleClick2(){
                 }
             }
         }
-        this.addedToFolder = true;
-        this.seven = true;
     }
 
     pushNode8(id: number){
         for (var i = 0; i < mainNodeCollection.nodes.length; i++){
             if (mainNodeCollection.nodes[i].nodeID === id){
                 if (nca.folders[7].folder.length < 3){
+                this.setState({added: true, addedTo: 8});
                 nca.folders[7].folder.push(mainNodeCollection.nodes[i]);
                 alert('Added to ' + nca.folders[7].name + '! Press the "-" button to close the Add To box.');
                 }
@@ -292,14 +265,13 @@ handleClick2(){
                 }
             }
         }
-        this.addedToFolder = true;
-        this.eight = true;
     }
 
     pushNode9(id: number){
         for (var i = 0; i < mainNodeCollection.nodes.length; i++){
             if (mainNodeCollection.nodes[i].nodeID === id){
                 if (nca.folders[8].folder.length < 3){
+                this.setState({added: true, addedTo: 9});
                 nca.folders[8].folder.push(mainNodeCollection.nodes[i]);
                 alert('Added to ' + nca.folders[8].name + '! Press the "-" button to close the Add To box.');
                 }
@@ -308,14 +280,13 @@ handleClick2(){
                 }
             }
         }
-        this.addedToFolder = true;
-        this.nine = true;
     }
 
     pushNode10(id: number){
         for (var i = 0; i < mainNodeCollection.nodes.length; i++){
             if (mainNodeCollection.nodes[i].nodeID === id){
                 if (nca.folders[9].folder.length < 3){
+                this.setState({added: true, addedTo: 10});
                 nca.folders[9].folder.push(mainNodeCollection.nodes[i]);
                 alert('Added to ' + nca.folders[9].name + '! Press the "-" button to close the Add To box.');
                 }
@@ -324,8 +295,6 @@ handleClick2(){
                 }
             }
         }
-        this.addedToFolder = true;
-        this.ten = true;
     }
 
     render() {
@@ -355,7 +324,12 @@ handleClick2(){
                 <span className="atc-menu" onClick={() => this.pushNode10(this.id)}>{this.f10}</span>
                 </div>
             : null}
-                {this.state.clicked2 ? <LinkedNodes /> : null}
+                {this.state.clicked2 ? 
+                <div>
+                <div className="atc-menu-wrapper">
+                <div className="add-to">{this.state.addedTo===1? this.f1 + " contains " + nca.folders[0].folder.length + " notes": this.state.addedTo===2? this.f2 + " contains " + nca.folders[1].folder.length + " notes" : this.state.addedTo===3? this.f3 + " contains " + nca.folders[2].folder.length + " notes" : this.state.addedTo===4? this.f4 + " contains " + nca.folders[3].folder.length + " notes" : this.state.addedTo===5? this.f5 + " contains " + nca.folders[4].folder.length + " notes" : this.state.addedTo===6? this.f6 + " contains " + nca.folders[5].folder.length + " notes" : this.state.addedTo===7? this.f7 + " contains " + nca.folders[6].folder.length + " notes" : this.state.addedTo===8? this.f8 + " contains " + nca.folders[7].folder.length + " notes" : this.state.addedTo===9? this.f9 + " contains " + nca.folders[8].folder.length + " notes" : this.f10 + " contains " + nca.folders[9].folder.length + " notes"}</div>
+                </div>
+            </div> : null}
                 <ResizeIcon store={store}></ResizeIcon>
                 <div className="scroll-box">
                     <div className="content">

@@ -25,10 +25,9 @@ interface CollectionNodeProps {
     id: number;
 }
 
-//let store;
+let count = 0;
 let x = -300;
 let y = 5;
-let count = 0;
 
 @observer
 export class CollectionNodeView extends React.Component<CollectionNodeProps> {
@@ -47,6 +46,9 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
     public id;
 
     public store;
+
+    public x;
+    public y;
 
     constructor(props){
         super(props);
@@ -132,9 +134,10 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
     addCollectionNode(s: CollectionNodeStore){
         count +=1;
         let c = new CollectionNodeStore({ type: StoreType.Collection, x: x+305, y: y });
-        c.notNested = false;
+        count = 0;
         x=-300;
         y=5;
+        c.notNested = false;
         c.nodeID = 0;
         s.nodes.push(c);
     } 

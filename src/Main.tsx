@@ -17,22 +17,4 @@ ReactDOM.render((
         <FreeFormCanvas store={mainNodeCollection} />
     </div>), document.getElementById('root'));
 
-// create a bunch of text and video nodes (you probably want to delete this at some point)
-/*for (let i = 0; i < 2; i++) {
-    nodes.push(new StaticTextNodeStore({ type: StoreType.Text, x: Math.random() * maxX, y: Math.random() * maxY, title: "", text: "" }));
-}
-
-for (let i = 0; i < 2; i++) {
-    nodes.push(new VideoNodeStore({ type: StoreType.Video, x: Math.random() * maxX, y: Math.random() * maxY, title: "", url: "" }));
-}
-
-for (let i = 0; i < 2; i++) {
-    nodes.push(new ImageNodeStore({ type: StoreType.Image, x: Math.random() * maxX, y: Math.random() * maxY }));
-}
-
-for (let i = 0; i < 2; i++) {
-    nodes.push(new IframeNodeStore({ type: StoreType.Iframe, x: Math.random() * maxX, y: Math.random() * maxY }));
-}
-mainNodeCollection.addNodes(nodes); */
-
 export default mainNodeCollection;

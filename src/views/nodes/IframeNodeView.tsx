@@ -315,7 +315,69 @@ pushNode10(id: number){
                 {this.state.clicked2 ? 
                 <div>
                 <div className="atc-menu-wrapper">
-                <div className="add-to">{this.state.addedTo===1? this.f1 + " contains " + nca.folders[0].folder.length + " notes": this.state.addedTo===2? this.f2 + " contains " + nca.folders[1].folder.length + " notes" : this.state.addedTo===3? this.f3 + " contains " + nca.folders[2].folder.length + " notes" : this.state.addedTo===4? this.f4 + " contains " + nca.folders[3].folder.length + " notes" : this.state.addedTo===5? this.f5 + " contains " + nca.folders[4].folder.length + " notes" : this.state.addedTo===6? this.f6 + " contains " + nca.folders[5].folder.length + " notes" : this.state.addedTo===7? this.f7 + " contains " + nca.folders[6].folder.length + " notes" : this.state.addedTo===8? this.f8 + " contains " + nca.folders[7].folder.length + " notes" : this.state.addedTo===9? this.f9 + " contains " + nca.folders[8].folder.length + " notes" : this.f10 + " contains " + nca.folders[9].folder.length + " notes"}</div>
+                <div className="add-to">{this.state.addedTo===1? 
+                this.f1 + " contains " + nca.folders[0].folder.length + " notes": 
+                this.state.addedTo===2? this.f2 + " contains " + nca.folders[1].folder.length + " notes" : 
+                this.state.addedTo===3? this.f3 + " contains " + nca.folders[2].folder.length + " notes" : 
+                this.state.addedTo===4? this.f4 + " contains " + nca.folders[3].folder.length + " notes" : 
+                this.state.addedTo===5? this.f5 + " contains " + nca.folders[4].folder.length + " notes" : 
+                this.state.addedTo===6? this.f6 + " contains " + nca.folders[5].folder.length + " notes" : 
+                this.state.addedTo===7? this.f7 + " contains " + nca.folders[6].folder.length + " notes" : 
+                this.state.addedTo===8? this.f8 + " contains " + nca.folders[7].folder.length + " notes" : 
+                this.state.addedTo===9? this.f9 + " contains " + nca.folders[8].folder.length + " notes" : 
+                this.f10 + " contains " + nca.folders[9].folder.length + " notes"}</div>
+                {this.state.addedTo===1? 
+                <div><span className="atc-menu" >{nca.folders[0].folder.length === 0? "": ""}</span> 
+                <div className="atc-menu">{nca.folders[0].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu">{nca.folders[0].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu">{nca.folders[0].folder.length > 2? "Note 3": ""}</div>
+                </div> : 
+                this.state.addedTo===2? <div><div className="atc-menu">{nca.folders[1].folder.length === 0? "": ""}</div> 
+                <div className="atc-menu">{nca.folders[1].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu">{nca.folders[1].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu">{nca.folders[1].folder.length > 2? "Note 3": ""}</div>
+                </div> : 
+                this.state.addedTo===3? <div><div className="atc-menu">{nca.folders[2].folder.length === 0? "": ""}</div> 
+                <div className="atc-menu">{nca.folders[2].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu">{nca.folders[2].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu">{nca.folders[2].folder.length > 2? "Note 3": ""}</div>
+                </div> : 
+                this.state.addedTo===4? <div><div className="atc-menu">{nca.folders[3].folder.length === 0? "": ""}</div> 
+                <div className="atc-menu">{nca.folders[3].folder.length > 0 ? "Note 1": ""}</div>
+                <div className="atc-menu">{nca.folders[3].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu">{nca.folders[3].folder.length > 2? "Note 3": ""}</div>
+                </div> : 
+                this.state.addedTo===5? <div><div className="atc-menu">{nca.folders[4].folder.length === 0? "": ""}</div> 
+                <div className="atc-menu">{nca.folders[4].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu">{nca.folders[4].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu">{nca.folders[4].folder.length > 2? "Note 3": ""}</div>
+                </div> : 
+                this.state.addedTo===6? <div><div className="atc-menu">{nca.folders[5].folder.length === 0? "": ""}</div> 
+                <div className="atc-menu">{nca.folders[5].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu">{nca.folders[5].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu">{nca.folders[5].folder.length > 2? "Note 3": ""}</div>
+                </div> : 
+                this.state.addedTo===7? <div><div className="atc-menu">{nca.folders[6].folder.length === 0? "": ""}</div> 
+                <div className="atc-menu">{nca.folders[6].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu">{nca.folders[6].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu">{nca.folders[6].folder.length > 2? "Note 3": ""}</div>
+                </div> : 
+                this.state.addedTo===8? <div><div className="atc-menu">{nca.folders[7].folder.length === 0? "": ""}</div> 
+                <div className="atc-menu">{nca.folders[7].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu">{nca.folders[7].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu">{nca.folders[7].folder.length > 2? "Note 3": ""}</div>
+                </div> : 
+                this.state.addedTo===9? <div><div className="atc-menu">{nca.folders[8].folder.length === 0? "": ""}</div> 
+                <div className="atc-menu">{nca.folders[8].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu">{nca.folders[8].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu">{nca.folders[8].folder.length > 2? "Note 3": ""}</div>
+                </div> : 
+                <div><div className="atc-menu">{nca.folders[9].folder.length === 0? "": ""}</div> 
+                <div className="atc-menu">{nca.folders[9].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu">{nca.folders[9].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu">{nca.folders[9].folder.length > 2? "Note 3": ""}</div>
+                </div>
+                }
                 </div>
             </div> : null}
                 <ResizeIcon store={store}></ResizeIcon>

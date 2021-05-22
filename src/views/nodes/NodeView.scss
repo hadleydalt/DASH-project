@@ -1,8 +1,6 @@
 .node {
     position: absolute;
     background: #cccccc;
-    width: 300px;
-    height: 300px;
     border-radius:10px;
     filter: drop-shadow(0px 0px 6px rgb(124, 124, 124));
     overflow: hidden;
@@ -129,5 +127,18 @@
     border: transparent;
     padding:4px;
     color:gray;
+}
+
+.indicator{
+    width:70px;
+    background: rgb(251,255,113);
+    background: linear-gradient(90deg, rgba(251,255,113,1) 0%, rgba(251,114,219,1) 29%, rgba(116,153,247,1) 68%, rgba(116,247,227,1) 99%);
+    font-size:20px;
+    font-family:Arial, Helvetica, sans-serif;
+    color:white;
+    font-weight:bold;
+    font-style:italic;
+    text-align:center;
+
 }
 

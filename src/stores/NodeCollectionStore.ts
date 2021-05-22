@@ -5,6 +5,7 @@ import { ImageNodeStore } from "./ImageNodeStore";
 import { VideoNodeStore } from "./VideoNodeStore";
 import { IframeNodeStore } from "./IframeNodeStore";
 import { CollectionNodeStore } from "./CollectionNodeStore";
+import { amDisplacedX, amDisplacedY } from "../views/freeformcanvas/FreeFormCanvas";
 
 export class NodeCollectionStore extends NodeStore {
     public count: number = 0;
@@ -20,7 +21,7 @@ export class NodeCollectionStore extends NodeStore {
     @action
     public addTextNode(): void {
         this.count += 1;
-        let t = new StaticTextNodeStore({ type: StoreType.Text, x: Math.random() * 500, y: Math.random() * 500, title: "", text: "" });
+        let t = new StaticTextNodeStore({ type: StoreType.Text, x: ((Math.random() * 500) - amDisplacedX), y: ((Math.random() * 500) - amDisplacedY), title: "", text: "" });
         t.notNested = true;
         t.nodeID = this.count;
         this.nodes.push(t);

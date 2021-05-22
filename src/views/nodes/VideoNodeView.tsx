@@ -6,7 +6,6 @@ import "./VideoNodeView.scss";
 import { ResizeIcon } from "./ResizeIcon";
 import * as React from 'react';
 import AddVideo from '../nodes/AddVideo';
-import { Menu, ml, changeType, LinkedNodes, turnfalse } from "../freeformcanvas/Folders/FolderMenu";
 import { nca } from "../freeformcanvas/Sidebar";
 import mainNodeCollection from "../../Main";
 import { NodeStore } from "../../stores/NodeStore";

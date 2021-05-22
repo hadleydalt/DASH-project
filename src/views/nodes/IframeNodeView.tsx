@@ -10,6 +10,7 @@ import { Menu, ml, changeType, LinkedNodes, turnfalse } from "../freeformcanvas/
 import mainNodeCollection from "../../Main";
 import { NodeStore } from "../../stores/NodeStore";
 import { amDisplacedX, amDisplacedY } from "../freeformcanvas/FreeFormCanvas";
+import { decCount } from "./CollectionNodeView";
 
 interface IframeNodeProps {
     store: IframeNodeStore;
@@ -37,6 +38,8 @@ export class IframeNodeView extends React.Component<IframeNodeProps> {
 
         this.handleClick = this.handleClick.bind(this);
         this.handleClick2 = this.handleClick2.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
+
         this.id = mainNodeCollection.count;
         this.f1 = "";
         this.f2 = "";
@@ -56,7 +59,8 @@ export class IframeNodeView extends React.Component<IframeNodeProps> {
         clicked: false,
         clicked2: false, 
         added: false,
-        addedTo: null
+        addedTo: null,
+        deleted: false
     }
 
     handleClick(){
@@ -293,10 +297,19 @@ pushNode10(id: number){
         n.y = (10 - amDisplacedY);
     }
 
+    handleDelete(notNested:boolean){
+        this.setState({deleted: true});
+        if (notNested === false){
+            decCount();
+        }
+    }
+
     render() {
         let store = this.props.store;
 
         return (
+            <div>
+                {this.state.deleted? null : 
             <div className="node text-node" onPointerDown={this.onPointerDown} style={{ transform: store.transform, width: store.w + 'px', height: store.h + 'px' }} onWheel={(e: React.WheelEvent) => {
                 e.stopPropagation();
                 e.preventDefault();
@@ -394,6 +407,9 @@ pushNode10(id: number){
                         <WebsiteForm /> </div>
                     </div>
                 </div>
+                {store.notNested? <button className="delete" onClick={() => this.handleDelete(true)}>X</button> : <button className="delete" onClick={() => this.handleDelete(false)}>X</button>}
+            </div>
+    }
             </div>
         );
     }

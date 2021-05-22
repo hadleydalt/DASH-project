@@ -1,5 +1,5 @@
 import { observer } from "mobx-react";
-import { StaticTextNodeStore } from "../../stores/StaticTextNodeStore";
+import { TextNodeStore } from "../../stores/TextNodeStore";
 import "./NodeView.scss";
 import { ResizeIcon } from "./ResizeIcon";
 import { TopBar } from "./TopBar";
@@ -12,7 +12,7 @@ import { amDisplacedX, amDisplacedY } from "../freeformcanvas/FreeFormCanvas";
 import { decCount } from "./CollectionNodeView";
 
 interface TextNodeProps {
-    store: StaticTextNodeStore;
+    store: TextNodeStore;
     id: number;
 }
 

@@ -1,6 +1,6 @@
 import { computed, observable, action } from "mobx";
 import { NodeStore, StoreType } from "./NodeStore";
-import { StaticTextNodeStore } from "./StaticTextNodeStore";
+import { TextNodeStore } from "./TextNodeStore";
 import { ImageNodeStore } from "./ImageNodeStore";
 import { VideoNodeStore } from "./VideoNodeStore";
 import { IframeNodeStore } from "./IframeNodeStore";
@@ -21,7 +21,7 @@ export class NodeCollectionStore extends NodeStore {
     @action
     public addTextNode(): void {
         this.count += 1;
-        let t = new StaticTextNodeStore({ type: StoreType.Text, x: ((Math.random() * 500) - amDisplacedX), y: ((Math.random() * 500) - amDisplacedY), title: "", text: "" });
+        let t = new TextNodeStore({ type: StoreType.Text, x: ((Math.random() * 500) - amDisplacedX), y: ((Math.random() * 500) - amDisplacedY), title: "", text: "" });
         t.notNested = true;
         t.nodeID = this.count;
         this.nodes.push(t);

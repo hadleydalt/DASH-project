@@ -8,7 +8,7 @@ import { nca } from "../freeformcanvas/Sidebar";
 import mainNodeCollection from "../../Main";
 import { CollectionNodeStore } from "../../stores/CollectionNodeStore";
 import { NodeStore, StoreType } from "../../stores/NodeStore";
-import { StaticTextNodeStore } from "../../stores/StaticTextNodeStore";
+import { TextNodeStore } from "../../stores/TextNodeStore";
 import { ImageNodeStore } from "../../stores/ImageNodeStore";
 import { VideoNodeStore } from "../../stores/VideoNodeStore";
 import { NodeCollectionView } from "./NodeCollectionView";
@@ -87,7 +87,7 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
 
     addTextNode(s: CollectionNodeStore){
         count += 1;
-        let t = new StaticTextNodeStore({ type: StoreType.Text, x: x+305, y: y, title: "", text: "" });
+        let t = new TextNodeStore({ type: StoreType.Text, x: x+305, y: y, title: "", text: "" });
         t.notNested = false;
         x=t.x;
         t.nodeID = 0;

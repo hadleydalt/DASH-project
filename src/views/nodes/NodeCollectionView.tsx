@@ -3,7 +3,7 @@ import { CollectionNodeStore } from "../../stores/CollectionNodeStore";
 import { IframeNodeStore } from "../../stores/IframeNodeStore";
 import { ImageNodeStore } from "../../stores/ImageNodeStore";
 import { StoreType } from "../../stores/NodeStore";
-import { StaticTextNodeStore } from "../../stores/StaticTextNodeStore";
+import { TextNodeStore } from "../../stores/TextNodeStore";
 import { VideoNodeStore } from "../../stores/VideoNodeStore";
 import { CollectionNodeView } from "./CollectionNodeView";
 import { IframeNodeView } from "./IframeNodeView";
@@ -39,7 +39,7 @@ export class NodeCollectionView extends React.Component<NCVProps> {
                 store.nodes.map(nodeStore => {
                     switch (nodeStore.type) {
                         case StoreType.Text:
-                            return (<TextNodeView id = {staticID} key={nodeStore.Id} store={nodeStore as StaticTextNodeStore}/>)
+                            return (<TextNodeView id = {staticID} key={nodeStore.Id} store={nodeStore as TextNodeStore}/>)
 
                         case StoreType.Video:
                             return (<VideoNodeView id = {staticID} key={nodeStore.Id} store={nodeStore as VideoNodeStore}/>)

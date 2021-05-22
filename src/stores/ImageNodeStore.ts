@@ -1,3 +1,4 @@
+import mainNodeCollection from "../Main";
 import { NodeStore } from "./NodeStore";
 
 export class ImageNodeStore extends NodeStore {

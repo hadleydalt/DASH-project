@@ -3,7 +3,7 @@ import mainNodeCollection from '../../../Main';
 import { NodeStore } from '../../../stores/NodeStore';
 import { atfCollection, pushCollectionNode } from '../../nodes/CollectionNodeView';
 import { atfIframe, pushIframeNode } from '../../nodes/IframeNodeView';
-import { atfImage, pushImageNode, sbcImage } from '../../nodes/ImageNodeView';
+import { atfImage, sbcImage } from '../../nodes/ImageNodeView';
 import { addedToFolder, pushTextNode, atfText } from '../../nodes/TextNodeView';
 import { TopBar } from '../../nodes/TopBar';
 import { atfVideo, pushVideoNode } from '../../nodes/VideoNodeView';
@@ -42,8 +42,10 @@ export function turnfalse(){
     ten = false;
 }
 
+
 export class Menu extends React.Component {
 
+    /*
     push1(){
         if (type === "text"){
             pushTextNode(0);
@@ -289,24 +291,24 @@ export class Menu extends React.Component {
             atfCollection();
         }
 
-        ten = true;
-    }
+        ten = true; 
+    } */
 
     render(){
         return (
             <div>
                 <div className="atc-menu-wrapper">
                 <div className="add-to">Add To:</div>
-                <span className="atc-menu" onClick={this.push1} >{ml.c1}</span> 
-                <span className="atc-menu" onClick={this.push2}>{ml.c2}</span>
-                <span className="atc-menu" onClick={this.push3}>{ml.c3}</span>
-                <span className="atc-menu" onClick={this.push4}>{ml.c4}</span>
-                <span className="atc-menu" onClick={this.push5}>{ml.c5}</span>
-                <span className="atc-menu" onClick={this.push6}>{ml.c6}</span>
-                <span className="atc-menu" onClick={this.push7}>{ml.c7}</span>
-                <span className="atc-menu" onClick={this.push8}>{ml.c8}</span>
-                <span className="atc-menu" onClick={this.push9}>{ml.c9}</span>
-                <span className="atc-menu" onClick={this.push10}>{ml.c10}</span>
+                <span className="atc-menu"  >{ml.c1}</span> 
+                <span className="atc-menu" >{ml.c2}</span>
+                <span className="atc-menu" >{ml.c3}</span>
+                <span className="atc-menu" >{ml.c4}</span>
+                <span className="atc-menu" >{ml.c5}</span>
+                <span className="atc-menu" >{ml.c6}</span>
+                <span className="atc-menu" >{ml.c7}</span>
+                <span className="atc-menu" >{ml.c8}</span>
+                <span className="atc-menu" >{ml.c9}</span>
+                <span className="atc-menu" >{ml.c10}</span>
                 </div>
             </div>
         )
@@ -318,6 +320,18 @@ export class LinkedNodes extends React.Component {
     render(){
         return(
             <div>
+                <div className="atc-menu-wrapper">
+                <div className="add-to">hi :</div>
+                </div>
+            </div>
+        )
+    }
+}
+
+
+/*
+
+ <div>
                 <div className="atc-menu-wrapper">
                 <div className="add-to" >{one? ml.c1 + " contains " + nca.folders[0].folder.length + " notes": two? ml.c1 + " contains " + nca.folders[1].folder.length + " notes" : three? ml.c1 + " contains " + nca.folders[2].folder.length + " notes" : four? ml.c1 + " contains " + nca.folders[3].folder.length + " notes" : five? ml.c1 + " contains " + nca.folders[4].folder.length + " notes" : six? ml.c1 + " contains " + nca.folders[5].folder.length + " notes" : seven? ml.c1 + " contains " + nca.folders[6].folder.length + " notes" : eight? ml.c1 + " contains " + nca.folders[7].folder.length + " notes" : nine? ml.c1 + " contains " + nca.folders[8].folder.length + " notes" : ml.c1 + " contains " + nca.folders[9].folder.length + " notes"} :</div>
                 {one? 
@@ -375,6 +389,5 @@ export class LinkedNodes extends React.Component {
                 <div className="c-note">Please close Folder Contents before creating another note!</div>
             </div>
             </div>
-        )
-    }
-}
+
+            */

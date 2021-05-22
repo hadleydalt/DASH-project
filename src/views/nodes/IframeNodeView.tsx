@@ -6,7 +6,6 @@ import { TopBar } from "./TopBar";
 import * as React from 'react';
 import { WebsiteForm } from './addIframe';
 import { nca } from "../freeformcanvas/Sidebar";
-import { Menu, ml, changeType, LinkedNodes, turnfalse } from "../freeformcanvas/Folders/FolderMenu";
 import mainNodeCollection from "../../Main";
 import { NodeStore } from "../../stores/NodeStore";
 import { amDisplacedX, amDisplacedY } from "../freeformcanvas/FreeFormCanvas";

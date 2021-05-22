@@ -1,8 +1,4 @@
-import { observable } from "mobx";
-import { observer } from "mobx-react";
 import * as React from "react";
-import mainNodeCollection from "../../../Main";
-import { NodeCollectionStore } from "../../../stores/NodeCollectionStore";
 import { NodeStore } from "../../../stores/NodeStore";
 import { NewFolder } from "./NewFolder";
 import { NewFolderArray } from "./NewFolderArray";

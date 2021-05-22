@@ -6,9 +6,8 @@ import { TopBar } from "./TopBar";
 import * as React from 'react';
 import RichTextEditor from '../nodes/RichTextEditor';
 import { nca } from '../freeformcanvas/Sidebar';
-import { Menu, ml, changeType, LinkedNodes, turnfalse } from "../freeformcanvas/Folders/FolderMenu";
 import mainNodeCollection from "../../Main";
-import { NodeStore, StoreType } from "../../stores/NodeStore";
+import { NodeStore } from "../../stores/NodeStore";
 import { amDisplacedX, amDisplacedY } from "../freeformcanvas/FreeFormCanvas";
 import { decCount } from "./CollectionNodeView";
 

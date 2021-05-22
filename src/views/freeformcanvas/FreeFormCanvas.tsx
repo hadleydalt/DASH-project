@@ -12,8 +12,6 @@ import { StoreType } from "../../stores/NodeStore";
 import { IframeNodeView } from "../nodes/IframeNodeView";
 import { IframeNodeStore } from "../../stores/IframeNodeStore";
 import { NodeForm } from "./Sidebar";
-import { Menu } from "./Folders/FolderMenu";
-import { CreateFolder } from "./Folders/CreateFolder";
 import { CollectionNodeStore } from "../../stores/CollectionNodeStore";
 import { CollectionNodeView } from "../nodes/CollectionNodeView";
 

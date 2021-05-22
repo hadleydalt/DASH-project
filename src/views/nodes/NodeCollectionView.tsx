@@ -1,10 +1,7 @@
-import { observer } from "mobx-react";
 import * as React from "react";
-import mainNodeCollection from "../../Main";
 import { CollectionNodeStore } from "../../stores/CollectionNodeStore";
 import { IframeNodeStore } from "../../stores/IframeNodeStore";
 import { ImageNodeStore } from "../../stores/ImageNodeStore";
-import { NodeCollectionStore } from "../../stores/NodeCollectionStore";
 import { StoreType } from "../../stores/NodeStore";
 import { StaticTextNodeStore } from "../../stores/StaticTextNodeStore";
 import { VideoNodeStore } from "../../stores/VideoNodeStore";

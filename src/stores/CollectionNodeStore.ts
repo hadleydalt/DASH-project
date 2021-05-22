@@ -1,10 +1,5 @@
-import { action, computed, observable } from "mobx";
-import mainNodeCollection from "../Main";
-import { IframeNodeStore } from "./IframeNodeStore";
-import { ImageNodeStore } from "./ImageNodeStore";
-import { NodeStore, StoreType } from "./NodeStore";
-import { StaticTextNodeStore } from "./StaticTextNodeStore";
-import { VideoNodeStore } from "./VideoNodeStore";
+import {computed} from "mobx";
+import { NodeStore } from "./NodeStore";
 
 export class CollectionNodeStore extends NodeStore {
 

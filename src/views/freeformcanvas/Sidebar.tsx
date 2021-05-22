@@ -1,12 +1,6 @@
 import * as React from 'react';
-import { useState } from 'react';
-import Select from 'react-select';
-import { observable, action } from "mobx";
-import { NodeStore, StoreType } from '../../stores/NodeStore';
-import { StaticTextNodeStore } from '../../stores/StaticTextNodeStore'; 
 import mainNodeCollection from '../../Main';
 import { CreateFolder } from './Folders/CreateFolder'
-import { NewFolder } from './Folders/NewFolder';
 import { NewFolderArray } from './Folders/NewFolderArray';
 
 function addTextNode(){

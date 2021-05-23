@@ -1,47 +1,44 @@
-<<<<<<< HEAD
-My code does not successfully implement linking. 
+README 
 
-My intention was for the user to be able to create folders and name them. If a node is on the canvas, the user is able to add
-it to a certain folder. This happens with the node, marked with an ID upon instantiation, being added to an array for that folder.
+This will be my final handin for the Dash starter project. I was given an extension!
 
-The user can then press "View Folder Contents" and a message pops up indicating how many nodes have been added to that folder. 
+HOW TO USE THIS DASH: 
 
-This is all implemented successfully and the message returns the correct amount of nodes! It also lists the nodes that 
-have been added for the folder. 
+➤ Using the sidebar buttons will generate nodes in random locations onto the canvas! 
+    ➤ TEXT: 
+        You must press the Tx button to begin typing. You can style the text according to the options in the Note (bold, italic, etc);
+    ➤ WEBSITE: 
+        Where it says "Click HERE and Type Web URL" you actually have to click ON the word "HERE". 
 
-I intended for the user to be able to click on the nodes in this list and that would display the node in question. 
+➤ Creating Collections 
+    ➤ After you create a Collection note, you can use the buttons on the note to create more notes within it. After pressing each button, 
+      you NEED to either MOVE or RESIZE the note to get the nested note to show up. This is a semi-bug that probably could have been fixed 
+      if I had more time. 
+    ➤ You can create multiple collections within collections. All nested nodes (children) of a collection will appear in a grid format. 
 
-However, I was unable to implement this successfully due to time constrictions. 
-=======
-I updated this README at 12:01 because I realized I had not saved before committing but everything else was committed at 11:59!
+➤ You can delete nodes by pressing the X button on the bottom left. 
+
+➤ Creating Folders (Linking Notes)
+    ➤ You can create a new Folder by typing its name into the sidebar and pressing "Create". You can create up to 10 Folders. 
+    ➤ Use the + button on the top left of each note to add this note to a folder! 
+    ➤ If you've created any Folders, they will appear as options for you to add the note to. (Once you click the + button)
+
+    ➤ Once you've added a note to a Folder, a "View Folder Contents" button will appear that allows you to view the other notes in 
+      this Folder. If you add multiple notes to one Folder, their "Folder Contents" menus will update. 
+    ➤ You can add up to 3 notes to one folder!
+    ➤ If you've opened a Folder Contents menu, click on either Note 1, Note 2, or Note 3 to view the first, second, or third note 
+      that was added to the Folder. 
+    ➤ Clicking on Note 1, Note 2, or Note 3 in the Folder Contents menu will pull up this note and put it in the topmost, leftmost 
+      position on the canvas to designate it. 
+
+    ➤ Viewing the Folder Contents of any note will allow you to access and visit the other nodes that were added to that Folder. 
+
+    ➤ IMPORTANT NOTE: If you add a note to a folder and then delete it, clicking on this note in another note's Folder Contents menu
+    will not generate anything. This is also a semi-bug that I probably could have fixed if I had more time. 
 
 
-My code does not successfully implement linking. 
 
-My intention was for the user to be able to create folders and name them. If a node is on the canvas, the user is able to add
-it to a certain folder. This happens with the node, marked with an ID upon instantiation, being added to an array for that folder.
+FEATURES: 
+    ➤ No matter where you have moved the canvas, if you add a new note, it will always appear on the canvas!
+    ➤ 
 
-The user can then press "View Folder Contents" and a message pops up indicating how many nodes have been added to that folder. 
-
-This is all implemented successfully and the message returns the correct amount of nodes! It also lists the nodes that 
-have been added for the folder. 
-
-I intended for the user to be able to click on the nodes in this list and that would display the node in question. 
-
-However, I was unable to implement this successfully due to time constrictions. 
-
-
-
-------------
-EDIT: specifications and commentary
-(I unfortunately did not have time to clean up the code or add detailed annotations. I know this is my fault and I would be happy to 
-provide annotations within the next few days). 
-
-When adding an iFrame, you have to click ON the word "HERE" before you can type in the website. 
-
-Do not add a node to multiple folders - this is a bug.
-
-You can create a collection within a collection infinitely but you cannot create multiple collections within a collection. This is because I was 
-unaware of how to use the Map function to nest. I have an entire plan and pseudo code written out for re-implementation with the Map function so that you
-can create multiple collections within a collection. 
->>>>>>> 513dc80b92df20d078a1abf8c9edf325c00dc85c

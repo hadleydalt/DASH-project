@@ -16,6 +16,9 @@ interface TextNodeProps {
     id: number;
 }
 
+/* All of the View class's methods are explained in the Collection Node View class since they are generally the same, with 
+CollectionNodeView having a few extra capabilities. */
+
 @observer
 export class TextNodeView extends React.Component<TextNodeProps> {
 

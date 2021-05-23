@@ -3,6 +3,9 @@ import mainNodeCollection from '../../Main';
 import { CreateFolder } from './Folders/CreateFolder'
 import { NewFolderArray } from './Folders/NewFolderArray';
 
+/* Defines the functions that need to be known by the sidebar so that the buttons on the sidebar, rendered in this class, can be used
+to add nodes. */
+
 function addTextNode(){
     mainNodeCollection.addTextNode();
 }

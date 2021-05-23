@@ -9,6 +9,8 @@ interface CCProps {
 
 export class CreateFolder extends React.Component<CCProps> {
 
+  /*Initializes the folder labels. If a folder is created and named, these labels are changed to the name that is entered. */
+
   public folders = this.props.c.folders;
   public one: string = "You haven't created any folders yet.";
   public two: string = "";
@@ -31,10 +33,16 @@ export class CreateFolder extends React.Component<CCProps> {
       this.handleSubmit = this.handleSubmit.bind(this);
     }
   
+    /*Gathers characters that are entered in to the entry bar */
+
     handleChange(event) {
       this.setState({value: event.target.value});
     }
   
+    /*Creates a new folder if the user presses submit. The new folder houses an Array wherein any nodes added to that folder are pushed. 
+    The name of the folder is set to the name the user has entered in. The isNamed variable is set to true so that any labels can be set
+    to the name of the folder. The Folder array is also pushed to a parent array of folders. */
+
     handleSubmit() {
       this.setState({count: this.state.count += 1});
       const newFolder = new NewFolder();
@@ -42,6 +50,8 @@ export class CreateFolder extends React.Component<CCProps> {
       newFolder.name = this.state.value;
       newFolder.isNamed = true;
       this.folders.push(newFolder); 
+
+      /* Sets the labels to the names of the folders if they have been created. */
       
       if (this.state.count === 1){
         this.one = newFolder.name;

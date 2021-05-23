@@ -3,6 +3,8 @@ import ReactQuill from "react-quill"
 import { useState } from 'react';
 import 'react-quill/dist/quill.snow.css';
 
+/* A rich text editor from Quill placed into the Text node*/
+
 export default function RichTextEditor() {
 
   const [convertedText, setConvertedText] = useState("");

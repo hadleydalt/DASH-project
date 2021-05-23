@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Iframe from 'react-iframe';
 
-export class WebsiteForm extends React.Component {
+/* Placed into IFrame node views to allow the user to create the iFrame. */
 
-  public website;
+export class WebsiteForm extends React.Component {
 
     state = {value: ''};
 
@@ -13,6 +13,8 @@ export class WebsiteForm extends React.Component {
       this.handleChange = this.handleChange.bind(this);
     }
   
+    /* Gathers the characters entered into the bar. */
+
     handleChange(event) {
       this.setState({value: event.target.value});
     }
@@ -32,3 +34,5 @@ export class WebsiteForm extends React.Component {
       ]);
     }
   }
+
+  /* Renders an iFrame with the URL of what has been entered into the bar. */

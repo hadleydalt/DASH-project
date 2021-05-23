@@ -19,9 +19,14 @@ interface CollectionNodeProps {
     id: number;
 }
 
+/* The Count, X, and Y variables allow nested nodes to appear in a grid order. */
+
 let count = 0;
 let x = -300;
 let y = 5;
+
+/* The decCount function is called when a nested node is deleted. It changes the Count, X, and Y variables so that any new nodes added 
+can be added to the right place in the grid. */
 
 export function decCount(){
     if (count % 3 === 0){
@@ -38,6 +43,8 @@ export function decCount(){
 @observer
 export class CollectionNodeView extends React.Component<CollectionNodeProps> {
 
+    /* Initializes the variables of the folder name labels should the user click on "add To Folder" */
+
     public f1;
     public f2;
     public f3;
@@ -49,7 +56,11 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
     public f9;
     public f10;
 
+    /* Initializes the ID of the node corresponding to this View */
+
     public id;
+
+    /* Initializes the store that any nested nodes can be added to */
 
     public store;
 
@@ -84,6 +95,8 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
         addedTo: null,
         deleted: false
     }
+
+    /* Methods to instantiate new Nodes and add them to the array created with the instantiation of this Collection.*/
 
     addTextNode(s: CollectionNodeStore){
         count += 1;
@@ -148,6 +161,9 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
         s.nodes.push(c);
     } 
 
+    /* Gathers the names of any folders that have been created so that they can be displayed in the list that shows up whenever the user 
+    clicks the add to folder button, which is called */
+
     handleClick(){
         if (this.state.clicked === false){
             this.setState({clicked: true});
@@ -190,6 +206,8 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
     }
 }
 
+/* Changes the state when the node is added to a folder so that the component can rerender and the "View Folder Contents" button can show up */
+
 handleClick2(){
     if (this.state.clicked2 === false){
         this.setState({clicked2: true});
@@ -200,6 +218,10 @@ handleClick2(){
         }
     
 }
+
+/* The following methods are used to push the node to respective folders, depending on which folder it has been added to. The method takes 
+in the ID given to this View (determined by the ID variable) and finds the NodeStore in the main node array that corresponds to it, 
+adding this node to the folder's array! */
 
 pushNode1(id: number){
     for (var i = 0; i < mainNodeCollection.nodes.length; i++){
@@ -380,10 +402,15 @@ pushNode10(id: number){
         this.props.store.y += e.movementY;
     }
 
+    /* If a linked node has been clicked on, this method gets the node and sets it to the 10, 10 position to show it.*/
+
     showNode(n: NodeStore){
         n.x = (10 - amDisplacedX);
         n.y = (10 - amDisplacedY);
     }
+
+    /* Sets state to Deleted! If the node is nested, the collection count decrements so the the nested grid is not graphically messed up. 
+    If the state is deleted the node will not render. */
 
     handleDelete(notNested:boolean){
         this.setState({deleted: true});
@@ -391,6 +418,14 @@ pushNode10(id: number){
             decCount();
         }
     }
+
+    /* If the + button is clicked, a menu appears displaying the names of all the folders that have been made. If the user clicks on 
+    one, it will push the node to the array of that Folder and render the View Folder Contents button. 
+    
+    This button displays all of the nodes that have been pushed to that folder's array. If the user clicks on one, that node's position 
+    will be set to 10, 10 to designate it. 
+    
+    The Collection node is also special because it contains a menu of options to instantiate nested nodes. */
 
     render() {
 

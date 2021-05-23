@@ -7,6 +7,9 @@ interface ResizeIProps {
     store: NodeStore;
 }
 
+/* The Resize icon appears on all nodes and enables them to be resized by changing the corresponding NodeStore's width (w) and height (h)
+values! */
+
 @observer
 export class ResizeIcon extends React.Component<ResizeIProps> {
 

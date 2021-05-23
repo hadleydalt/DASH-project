@@ -12,6 +12,9 @@ import { NodeStore } from "../../stores/NodeStore";
 import { amDisplacedX, amDisplacedY } from "../freeformcanvas/FreeFormCanvas";
 import { decCount } from "./CollectionNodeView";
 
+/* All of the View class's methods are explained in the Collection Node View class since they are generally the same, with 
+CollectionNodeView having a few extra capabilities. */
+
 interface VideoNodeProps {
     store: VideoNodeStore;
     id: number;

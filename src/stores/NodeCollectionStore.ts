@@ -8,8 +8,11 @@ import { CollectionNodeStore } from "./CollectionNodeStore";
 import { amDisplacedX, amDisplacedY } from "../views/freeformcanvas/FreeFormCanvas";
 
 export class NodeCollectionStore extends NodeStore {
+
+    /*Starts the count which increments every time a new node is instantiated so that it can be assigned an ID number.  */
     public count: number = 0;
 
+    /*Creates the main array of nodes */
     @observable
     public nodes: NodeStore[] = new Array<NodeStore>();
 
@@ -18,6 +21,9 @@ export class NodeCollectionStore extends NodeStore {
         return "translate(" + this.x + "px, " + this.y + "px)"; // for CSS trnsform property
     }
 
+    /*Adds all types of nodes, assigns its ID, and pushes it to the main array of nodes. notNested is true because all nodes pushed to 
+    the main array from instantiation by this NodeCollectionStore will not be nested inside a Collection node. */
+    
     @action
     public addTextNode(): void {
         this.count += 1;

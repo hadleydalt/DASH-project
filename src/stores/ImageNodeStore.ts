@@ -2,6 +2,7 @@ import { NodeStore } from "./NodeStore";
 
 export class ImageNodeStore extends NodeStore {
 
+    /*Set upon instantiation and determines whether the Store is nested inside a collection or not. */
     public notNested;
 
     constructor(initializer: Partial<ImageNodeStore>) {

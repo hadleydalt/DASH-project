@@ -3,13 +3,19 @@ import ReactQuill from "react-quill"
 import 'react-quill/dist/quill.snow.css';
 import { useState } from 'react';
 
+/* Placed into the Image nodes to allow the user to add an image */
+
 export default function AddImage() {
+
+  /* Uses "useState" to handle and concatanate text entered into the node. */
 
   const [convertedText, setConvertedText] = useState("");
 
   const handleConvertedText = e => {
     setConvertedText(e);
   }
+
+  /* Uses the React Quill Rich Text Editor extension to upload images. */
 
   return (
     <div>

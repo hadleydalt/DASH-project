@@ -19,6 +19,10 @@ interface FreeFormProps {
     store: NodeCollectionStore
 }
 
+/* The amDisplaced variables gather the amount by which the canvas has been moved, if it is moved. They are later used to ensure that new 
+nodes are always instantiated within a 500 pixel radius within the current screen. They are also used to make sure any linked node that 
+is clicked on is sent to the 10, 10 position regardless of where the canvas has been moved. */
+
 export let amDisplacedX = 0;
 export let amDisplacedY = 0;
 

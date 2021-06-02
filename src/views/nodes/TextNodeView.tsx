@@ -123,26 +123,6 @@ handleClick2(){
 
     onPointerDown = (e: React.PointerEvent): void => {
         e.stopPropagation();
-        e.preventDefault();
-        this.isPointerDown = true;
-        document.removeEventListener("pointermove", this.onPointerMove);
-        document.addEventListener("pointermove", this.onPointerMove);
-        document.removeEventListener("pointerup", this.onPointerUp);
-        document.addEventListener("pointerup", this.onPointerUp);
-    }
-
-    onPointerUp = (e: PointerEvent): void => {
-        e.stopPropagation();
-        e.preventDefault();
-        this.isPointerDown = false;
-        document.removeEventListener("pointermove", this.onPointerMove);
-        document.removeEventListener("pointerup", this.onPointerUp);
-    }
-
-    onPointerMove = (e: PointerEvent): void => {
-        e.stopPropagation();
-        e.preventDefault();
-        return;
     }
 
     pushNode1(id: number){

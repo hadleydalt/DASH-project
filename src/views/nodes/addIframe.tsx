@@ -23,7 +23,7 @@ export class WebsiteForm extends React.Component {
       return ( [
         <form>
           <label>
-            Click HERE and Type Web URL
+            Enter web URL
             <input type="text" value={this.state.value} onChange={this.handleChange} />
           </label>
         </form>,

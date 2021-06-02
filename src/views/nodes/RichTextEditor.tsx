@@ -16,7 +16,7 @@ export default function RichTextEditor() {
   return (
     <div>
       <ReactQuill
-        placeholder='Press Tx and begin typing '
+        placeholder='Leave a note'
         modules={RichTextEditor.modules}
         formats={RichTextEditor.formats}
         theme='snow'

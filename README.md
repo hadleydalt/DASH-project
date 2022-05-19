@@ -19,32 +19,32 @@ I took it upon myself to propose a redesign of Mr. Dam's pen-and-touch computing
 
 HOW TO USE THIS DASH
 
-➤ Using the sidebar buttons will generate nodes in random locations onto the canvas! 
+* Using the sidebar buttons will generate nodes in random locations onto the canvas! 
 
-➤ Creating Collections 
-    ➤ After you create a Collection note, you can use the buttons on the note to create more notes within it. After pressing each button, 
+* Creating Collections 
+    * After you create a Collection note, you can use the buttons on the note to create more notes within it. After pressing each button, 
       you NEED to either MOVE or RESIZE the note to get the nested note to show up. This is a semi-bug that probably could have been fixed 
       if I had more time. 
-    ➤ You can create multiple collections within collections. All nested nodes (children) of a collection will appear in a grid format. 
+    * You can create multiple collections within collections. All nested nodes (children) of a collection will appear in a grid format. 
 
-➤ You can delete nodes by pressing the X button on the bottom left. 
+* You can delete nodes by pressing the X button on the bottom left. 
 
-➤ Creating Folders (Linking Notes)
-    ➤ You can create a new Folder by typing its name into the sidebar and pressing "Create". You can create up to 10 Folders. 
-    ➤ Use the + button on the top left of each note to add this note to a folder! 
-    ➤ If you've created any Folders, they will appear as options for you to add the note to. (Once you click the + button)
+* Creating Folders (Linking Notes)
+    * You can create a new Folder by typing its name into the sidebar and pressing "Create". You can create up to 10 Folders. 
+    * Use the + button on the top left of each note to add this note to a folder! 
+    * If you've created any Folders, they will appear as options for you to add the note to. (Once you click the + button)
 
-    ➤ Once you've added a note to a Folder, a "View Folder Contents" button will appear that allows you to view the other notes in 
+    * Once you've added a note to a Folder, a "View Folder Contents" button will appear that allows you to view the other notes in 
       this Folder. If you add multiple notes to one Folder, their "Folder Contents" menus will update. 
-    ➤ You can add up to 3 notes to one folder!
-    ➤ If you've opened a Folder Contents menu, click on either Note 1, Note 2, or Note 3 to view the first, second, or third note 
+    * You can add up to 3 notes to one folder!
+    * If you've opened a Folder Contents menu, click on either Note 1, Note 2, or Note 3 to view the first, second, or third note 
       that was added to the Folder. 
-    ➤ Clicking on Note 1, Note 2, or Note 3 in the Folder Contents menu will pull up this note and put it in the topmost, leftmost 
+    * Clicking on Note 1, Note 2, or Note 3 in the Folder Contents menu will pull up this note and put it in the topmost, leftmost 
       position on the canvas to designate it. 
 
-    ➤ Viewing the Folder Contents of any note will allow you to access and visit the other nodes that were added to that Folder. 
+    * Viewing the Folder Contents of any note will allow you to access and visit the other nodes that were added to that Folder. 
 
-    ➤ IMPORTANT NOTE: If you add a note to a folder and then delete it, clicking on this note in another note's Folder Contents menu
+    * IMPORTANT NOTE: If you add a note to a folder and then delete it, clicking on this note in another note's Folder Contents menu
     will not generate anything. This is also a semi-bug that I probably could have fixed if I had more time. 
 
 

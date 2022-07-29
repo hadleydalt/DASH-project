@@ -1,58 +1,31 @@
 import * as React from 'react';
 import mainNodeCollection from '../../Main';
-import { CreateFolder } from './Folders/CreateFolder'
-import { NewFolderArray } from './Folders/NewFolderArray';
-
-/* Defines the functions that need to be known by the sidebar so that the buttons on the sidebar, rendered in this class, can be used
-to add nodes. */
-
-function addTextNode(){
-    mainNodeCollection.addTextNode();
-}
-
-function addImageNode(){
-  mainNodeCollection.addImageNode();
-}
-
-function addVideoNode(){
-  mainNodeCollection.addVideoNode();
-}
-
-function addIframeNode(){
-  mainNodeCollection.addIframeNode();
-}
-
-function addCollectionNode(){
-  mainNodeCollection.addCollectionNode();
-}
-
-export const nca = new NewFolderArray();
-
+import { FolderCreator } from './Folders/FolderCreator'
+import { StoreType } from '../../global/Variables'
 
 export function NodeForm() {
 
-
   return(
     <div>
-      <div className = "name-folder"><CreateFolder c={nca}/></div>
+      <div className = "name-folder"><FolderCreator /></div>
       <div className="youre-using">YOU'RE USING</div>
       <div className = "title">DASH!</div>
       <div className="add-new">ADD NEW</div>
       <div className = "button-menu">
       <button className = "button-style" onClick={
-        addTextNode
+        () => mainNodeCollection.addNode(StoreType.Text)
       }>Note</button>
       <button className = "button-style" onClick={
-        addImageNode
+        () => mainNodeCollection.addNode(StoreType.Image)
       }>Image</button>
       <button className = "button-style" onClick={
-        addVideoNode
+        () => mainNodeCollection.addNode(StoreType.Video)
       }>Video</button>
       <button className = "button-style" onClick={
-        addIframeNode
+        () => mainNodeCollection.addNode(StoreType.Iframe)
       }>Website</button>
       </div>
-      <button className = "col-button" onClick={addCollectionNode}>Collection</button>
+      <button className = "col-button" onClick={() => mainNodeCollection.addNode(StoreType.Collection)}>Collection</button>
       <div className="create-folder">CREATE FOLDER</div>
       <div className="my-folders">MY FOLDERS</div>
       <div className = "menu-bg"></div>

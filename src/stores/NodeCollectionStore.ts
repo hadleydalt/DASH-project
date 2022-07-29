@@ -1,11 +1,12 @@
 import { computed, observable, action } from "mobx";
-import { NodeStore, StoreType } from "./NodeStore";
+import { NodeStore } from "./NodeStore"
+import { StoreType, variables } from "../global/Variables";
 import { TextNodeStore } from "./TextNodeStore";
 import { ImageNodeStore } from "./ImageNodeStore";
 import { VideoNodeStore } from "./VideoNodeStore";
 import { IframeNodeStore } from "./IframeNodeStore";
 import { CollectionNodeStore } from "./CollectionNodeStore";
-import { amDisplacedX, amDisplacedY } from "../views/freeformcanvas/FreeFormCanvas";
+import { random500 } from "../global/Methods"
 
 export class NodeCollectionStore extends NodeStore {
 
@@ -21,52 +22,29 @@ export class NodeCollectionStore extends NodeStore {
         return "translate(" + this.x + "px, " + this.y + "px)"; // for CSS trnsform property
     }
 
-    /*Adds all types of nodes, assigns its ID, and pushes it to the main array of nodes. notNested is true because all nodes pushed to 
+    /*Adds all types of nodes, assigns its ID, and pushes it to the main array of nodes. nested is false because all nodes pushed to 
     the main array from instantiation by this NodeCollectionStore will not be nested inside a Collection node. */
-    
-    @action
-    public addTextNode(): void {
-        this.count += 1;
-        let t = new TextNodeStore({ type: StoreType.Text, x: ((Math.random() * 500) - amDisplacedX), y: ((Math.random() * 500) - amDisplacedY), title: "", text: "" });
-        t.notNested = true;
-        t.nodeID = this.count;
-        this.nodes.push(t);
-    }
 
     @action
-    public addImageNode(): void {
-        this.count += 1;
-        let i = new ImageNodeStore({ type: StoreType.Image, x: ((Math.random() * 500) - amDisplacedX), y: ((Math.random() * 500) - amDisplacedY), });
-        i.notNested = true;
-        i.nodeID = this.count;
-        this.nodes.push(i);
+    public addNode(type: StoreType): void {
+        this.count ++;
+        const x = random500() - variables.amDisplacedX;
+        const y = random500() - variables.amDisplacedY;
+        let n;
+        switch (type) {
+            case StoreType.Text: 
+                n = new TextNodeStore({ type: type, x: x, y: y, title: "", text: "" });
+            case StoreType.Image:
+                n = new ImageNodeStore({ type: type, x: x, y: y });
+            case StoreType.Video:
+                n = new VideoNodeStore({ type: type, x: x, y: y });
+            case StoreType.Iframe:
+                n = new IframeNodeStore({ type: type, x: x, y: y });
+            case StoreType.Collection:
+                n = new CollectionNodeStore({ type: type, x: x, y: y });
+        };
+        n.nested = false;
+        n.nodeID = this.count;
+        this.nodes.push(n);
     }
-
-    @action
-    public addVideoNode(): void {
-        this.count += 1;
-        let v = new VideoNodeStore({ type: StoreType.Video, x: ((Math.random() * 500) - amDisplacedX), y: ((Math.random() * 500) - amDisplacedY), });
-        v.notNested = true;
-        v.nodeID = this.count;
-        this.nodes.push(v);
-    }
-
-    @action
-    public addIframeNode(): void {
-        this.count += 1;
-        let f = new IframeNodeStore({ type: StoreType.Iframe, x: ((Math.random() * 500) - amDisplacedX), y: ((Math.random() * 500) - amDisplacedY), });
-        f.notNested = true;
-        f.nodeID = this.count;
-        this.nodes.push(f);
-    }
-
-    @action
-    public addCollectionNode(): void {
-        this.count += 1;
-        let c = new CollectionNodeStore({ type: StoreType.Collection, x: ((Math.random() * 500) - amDisplacedX), y: ((Math.random() * 500) - amDisplacedY), });
-        c.notNested = true;
-        c.nodeID = this.count;
-        this.nodes.push(c);
-    }
-
 }

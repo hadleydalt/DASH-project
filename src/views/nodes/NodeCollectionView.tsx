@@ -2,7 +2,7 @@ import * as React from "react";
 import { CollectionNodeStore } from "../../stores/CollectionNodeStore";
 import { IframeNodeStore } from "../../stores/IframeNodeStore";
 import { ImageNodeStore } from "../../stores/ImageNodeStore";
-import { StoreType } from "../../stores/NodeStore";
+import { StoreType } from "../../global/Variables";
 import { TextNodeStore } from "../../stores/TextNodeStore";
 import { VideoNodeStore } from "../../stores/VideoNodeStore";
 import { CollectionNodeView } from "./CollectionNodeView";
@@ -11,26 +11,25 @@ import { ImageNodeView } from "./ImageNodeView";
 import { TextNodeView } from "./TextNodeView";
 import { VideoNodeView } from "./VideoNodeView";
 
-interface NCVProps {
+interface Props {
     store: CollectionNodeStore
 }
 
 /* THe NodeCollectionView class acts as a "canvas" that appears in the CollectionNodeView. The nested nodes are rendered onto this 
 canvas. */
 
-export class NodeCollectionView extends React.Component<NCVProps> {
+export class NodeCollectionView extends React.Component<Props> {
 
     state = {
         clicked: false
     }
 
-    sS(){
-        if (this.state.clicked === false) {
-        this.setState({clicked: true});
-        }
-        if (this.state.clicked === true) {
+    updateClicked(){
+        if (this.state.clicked) {
             this.setState({clicked: false});
-            }
+        } else {
+            this.setState({clicked: true});
+        }
     }
     
     render(){

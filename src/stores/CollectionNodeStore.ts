@@ -1,5 +1,6 @@
-import {computed} from "mobx";
+import { computed } from "mobx";
 import { NodeStore } from "./NodeStore";
+import { constants } from "../global/Variables"
 
 export class CollectionNodeStore extends NodeStore {
 
@@ -8,14 +9,14 @@ export class CollectionNodeStore extends NodeStore {
     public nodes = new Array<NodeStore>();
 
     /*Set upon instantiation and determines whether the Store is nested inside a collection or not. */
-    public notNested; 
+    public nested; 
 
     /*Initializes the node's size and location. */
     constructor(initializer: Partial<CollectionNodeStore>) {
         super();
         Object.assign(this, initializer);
-        this.w = 300;
-        this.h = 222;
+        this.w = constants.nodeWidth;
+        this.h = constants.collectionHeight;
     }
 
     @computed

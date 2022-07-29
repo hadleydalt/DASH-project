@@ -4,40 +4,41 @@ import "./NodeView.scss";
 import { ResizeIcon } from "./ResizeIcon";
 import { TopBar } from "./TopBar";
 import * as React from 'react';
-import { nca } from "../freeformcanvas/Sidebar";
 import mainNodeCollection from "../../Main";
 import { CollectionNodeStore } from "../../stores/CollectionNodeStore";
-import { NodeStore, StoreType } from "../../stores/NodeStore";
+import { NodeStore } from "../../stores/NodeStore";
+import { constants, variables, StoreType } from "../../global/Variables"
 import { TextNodeStore } from "../../stores/TextNodeStore";
 import { ImageNodeStore } from "../../stores/ImageNodeStore";
 import { VideoNodeStore } from "../../stores/VideoNodeStore";
 import { NodeCollectionView } from "./NodeCollectionView";
-import { amDisplacedX, amDisplacedY } from "../freeformcanvas/FreeFormCanvas";
 
 interface CollectionNodeProps {
     store: CollectionNodeStore;
     id: number;
 }
 
+const parentFolderArray = constants.parentFolderArray;
+
 /* The Count, X, and Y variables allow nested nodes to appear in a grid order. */
 
 let count = 0;
-let x = -300;
-let y = 5;
+let x = -(constants.nodeWidth);
+let y = constants.collectionVerticalDisplacement;
+const totalVerticalDisplacement = constants.nodeHeight + constants.collectionVerticalDisplacement
 
 /* The decCount function is called when a nested node is deleted. It changes the Count, X, and Y variables so that any new nodes added 
 can be added to the right place in the grid. */
 
 export function decCount(){
-    if (count % 3 === 0){
-        y -= 305;
-        x += 610;
-        count -=1;
+    if (count % constants.collectionMaxCols === 0) {
+        y -= totalVerticalDisplacement;
+        x += (totalVerticalDisplacement * 2);
     }
     else {
-        x -= 300;
-        count -=1;
+        x -= constants.nodeWidth;
     }
+    count --;
 }
 
 @observer
@@ -45,16 +46,7 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
 
     /* Initializes the variables of the folder name labels should the user click on "add To Folder" */
 
-    public f1;
-    public f2;
-    public f3;
-    public f4;
-    public f5;
-    public f6;
-    public f7;
-    public f8;
-    public f9;
-    public f10;
+    public folderNameLabels = ['', '', '', '', '', '', '', '', '', '']
 
     /* Initializes the ID of the node corresponding to this View */
 
@@ -67,21 +59,11 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
     constructor(props){
         super(props);
 
-        this.handleClick = this.handleClick.bind(this);
-        this.handleClick2 = this.handleClick2.bind(this);
+        this.handleExpand = this.handleExpand.bind(this);
+        this.handleOpenCloseFolderContents = this.handleOpenCloseFolderContents.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
 
         this.id = mainNodeCollection.count;
-        this.f1 = "";
-        this.f2 = "";
-        this.f3 = "";
-        this.f4 = "";
-        this.f5 = "";
-        this.f6 = "";
-        this.f7 = "";
-        this.f8 = "";
-        this.f9 = "";
-        this.f10 = "";
 
         this.id = this.props.id;
 
@@ -89,8 +71,8 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
     }
 
     state = {
-        clicked: false,
-        clicked2: false, 
+        expanded: false,
+        folderContentsOpen: false, 
         added: false,
         addedTo: null,
         deleted: false
@@ -98,276 +80,83 @@ export class CollectionNodeView extends React.Component<CollectionNodeProps> {
 
     /* Methods to instantiate new Nodes and add them to the array created with the instantiation of this Collection.*/
 
-    addTextNode(s: CollectionNodeStore){
-        count += 1;
-        let t = new TextNodeStore({ type: StoreType.Text, x: x+305, y: y, title: "", text: "" });
-        t.notNested = false;
-        x=t.x;
-        t.nodeID = 0;
-        if (count % 3 === 0){
-            x=-300;
-            y+=305;
+    addNode(store: CollectionNodeStore, type: StoreType) {
+        count ++;
+        let n;
+        switch (type) {
+            case StoreType.Text:
+                n = new TextNodeStore({ type: type, x: x+totalVerticalDisplacement, y: y, title: "", text: "" });
+            case StoreType.Image:
+                new ImageNodeStore({ type: type, x: x+totalVerticalDisplacement, y: y });
+            case StoreType.Video:
+                new VideoNodeStore({ type: type, x: x+totalVerticalDisplacement, y: y });
+            case StoreType.Iframe:
+                new IframeNodeStore({ type: type, x: x+totalVerticalDisplacement, y: y });
+            case StoreType.Collection:
+                new CollectionNodeStore({ type: type, x: x+totalVerticalDisplacement, y: y });
         }
-        s.nodes.push(t);
-    }
-
-    addImageNode(s: CollectionNodeStore){
-        count += 1;
-        let i = new ImageNodeStore({ type: StoreType.Image, x: x+305, y: y });
-        i.notNested = false;
-        x=i.x;
-        i.nodeID = 0;
-        if (count % 3 === 0){
-            x=-300;
-            y+=305;
+        n.nested = true;
+        n.nodeID = 0;
+        if (type === StoreType.Collection) {
+            x = -(constants.nodeWidth)
+            count = 0
+        } else {
+            x = n.x
+            if (count % constants.collectionMaxCols === 0) {
+                x = -(constants.nodeWidth)
+                y += totalVerticalDisplacement
+            }
         }
-        s.nodes.push(i);
+        store.nodes.push(n);
     }
-
-    addVideoNode(s: CollectionNodeStore){
-        count += 1;
-        let v = new VideoNodeStore({ type: StoreType.Video, x: x+305, y: y });
-        v.notNested = false;
-        x=v.x;
-        v.nodeID = 0;
-        if (count % 3 === 0){
-            x=-300;
-            y+=305;
-        }
-        s.nodes.push(v);
-    }
-
-    addIframeNode(s: CollectionNodeStore){
-        count += 1;
-        let f = new IframeNodeStore({ type: StoreType.Iframe, x: x+305, y: y });
-        f.notNested = false;
-        x=f.x;
-        f.nodeID = 0;
-        if (count % 3 === 0){
-            x=-300;
-            y+=305;
-        }
-        s.nodes.push(f);
-    }
-
-    addCollectionNode(s: CollectionNodeStore){
-        count +=1;
-        let c = new CollectionNodeStore({ type: StoreType.Collection, x: x+305, y: y });
-        count = 0;
-        x=-300;
-        y=5;
-        c.notNested = false;
-        c.nodeID = 0;
-        s.nodes.push(c);
-    } 
 
     /* Gathers the names of any folders that have been created so that they can be displayed in the list that shows up whenever the user 
     clicks the add to folder button, which is called */
 
-    handleClick(){
-        if (this.state.clicked === false){
-            this.setState({clicked: true});
+    handleExpand() {
+        if (this.state.expanded === false){
+            this.setState({expanded: true});
             }
     
-            if (this.state.clicked === true){
-                this.setState({clicked: false});
+            if (this.state.expanded === true){
+                this.setState({expanded: false});
             }
 
-        if (nca.folders[0].isNamed = true) {
-            this.f1 = nca.folders[0].name + '  ';
+        let i = 0
+        for (; i < parentFolderArray.length; ) {
+            if (parentFolderArray[i].isNamed) {
+                this.folderNameLabels[i] = parentFolderArray[i].name + '  ';
+            }
         }
-
-        if (nca.folders[1].isNamed = true) {
-            this.f2 = nca.folders[1].name + '  ';
-        }
-        if (nca.folders[2].isNamed = true) {
-            this.f3 = nca.folders[2].name + '  ';
-        }
-        if (nca.folders[3].isNamed = true) {
-            this.f4 = nca.folders[3].name + '  ';
-        }
-        if (nca.folders[4].isNamed = true) {
-            this.f5 = nca.folders[4].name + '  ';
-        }
-        if (nca.folders[5].isNamed = true) {
-            this.f6 = nca.folders[5].name + '  ';
-        }
-        if (nca.folders[6].isNamed = true) {
-            this.f7 = nca.folders[6].name + '  ';
-        }
-        if (nca.folders[7].isNamed = true) {
-            this.f8 = nca.folders[7].name + '  ';
-        }
-        if (nca.folders[8].isNamed = true) {
-            this.f9 = nca.folders[8].name + '  ';
-        }
-        if (nca.folders[9].isNamed = true) {
-            this.f10 = nca.folders[9].name + '  '; 
-    }
 }
 
 /* Changes the state when the node is added to a folder so that the component can rerender and the "View Folder Contents" button can show up */
 
-handleClick2(){
-    if (this.state.clicked2 === false){
-        this.setState({clicked2: true});
+handleOpenCloseFolderContents(){
+    if (this.state.folderContentsOpen === false){
+        this.setState({folderContentsOpen: true});
         }
 
-        if (this.state.clicked2 === true){
-            this.setState({clicked2: false});
+        if (this.state.folderContentsOpen === true){
+            this.setState({folderContentsOpen: false});
         }
     
 }
 
-/* The following methods are used to push the node to respective folders, depending on which folder it has been added to. The method takes 
+/* The following method is used to push the node to respective folders, depending on which folder it has been added to. The method takes 
 in the ID given to this View (determined by the ID variable) and finds the NodeStore in the main node array that corresponds to it, 
 adding this node to the folder's array! */
 
-pushNode1(id: number){
+pushNode(id: number, folderIndex: number) {
+    const thisFolder = parentFolderArray[folderIndex];
     for (var i = 0; i < mainNodeCollection.nodes.length; i++){
         if (mainNodeCollection.nodes[i].nodeID === id){
-            if (nca.folders[0].folder.length < 3){
-            this.setState({added: true, addedTo: 1});
-            nca.folders[0].folder.push(mainNodeCollection.nodes[i]);
-            alert('Added to ' + nca.folders[0].name + '!');
-            }
-            else {
-            alert('Could not add to folder - maximum reached.')
-            }
-        }
-    }
-}
-
-pushNode2(id: number){
-    for (var i = 0; i < mainNodeCollection.nodes.length; i++){
-        if (mainNodeCollection.nodes[i].nodeID === id){
-            if (nca.folders[1].folder.length < 3){
-            this.setState({added: true, addedTo: 2});
-            nca.folders[1].folder.push(mainNodeCollection.nodes[i]);
-            alert('Added to ' + nca.folders[1].name + '!');
-            }
-            else {
-            alert('Could not add to folder - maximum reached.')
-            }
-        }
-    }
-}
-
-pushNode3(id: number){
-    for (var i = 0; i < mainNodeCollection.nodes.length; i++){
-        if (mainNodeCollection.nodes[i].nodeID === id){
-            if (nca.folders[2].folder.length < 3){
-            this.setState({added: true, addedTo: 3});
-            nca.folders[2].folder.push(mainNodeCollection.nodes[i]);
-            alert('Added to ' + nca.folders[2].name + '!');
-            }
-            else {
-            alert('Could not add to folder - maximum reached.')
-            }
-        }
-    }
-}
-
-pushNode4(id: number){
-    for (var i = 0; i < mainNodeCollection.nodes.length; i++){
-        if (mainNodeCollection.nodes[i].nodeID === id){
-            if (nca.folders[3].folder.length < 3){
-            this.setState({added: true, addedTo: 4});
-            nca.folders[3].folder.push(mainNodeCollection.nodes[i]);
-            alert('Added to ' + nca.folders[3].name + '!');
-            }
-            else {
-            alert('Could not add to folder - maximum reached.')
-            }
-        }
-    }
-}
-
-pushNode5(id: number){
-    for (var i = 0; i < mainNodeCollection.nodes.length; i++){
-        if (mainNodeCollection.nodes[i].nodeID === id){
-            if (nca.folders[4].folder.length < 3){
-            this.setState({added: true, addedTo: 5});
-            nca.folders[4].folder.push(mainNodeCollection.nodes[i]);
-            alert('Added to ' + nca.folders[4].name + '!');
-            }
-            else {
-            alert('Could not add to folder - maximum reached.')
-            }
-        }
-    }
-}
-
-pushNode6(id: number){
-    for (var i = 0; i < mainNodeCollection.nodes.length; i++){
-        if (mainNodeCollection.nodes[i].nodeID === id){
-            if (nca.folders[5].folder.length < 3){
-            this.setState({added: true, addedTo: 6});
-            nca.folders[5].folder.push(mainNodeCollection.nodes[i]);
-            alert('Added to ' + nca.folders[5].name + '!');
-            }
-            else {
-            alert('Could not add to folder - maximum reached.')
-            }
-        }
-    }
-}
-
-pushNode7(id: number){
-    for (var i = 0; i < mainNodeCollection.nodes.length; i++){
-        if (mainNodeCollection.nodes[i].nodeID === id){
-            if (nca.folders[6].folder.length < 3){
-            this.setState({added: true, addedTo: 7});
-            nca.folders[6].folder.push(mainNodeCollection.nodes[i]);
-            alert('Added to ' + nca.folders[6].name + '!');
-            }
-            else {
-            alert('Could not add to folder - maximum reached.')
-            }
-        }
-    }
-}
-
-pushNode8(id: number){
-    for (var i = 0; i < mainNodeCollection.nodes.length; i++){
-        if (mainNodeCollection.nodes[i].nodeID === id){
-            if (nca.folders[7].folder.length < 3){
-            this.setState({added: true, addedTo: 8});
-            nca.folders[7].folder.push(mainNodeCollection.nodes[i]);
-            alert('Added to ' + nca.folders[7].name + '!');
-            }
-            else {
-            alert('Could not add to folder - maximum reached.')
-            }
-        }
-    }
-}
-
-pushNode9(id: number){
-    for (var i = 0; i < mainNodeCollection.nodes.length; i++){
-        if (mainNodeCollection.nodes[i].nodeID === id){
-            if (nca.folders[8].folder.length < 3){
-            this.setState({added: true, addedTo: 9});
-            nca.folders[8].folder.push(mainNodeCollection.nodes[i]);
-            alert('Added to ' + nca.folders[8].name + '!');
-            }
-            else {
-            alert('Could not add to folder - maximum reached.')
-            }
-        }
-    }
-}
-
-pushNode10(id: number){
-    for (var i = 0; i < mainNodeCollection.nodes.length; i++){
-        if (mainNodeCollection.nodes[i].nodeID === id){
-            if (nca.folders[9].folder.length < 3){
-            this.setState({added: true, addedTo: 10});
-            nca.folders[9].folder.push(mainNodeCollection.nodes[i]);
-            alert('Added to ' + nca.folders[9].name + '!');
-            }
-            else {
-            alert('Could not add to folder - maximum reached.')
+            if (thisFolder.contents.length < 3) {
+                this.setState({added: true, addedTo: folderIndex + 1});
+                thisFolder.contents.push(mainNodeCollection.nodes[i]);
+                alert('Added to ' + thisFolder.name + '!');
+            } else {
+                alert('Could not add to folder - maximum reached.')
             }
         }
     }
@@ -405,18 +194,23 @@ pushNode10(id: number){
     /* If a linked node has been clicked on, this method gets the node and sets it to the 10, 10 position to show it.*/
 
     showNode(n: NodeStore){
-        n.x = (10 - amDisplacedX);
-        n.y = (10 - amDisplacedY);
+        n.x = (10 - variables.amDisplacedX);
+        n.y = (10 - variables.amDisplacedY);
     }
 
     /* Sets state to Deleted! If the node is nested, the collection count decrements so the the nested grid is not graphically messed up. 
     If the state is deleted the node will not render. */
 
-    handleDelete(notNested:boolean){
+    handleDelete(nested:boolean){
         this.setState({deleted: true});
-        if (notNested === false){
+        if (nested){
             decCount();
         }
+    }
+
+    generateFolderContentStatement(): string {
+        const index = this.state.addedTo - 1
+        return this.folderNameLabels[index] + " contains " + parentFolderArray[index].contents.length + " notes"
     }
 
     /* If the + button is clicked, a menu appears displaying the names of all the folders that have been made. If the user clicks on 
@@ -429,7 +223,11 @@ pushNode10(id: number){
 
     render() {
 
-        let store = this.props.store;
+        const store = this.props.store;
+        const index = this.state.addedTo - 1
+        const label = this.folderNameLabels[index]
+        const contents = parentFolderArray[index].contents
+        const numContents = contents.length
 
         return (
             <div>
@@ -439,89 +237,35 @@ pushNode10(id: number){
                 e.preventDefault();
             }}>
                 <TopBar store={store} />
-                {this.state.added? <button className="show-list" onClick={this.handleClick2}>{this.state.clicked2 ? "Close Folder Contnts": "View Folder Contents"}</button> : null}
-                {store.notNested && this.state.added === false? <button className="atc-button" title = "Add to Folder" onClick={this.handleClick}>{this.state.clicked ? "-": "+"}</button> : null}
-                {this.state.clicked && this.state.added === false?
+                {this.state.added? <button className="show-list" onClick={this.handleOpenCloseFolderContents}>{this.state.folderContentsOpen ? "Close Folder Contnts": "View Folder Contents"}</button> : null}
+                {!store.nested && !this.state.added ? <button className="atc-button" title = "Add to Folder" onClick={this.handleExpand}>{this.state.expanded ? "-": "+"}</button> : null}
+                {this.state.expanded && !this.state.added ?
                 <div className="atc-menu-wrapper">
                 <div className="add-to">Add To:</div>
-                <span className="atc-menu" onClick={() => this.pushNode1(this.id)}>{this.f1}</span>
-                <span className="atc-menu" onClick={() => this.pushNode2(this.id)}>{this.f2}</span>
-                <span className="atc-menu" onClick={() => this.pushNode3(this.id)}>{this.f3}</span>
-                <span className="atc-menu" onClick={() => this.pushNode4(this.id)}>{this.f4}</span>
-                <span className="atc-menu" onClick={() => this.pushNode5(this.id)}>{this.f5}</span>
-                <span className="atc-menu" onClick={() => this.pushNode6(this.id)}>{this.f6}</span>
-                <span className="atc-menu" onClick={() => this.pushNode7(this.id)}>{this.f7}</span>
-                <span className="atc-menu" onClick={() => this.pushNode8(this.id)}>{this.f8}</span>
-                <span className="atc-menu" onClick={() => this.pushNode9(this.id)}>{this.f9}</span>
-                <span className="atc-menu" onClick={() => this.pushNode10(this.id)}>{this.f10}</span>
+                {this.folderNameLabels.map((label, index) => {
+                    <span className="atc-menu" onClick={() => this.pushNode(this.id, index)}>{label}</span>
+                })}
                 </div>
             : null}
-                {this.state.clicked2 ? 
+                {this.state.folderContentsOpen ? 
                 <div>
                 <div className="atc-menu-wrapper">
-                <div className="add-to">{this.state.addedTo===1? 
-                this.f1 + " contains " + nca.folders[0].folder.length + " notes": 
-                this.state.addedTo===2? this.f2 + " contains " + nca.folders[1].folder.length + " notes" : 
-                this.state.addedTo===3? this.f3 + " contains " + nca.folders[2].folder.length + " notes" : 
-                this.state.addedTo===4? this.f4 + " contains " + nca.folders[3].folder.length + " notes" : 
-                this.state.addedTo===5? this.f5 + " contains " + nca.folders[4].folder.length + " notes" : 
-                this.state.addedTo===6? this.f6 + " contains " + nca.folders[5].folder.length + " notes" : 
-                this.state.addedTo===7? this.f7 + " contains " + nca.folders[6].folder.length + " notes" : 
-                this.state.addedTo===8? this.f8 + " contains " + nca.folders[7].folder.length + " notes" : 
-                this.state.addedTo===9? this.f9 + " contains " + nca.folders[8].folder.length + " notes" : 
-                this.f10 + " contains " + nca.folders[9].folder.length + " notes"}</div>
-                {this.state.addedTo===1? 
-                <div><span className="atc-menu">{nca.folders[0].folder.length === 0? "": ""}</span> 
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[0].folder[0])}>{nca.folders[0].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[0].folder[1])}>{nca.folders[0].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[0].folder[2])}>{nca.folders[0].folder.length > 2? "Note 3": ""}</div>
-                </div> : 
-                this.state.addedTo===2? <div><div className="atc-menu">{nca.folders[1].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[1].folder[0])}>{nca.folders[1].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[1].folder[1])}>{nca.folders[1].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[1].folder[2])}>{nca.folders[1].folder.length > 2? "Note 3": ""}</div>
-                </div> : 
-                this.state.addedTo===3? <div><div className="atc-menu">{nca.folders[2].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[2].folder[0])}>{nca.folders[2].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[2].folder[1])}>{nca.folders[2].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[2].folder[2])}>{nca.folders[2].folder.length > 2? "Note 3": ""}</div>
-                </div> : 
-                this.state.addedTo===4? <div><div className="atc-menu">{nca.folders[3].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[3].folder[0])}>{nca.folders[3].folder.length > 0 ? "Note 1": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[3].folder[1])}>{nca.folders[3].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[3].folder[2])}>{nca.folders[3].folder.length > 2? "Note 3": ""}</div>
-                </div> : 
-                this.state.addedTo===5? <div><div className="atc-menu">{nca.folders[4].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[4].folder[0])}>{nca.folders[4].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[4].folder[1])}>{nca.folders[4].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[4].folder[2])}>{nca.folders[4].folder.length > 2? "Note 3": ""}</div>
-                </div> : 
-                this.state.addedTo===6? <div><div className="atc-menu">{nca.folders[5].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[5].folder[0])}>{nca.folders[5].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[5].folder[1])}>{nca.folders[5].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[5].folder[2])}>{nca.folders[5].folder.length > 2? "Note 3": ""}</div>
-                </div> : 
-                this.state.addedTo===7? <div><div className="atc-menu">{nca.folders[6].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[6].folder[0])}>{nca.folders[6].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[6].folder[1])}>{nca.folders[6].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[6].folder[2])}>{nca.folders[6].folder.length > 2? "Note 3": ""}</div>
-                </div> : 
-                this.state.addedTo===8? <div><div className="atc-menu">{nca.folders[7].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[7].folder[0])}>{nca.folders[7].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[7].folder[1])}>{nca.folders[7].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[7].folder[2])}>{nca.folders[7].folder.length > 2? "Note 3": ""}</div>
-                </div> : 
-                this.state.addedTo===9? <div><div className="atc-menu">{nca.folders[8].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[8].folder[0])}>{nca.folders[8].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[8].folder[1])}>{nca.folders[8].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[8].folder[2])}>{nca.folders[8].folder.length > 2? "Note 3": ""}</div>
-                </div> : 
-                <div><div className="atc-menu">{nca.folders[9].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[9].folder[0])}>{nca.folders[9].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[9].folder[1])}>{nca.folders[9].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[9].folder[2])}>{nca.folders[9].folder.length > 2? "Note 3": ""}</div>
-                </div>
-                }
+
+                    <div className="add-to">
+                        {label + " contains " + numContents + " notes"}
+                    </div>
+
+                    <div>
+                        {numContents > 0 ? contents.map((content, index) => {
+                            <div 
+                                className="atc-menu"
+                                onClick={() => this.showNode(content)}
+                                key={index}
+                            > 
+                                {"Note " + String(index + 1)}
+                            </div>
+                        }) : null}
+                    </div>
                 </div>
             </div> : null}
                 <div className="scroll-box">
@@ -529,20 +273,16 @@ pushNode10(id: number){
                         <div className="collection-name">COLLECTION →</div>
                         <div className="node-atc">ADD NEW:</div>
                         <div className="node-button-wrapper">
-                            <button className = "node-button-each" onClick={() => this.addTextNode(this.store)}>Note</button>
-                            <button className = "node-button-each" onClick={() => this.addImageNode(this.store)}>Image</button>
-                            <button className = "node-button-each" onClick={() => this.addVideoNode(this.store)}>Video</button>
-                            <button className = "node-button-each" onClick={() => this.addIframeNode(this.store)}>Website</button>
-                            <div>
-                            <button className="node-button-c" onClick={() => this.addCollectionNode(this.store)}>Collection</button>
-                            </div>
+                            {constants.storeTypes.map((type, index) => {
+                                <button key={index} className={type === StoreType.Collection ? "node-button-c" : "node-button-each"} onClick={() => this.addNode(this.store, type)}>{constants.storeTypesNames[index]}</button>
+                            })}
                         </div>
                         <div className = "rb-wrapper"><button className ="rainbow-button">After adding, move or resize the collection to view the addition.</button></div>
                         <NodeCollectionView store = {store}/>
                         <ResizeIcon store={store}></ResizeIcon>
                     </div>
                 </div>
-                {store.notNested? <button className="delete" onClick={() => this.handleDelete(true)}>X</button> : <button className="delete" onClick={() => this.handleDelete(false)}>X</button>}
+                {store.nested?<button className="delete" onClick={() => this.handleDelete(false)}>X</button> : <button className="delete" onClick={() => this.handleDelete(true)}>X</button> }
             </div>
     }
             </div>

@@ -8,7 +8,7 @@ import { VideoNodeStore } from "../../stores/VideoNodeStore";
 import { TextNodeView } from "../nodes/TextNodeView";
 import { VideoNodeView } from "../nodes/VideoNodeView";
 import { ImageNodeView } from "../nodes/ImageNodeView";
-import { StoreType } from "../../stores/NodeStore";
+import { StoreType, variables } from "../../global/Variables";
 import { IframeNodeView } from "../nodes/IframeNodeView";
 import { IframeNodeStore } from "../../stores/IframeNodeStore";
 import { NodeForm } from "./Sidebar";
@@ -18,13 +18,6 @@ import { CollectionNodeView } from "../nodes/CollectionNodeView";
 interface FreeFormProps {
     store: NodeCollectionStore
 }
-
-/* The amDisplaced variables gather the amount by which the canvas has been moved, if it is moved. They are later used to ensure that new 
-nodes are always instantiated within a 500 pixel radius within the current screen. They are also used to make sure any linked node that 
-is clicked on is sent to the 10, 10 position regardless of where the canvas has been moved. */
-
-export let amDisplacedX = 0;
-export let amDisplacedY = 0;
 
 @observer
 export class FreeFormCanvas extends React.Component<FreeFormProps> {
@@ -56,12 +49,12 @@ export class FreeFormCanvas extends React.Component<FreeFormProps> {
 
         this.props.store.x += e.movementX;
         this.props.store.y += e.movementY;
-        amDisplacedX += e.movementX;
-        amDisplacedY += e.movementY;
+        variables.amDisplacedX += e.movementX;
+        variables.amDisplacedY += e.movementY;
     }
 
     render() {
-        let store = this.props.store;
+        const store = this.props.store;
         return (
             <div className="ffc-and-menu-container">
             <div className="freeformcanvas-container" onPointerDown={this.onPointerDown}>

@@ -5,10 +5,10 @@ import { ResizeIcon } from "./ResizeIcon";
 import { TopBar } from "./TopBar";
 import * as React from 'react';
 import RichTextEditor from '../nodes/RichTextEditor';
-import { nca } from '../freeformcanvas/Sidebar';
+import { folderArr } from '../freeformcanvas/Sidebar';
 import mainNodeCollection from "../../Main";
 import { NodeStore } from "../../stores/NodeStore";
-import { amDisplacedX, amDisplacedY } from "../freeformcanvas/FreeFormCanvas";
+import { variables } from "../../global/Variables"
 import { decCount } from "./CollectionNodeView";
 
 interface TextNodeProps {
@@ -77,36 +77,36 @@ export class TextNodeView extends React.Component<TextNodeProps> {
                 this.setState({clicked: false});
             }
 
-        if (nca.folders[0].isNamed = true) {
-            this.f1 = nca.folders[0].name + '  ';
+        if (folderArr.folders[0].isNamed = true) {
+            this.f1 = folderArr.folders[0].name + '  ';
         }
 
-        if (nca.folders[1].isNamed = true) {
-            this.f2 = nca.folders[1].name + '  ';
+        if (folderArr.folders[1].isNamed = true) {
+            this.f2 = folderArr.folders[1].name + '  ';
         }
-        if (nca.folders[2].isNamed = true) {
-            this.f3 = nca.folders[2].name + '  ';
+        if (folderArr.folders[2].isNamed = true) {
+            this.f3 = folderArr.folders[2].name + '  ';
         }
-        if (nca.folders[3].isNamed = true) {
-            this.f4 = nca.folders[3].name + '  ';
+        if (folderArr.folders[3].isNamed = true) {
+            this.f4 = folderArr.folders[3].name + '  ';
         }
-        if (nca.folders[4].isNamed = true) {
-            this.f5 = nca.folders[4].name + '  ';
+        if (folderArr.folders[4].isNamed = true) {
+            this.f5 = folderArr.folders[4].name + '  ';
         }
-        if (nca.folders[5].isNamed = true) {
-            this.f6 = nca.folders[5].name + '  ';
+        if (folderArr.folders[5].isNamed = true) {
+            this.f6 = folderArr.folders[5].name + '  ';
         }
-        if (nca.folders[6].isNamed = true) {
-            this.f7 = nca.folders[6].name + '  ';
+        if (folderArr.folders[6].isNamed = true) {
+            this.f7 = folderArr.folders[6].name + '  ';
         }
-        if (nca.folders[7].isNamed = true) {
-            this.f8 = nca.folders[7].name + '  ';
+        if (folderArr.folders[7].isNamed = true) {
+            this.f8 = folderArr.folders[7].name + '  ';
         }
-        if (nca.folders[8].isNamed = true) {
-            this.f9 = nca.folders[8].name + '  ';
+        if (folderArr.folders[8].isNamed = true) {
+            this.f9 = folderArr.folders[8].name + '  ';
         }
-        if (nca.folders[9].isNamed = true) {
-            this.f10 = nca.folders[9].name + '  '; 
+        if (folderArr.folders[9].isNamed = true) {
+            this.f10 = folderArr.folders[9].name + '  '; 
     }
 }
 
@@ -128,10 +128,10 @@ handleClick2(){
     pushNode1(id: number){
         for (var i = 0; i < mainNodeCollection.nodes.length; i++){
             if (mainNodeCollection.nodes[i].nodeID === id){
-                if (nca.folders[0].folder.length < 3){
+                if (folderArr.folders[0].folder.length < 3){
                 this.setState({added: true, addedTo: 1});
-                nca.folders[0].folder.push(mainNodeCollection.nodes[i]);
-                alert('Added to ' + nca.folders[0].name + '!');
+                folderArr.folders[0].folder.push(mainNodeCollection.nodes[i]);
+                alert('Added to ' + folderArr.folders[0].name + '!');
                 }
                 else {
                 alert('Could not add to folder - maximum reached.')
@@ -143,10 +143,10 @@ handleClick2(){
     pushNode2(id: number){
         for (var i = 0; i < mainNodeCollection.nodes.length; i++){
             if (mainNodeCollection.nodes[i].nodeID === id){
-                if (nca.folders[1].folder.length < 3){
+                if (folderArr.folders[1].folder.length < 3){
                 this.setState({added: true, addedTo: 2});
-                nca.folders[1].folder.push(mainNodeCollection.nodes[i]);
-                alert('Added to ' + nca.folders[1].name + '!');
+                folderArr.folders[1].folder.push(mainNodeCollection.nodes[i]);
+                alert('Added to ' + folderArr.folders[1].name + '!');
                 }
                 else {
                 alert('Could not add to folder - maximum reached.')
@@ -158,10 +158,10 @@ handleClick2(){
     pushNode3(id: number){
         for (var i = 0; i < mainNodeCollection.nodes.length; i++){
             if (mainNodeCollection.nodes[i].nodeID === id){
-                if (nca.folders[2].folder.length < 3){
+                if (folderArr.folders[2].folder.length < 3){
                 this.setState({added: true, addedTo: 3});
-                nca.folders[2].folder.push(mainNodeCollection.nodes[i]);
-                alert('Added to ' + nca.folders[2].name + '!');
+                folderArr.folders[2].folder.push(mainNodeCollection.nodes[i]);
+                alert('Added to ' + folderArr.folders[2].name + '!');
                 }
                 else {
                 alert('Could not add to folder - maximum reached.')
@@ -173,10 +173,10 @@ handleClick2(){
     pushNode4(id: number){
         for (var i = 0; i < mainNodeCollection.nodes.length; i++){
             if (mainNodeCollection.nodes[i].nodeID === id){
-                if (nca.folders[3].folder.length < 3){
+                if (folderArr.folders[3].folder.length < 3){
                 this.setState({added: true, addedTo: 4});
-                nca.folders[3].folder.push(mainNodeCollection.nodes[i]);
-                alert('Added to ' + nca.folders[3].name + '!');
+                folderArr.folders[3].folder.push(mainNodeCollection.nodes[i]);
+                alert('Added to ' + folderArr.folders[3].name + '!');
                 }
                 else {
                 alert('Could not add to folder - maximum reached.')
@@ -188,10 +188,10 @@ handleClick2(){
     pushNode5(id: number){
         for (var i = 0; i < mainNodeCollection.nodes.length; i++){
             if (mainNodeCollection.nodes[i].nodeID === id){
-                if (nca.folders[4].folder.length < 3){
+                if (folderArr.folders[4].folder.length < 3){
                 this.setState({added: true, addedTo: 5});
-                nca.folders[4].folder.push(mainNodeCollection.nodes[i]);
-                alert('Added to ' + nca.folders[4].name + '!');
+                folderArr.folders[4].folder.push(mainNodeCollection.nodes[i]);
+                alert('Added to ' + folderArr.folders[4].name + '!');
                 }
                 else {
                 alert('Could not add to folder - maximum reached.')
@@ -203,10 +203,10 @@ handleClick2(){
     pushNode6(id: number){
         for (var i = 0; i < mainNodeCollection.nodes.length; i++){
             if (mainNodeCollection.nodes[i].nodeID === id){
-                if (nca.folders[5].folder.length < 3){
+                if (folderArr.folders[5].folder.length < 3){
                 this.setState({added: true, addedTo: 6});
-                nca.folders[5].folder.push(mainNodeCollection.nodes[i]);
-                alert('Added to ' + nca.folders[5].name + '!');
+                folderArr.folders[5].folder.push(mainNodeCollection.nodes[i]);
+                alert('Added to ' + folderArr.folders[5].name + '!');
                 }
                 else {
                 alert('Could not add to folder - maximum reached.')
@@ -218,10 +218,10 @@ handleClick2(){
     pushNode7(id: number){
         for (var i = 0; i < mainNodeCollection.nodes.length; i++){
             if (mainNodeCollection.nodes[i].nodeID === id){
-                if (nca.folders[6].folder.length < 3){
+                if (folderArr.folders[6].folder.length < 3){
                 this.setState({added: true, addedTo: 7});
-                nca.folders[6].folder.push(mainNodeCollection.nodes[i]);
-                alert('Added to ' + nca.folders[6].name + '!');
+                folderArr.folders[6].folder.push(mainNodeCollection.nodes[i]);
+                alert('Added to ' + folderArr.folders[6].name + '!');
                 }
                 else {
                 alert('Could not add to folder - maximum reached.')
@@ -233,10 +233,10 @@ handleClick2(){
     pushNode8(id: number){
         for (var i = 0; i < mainNodeCollection.nodes.length; i++){
             if (mainNodeCollection.nodes[i].nodeID === id){
-                if (nca.folders[7].folder.length < 3){
+                if (folderArr.folders[7].folder.length < 3){
                 this.setState({added: true, addedTo: 8});
-                nca.folders[7].folder.push(mainNodeCollection.nodes[i]);
-                alert('Added to ' + nca.folders[7].name + '!');
+                folderArr.folders[7].folder.push(mainNodeCollection.nodes[i]);
+                alert('Added to ' + folderArr.folders[7].name + '!');
                 }
                 else {
                 alert('Could not add to folder - maximum reached.')
@@ -248,10 +248,10 @@ handleClick2(){
     pushNode9(id: number){
         for (var i = 0; i < mainNodeCollection.nodes.length; i++){
             if (mainNodeCollection.nodes[i].nodeID === id){
-                if (nca.folders[8].folder.length < 3){
+                if (folderArr.folders[8].folder.length < 3){
                 this.setState({added: true, addedTo: 9});
-                nca.folders[8].folder.push(mainNodeCollection.nodes[i]);
-                alert('Added to ' + nca.folders[8].name + '!');
+                folderArr.folders[8].folder.push(mainNodeCollection.nodes[i]);
+                alert('Added to ' + folderArr.folders[8].name + '!');
                 }
                 else {
                 alert('Could not add to folder - maximum reached.')
@@ -263,10 +263,10 @@ handleClick2(){
     pushNode10(id: number){
         for (var i = 0; i < mainNodeCollection.nodes.length; i++){
             if (mainNodeCollection.nodes[i].nodeID === id){
-                if (nca.folders[9].folder.length < 3){
+                if (folderArr.folders[9].folder.length < 3){
                 this.setState({added: true, addedTo: 10});
-                nca.folders[9].folder.push(mainNodeCollection.nodes[i]);
-                alert('Added to ' + nca.folders[9].name + '!');
+                folderArr.folders[9].folder.push(mainNodeCollection.nodes[i]);
+                alert('Added to ' + folderArr.folders[9].name + '!');
                 }
                 else {
                 alert('Could not add to folder - maximum reached.')
@@ -275,16 +275,16 @@ handleClick2(){
         }
     }
 
-    handleDelete(notNested:boolean){
+    handleDelete(nested:boolean){
         this.setState({deleted: true});
-        if (notNested === false){
+        if (nested){
             decCount();
         }
     }
 
     showNode(n: NodeStore){
-        n.x = (10 - amDisplacedX);
-        n.y = (10 - amDisplacedY);
+        n.x = (10 - variables.amDisplacedX);
+        n.y = (10 - variables.amDisplacedY);
     }
 
     render() {
@@ -299,7 +299,7 @@ handleClick2(){
             }}>
                 <TopBar store={store}/>
                 {this.state.added? <button className="show-list" onClick={this.handleClick2}>{this.state.clicked2 ? "Close Folder Contnts": "View Folder Contents"}</button> : null}
-                {store.notNested && this.state.added === false? <button className="atc-button" title = "Add to Folder" onClick={this.handleClick}>{this.state.clicked ? "-": "+"}</button> : null}
+                {!store.nested && !this.state.added ? <button className="atc-button" title = "Add to Folder" onClick={this.handleClick}>{this.state.clicked ? "-": "+"}</button> : null}
                 {this.state.clicked && this.state.added === false?
                 <div className="atc-menu-wrapper">
                 <div className="add-to">Add To:</div>
@@ -319,66 +319,66 @@ handleClick2(){
                 <div>
                 <div className="atc-menu-wrapper">
                 <div className="add-to">{this.state.addedTo===1? 
-                this.f1 + " contains " + nca.folders[0].folder.length + " notes": this.state.addedTo===2? 
-                this.f2 + " contains " + nca.folders[1].folder.length + " notes" : this.state.addedTo===3? 
-                this.f3 + " contains " + nca.folders[2].folder.length + " notes" : this.state.addedTo===4? 
-                this.f4 + " contains " + nca.folders[3].folder.length + " notes" : this.state.addedTo===5? 
-                this.f5 + " contains " + nca.folders[4].folder.length + " notes" : this.state.addedTo===6? 
-                this.f6 + " contains " + nca.folders[5].folder.length + " notes" : this.state.addedTo===7? 
-                this.f7 + " contains " + nca.folders[6].folder.length + " notes" : this.state.addedTo===8? 
-                this.f8 + " contains " + nca.folders[7].folder.length + " notes" : this.state.addedTo===9? 
-                this.f9 + " contains " + nca.folders[8].folder.length + " notes" : 
-                this.f10 + " contains " + nca.folders[9].folder.length + " notes"}</div>
+                this.f1 + " contains " + folderArr.folders[0].folder.length + " notes": this.state.addedTo===2? 
+                this.f2 + " contains " + folderArr.folders[1].folder.length + " notes" : this.state.addedTo===3? 
+                this.f3 + " contains " + folderArr.folders[2].folder.length + " notes" : this.state.addedTo===4? 
+                this.f4 + " contains " + folderArr.folders[3].folder.length + " notes" : this.state.addedTo===5? 
+                this.f5 + " contains " + folderArr.folders[4].folder.length + " notes" : this.state.addedTo===6? 
+                this.f6 + " contains " + folderArr.folders[5].folder.length + " notes" : this.state.addedTo===7? 
+                this.f7 + " contains " + folderArr.folders[6].folder.length + " notes" : this.state.addedTo===8? 
+                this.f8 + " contains " + folderArr.folders[7].folder.length + " notes" : this.state.addedTo===9? 
+                this.f9 + " contains " + folderArr.folders[8].folder.length + " notes" : 
+                this.f10 + " contains " + folderArr.folders[9].folder.length + " notes"}</div>
                 {this.state.addedTo===1? 
-                <div><span className="atc-menu">{nca.folders[0].folder.length === 0? "": ""}</span> 
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[0].folder[0])}>{nca.folders[0].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[0].folder[1])}>{nca.folders[0].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[0].folder[2])}>{nca.folders[0].folder.length > 2? "Note 3": ""}</div>
+                <div><span className="atc-menu">{folderArr.folders[0].folder.length === 0? "": ""}</span> 
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[0].folder[0])}>{folderArr.folders[0].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[0].folder[1])}>{folderArr.folders[0].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[0].folder[2])}>{folderArr.folders[0].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
-                this.state.addedTo===2? <div><div className="atc-menu">{nca.folders[1].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[1].folder[0])}>{nca.folders[1].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[1].folder[1])}>{nca.folders[1].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[1].folder[2])}>{nca.folders[1].folder.length > 2? "Note 3": ""}</div>
+                this.state.addedTo===2? <div><div className="atc-menu">{folderArr.folders[1].folder.length === 0? "": ""}</div> 
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[1].folder[0])}>{folderArr.folders[1].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[1].folder[1])}>{folderArr.folders[1].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[1].folder[2])}>{folderArr.folders[1].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
-                this.state.addedTo===3? <div><div className="atc-menu">{nca.folders[2].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[2].folder[0])}>{nca.folders[2].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[2].folder[1])}>{nca.folders[2].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[2].folder[2])}>{nca.folders[2].folder.length > 2? "Note 3": ""}</div>
+                this.state.addedTo===3? <div><div className="atc-menu">{folderArr.folders[2].folder.length === 0? "": ""}</div> 
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[2].folder[0])}>{folderArr.folders[2].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[2].folder[1])}>{folderArr.folders[2].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[2].folder[2])}>{folderArr.folders[2].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
-                this.state.addedTo===4? <div><div className="atc-menu">{nca.folders[3].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[3].folder[0])}>{nca.folders[3].folder.length > 0 ? "Note 1": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[3].folder[1])}>{nca.folders[3].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[3].folder[2])}>{nca.folders[3].folder.length > 2? "Note 3": ""}</div>
+                this.state.addedTo===4? <div><div className="atc-menu">{folderArr.folders[3].folder.length === 0? "": ""}</div> 
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[3].folder[0])}>{folderArr.folders[3].folder.length > 0 ? "Note 1": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[3].folder[1])}>{folderArr.folders[3].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[3].folder[2])}>{folderArr.folders[3].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
-                this.state.addedTo===5? <div><div className="atc-menu">{nca.folders[4].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[4].folder[0])}>{nca.folders[4].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[4].folder[1])}>{nca.folders[4].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[4].folder[2])}>{nca.folders[4].folder.length > 2? "Note 3": ""}</div>
+                this.state.addedTo===5? <div><div className="atc-menu">{folderArr.folders[4].folder.length === 0? "": ""}</div> 
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[4].folder[0])}>{folderArr.folders[4].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[4].folder[1])}>{folderArr.folders[4].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[4].folder[2])}>{folderArr.folders[4].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
-                this.state.addedTo===6? <div><div className="atc-menu">{nca.folders[5].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[5].folder[0])}>{nca.folders[5].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[5].folder[1])}>{nca.folders[5].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[5].folder[2])}>{nca.folders[5].folder.length > 2? "Note 3": ""}</div>
+                this.state.addedTo===6? <div><div className="atc-menu">{folderArr.folders[5].folder.length === 0? "": ""}</div> 
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[5].folder[0])}>{folderArr.folders[5].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[5].folder[1])}>{folderArr.folders[5].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[5].folder[2])}>{folderArr.folders[5].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
-                this.state.addedTo===7? <div><div className="atc-menu">{nca.folders[6].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[6].folder[0])}>{nca.folders[6].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[6].folder[1])}>{nca.folders[6].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[6].folder[2])}>{nca.folders[6].folder.length > 2? "Note 3": ""}</div>
+                this.state.addedTo===7? <div><div className="atc-menu">{folderArr.folders[6].folder.length === 0? "": ""}</div> 
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[6].folder[0])}>{folderArr.folders[6].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[6].folder[1])}>{folderArr.folders[6].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[6].folder[2])}>{folderArr.folders[6].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
-                this.state.addedTo===8? <div><div className="atc-menu">{nca.folders[7].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[7].folder[0])}>{nca.folders[7].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[7].folder[1])}>{nca.folders[7].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[7].folder[2])}>{nca.folders[7].folder.length > 2? "Note 3": ""}</div>
+                this.state.addedTo===8? <div><div className="atc-menu">{folderArr.folders[7].folder.length === 0? "": ""}</div> 
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[7].folder[0])}>{folderArr.folders[7].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[7].folder[1])}>{folderArr.folders[7].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[7].folder[2])}>{folderArr.folders[7].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
-                this.state.addedTo===9? <div><div className="atc-menu">{nca.folders[8].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[8].folder[0])}>{nca.folders[8].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[8].folder[1])}>{nca.folders[8].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[8].folder[2])}>{nca.folders[8].folder.length > 2? "Note 3": ""}</div>
+                this.state.addedTo===9? <div><div className="atc-menu">{folderArr.folders[8].folder.length === 0? "": ""}</div> 
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[8].folder[0])}>{folderArr.folders[8].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[8].folder[1])}>{folderArr.folders[8].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[8].folder[2])}>{folderArr.folders[8].folder.length > 2? "Note 3": ""}</div>
                 </div> : 
-                <div><div className="atc-menu">{nca.folders[9].folder.length === 0? "": ""}</div> 
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[9].folder[0])}>{nca.folders[9].folder.length > 0? "Note 1": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[9].folder[1])}>{nca.folders[9].folder.length > 1? "Note 2": ""}</div>
-                <div className="atc-menu" onClick={() => this.showNode(nca.folders[9].folder[2])}>{nca.folders[9].folder.length > 2? "Note 3": ""}</div>
+                <div><div className="atc-menu">{folderArr.folders[9].folder.length === 0? "": ""}</div> 
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[9].folder[0])}>{folderArr.folders[9].folder.length > 0? "Note 1": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[9].folder[1])}>{folderArr.folders[9].folder.length > 1? "Note 2": ""}</div>
+                <div className="atc-menu" onClick={() => this.showNode(folderArr.folders[9].folder[2])}>{folderArr.folders[9].folder.length > 2? "Note 3": ""}</div>
                 </div>
                 }
                 </div>
@@ -389,7 +389,7 @@ handleClick2(){
                     <RichTextEditor />
                     </div>
                 </div>
-                {store.notNested? <button className="delete" onClick={() => this.handleDelete(true)}>X</button> : <button className="delete" onClick={() => this.handleDelete(false)}>X</button>}
+                {store.nested? <button className="delete" onClick={() => this.handleDelete(false)}>X</button> : <button className="delete" onClick={() => this.handleDelete(true)}>X</button> }
             </div>
             }
             </div>

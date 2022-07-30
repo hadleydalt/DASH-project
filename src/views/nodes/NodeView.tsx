@@ -11,12 +11,12 @@ import { constants } from "../../global/Variables";
 import RichTextEditor from "./RichTextEditor";
 import AddImage from "./AddImage";
 import AddVideo from "./AddVideo";
-import { NodeCollectionView } from "./NodeCollectionView";
 import { CollectionNodeStore } from "../../stores/CollectionNodeStore";
 import { IframeNodeStore } from "../../stores/IframeNodeStore";
 import { ImageNodeStore } from "../../stores/ImageNodeStore";
 import { TextNodeStore } from "../../stores/TextNodeStore";
 import { VideoNodeStore } from "../../stores/VideoNodeStore";
+import AddCollection from "./AddCollection";
 
 interface NodeProps {
     store: NodeStore;
@@ -222,19 +222,9 @@ pushNode(id: number, folderIndex: number) {
                             <AddVideo /> : 
                         type === StoreType.Iframe ? 
                             <div className="iframe-content">
-                            <WebsiteForm /> </div> : 
-                            <>
-                                <div className="collection-name">COLLECTION →</div>
-                                <div className="node-atc">ADD NEW:</div>
-                                <div className="node-button-wrapper">
-                                    {constants.storeTypes.map((type, index) => {
-                                        <button key={index} className={type === StoreType.Collection ? "node-button-c" : "node-button-each"} onClick={() => this.addNode(store as CollectionNodeStore, type)}>{constants.storeTypesNames[index]}</button>
-                                    })}
-                                </div>
-                                <div className = "rb-wrapper"><button className ="rainbow-button">After adding, move or resize the collection to view the addition.</button></div>
-                                    <NodeCollectionView store = {store as CollectionNodeStore}/>
-                                    <ResizeIcon store={store}></ResizeIcon>
-                            </>
+                                <WebsiteForm /> 
+                            </div> : 
+                            <AddCollection store={store} />
                     }
                     </div>
                 </div>

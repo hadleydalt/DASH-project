@@ -5,15 +5,11 @@ import * as React from 'react';
 import { TextNodeStore } from "../../stores/TextNodeStore";
 import { ImageNodeStore } from "../../stores/ImageNodeStore";
 import { VideoNodeStore } from "../../stores/VideoNodeStore";
-import { TextNodeView } from "../nodes/TextNodeView";
-import { VideoNodeView } from "../nodes/VideoNodeView";
-import { ImageNodeView } from "../nodes/ImageNodeView";
 import { StoreType, variables } from "../../global/Variables";
-import { IframeNodeView } from "../nodes/IframeNodeView";
 import { IframeNodeStore } from "../../stores/IframeNodeStore";
 import { NodeForm } from "./Sidebar";
 import { CollectionNodeStore } from "../../stores/CollectionNodeStore";
-import { CollectionNodeView } from "../nodes/CollectionNodeView";
+import { NodeView } from "../nodes/NodeView";
 
 interface FreeFormProps {
     store: NodeCollectionStore
@@ -62,21 +58,22 @@ export class FreeFormCanvas extends React.Component<FreeFormProps> {
                     {   
                         // maps each item in the store to be rendered in the canvas based on the node type
                         store.nodes.map(nodeStore => {
-                            switch (nodeStore.type) {
+                            const type = nodeStore.type;
+                            switch (type) {
                                 case StoreType.Text:
-                                    return (<TextNodeView id = {store.count} key={nodeStore.Id} store={nodeStore as TextNodeStore}/>)
+                                    return (<NodeView type = {type} id = {store.count} key={nodeStore.Id} store={nodeStore as TextNodeStore}/>)
 
                                 case StoreType.Video:
-                                    return (<VideoNodeView id = {store.count} key={nodeStore.Id} store={nodeStore as VideoNodeStore}/>)
+                                    return (<NodeView type = {type} id = {store.count} key={nodeStore.Id} store={nodeStore as VideoNodeStore}/>)
 
                                 case StoreType.Image:
-                                    return (<ImageNodeView id = {store.count} key={nodeStore.Id} store={nodeStore as ImageNodeStore}/>)
+                                    return (<NodeView type = {type} id = {store.count} key={nodeStore.Id} store={nodeStore as ImageNodeStore}/>)
 
                                 case StoreType.Iframe:
-                                    return (<IframeNodeView id = {store.count} key={nodeStore.Id} store={nodeStore as IframeNodeStore}/>)
+                                    return (<NodeView type = {type} id = {store.count} key={nodeStore.Id} store={nodeStore as IframeNodeStore}/>)
 
                                 case StoreType.Collection:
-                                    return (<CollectionNodeView id = {store.count} key={nodeStore.Id} store={nodeStore as CollectionNodeStore} />)
+                                    return (<NodeView type = {type} id = {store.count} key={nodeStore.Id} store={nodeStore as CollectionNodeStore} />)
 
                                 default:
                                     break;

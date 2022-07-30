@@ -5,11 +5,7 @@ import { ImageNodeStore } from "../../stores/ImageNodeStore";
 import { StoreType } from "../../global/Variables";
 import { TextNodeStore } from "../../stores/TextNodeStore";
 import { VideoNodeStore } from "../../stores/VideoNodeStore";
-import { CollectionNodeView } from "./CollectionNodeView";
-import { IframeNodeView } from "./IframeNodeView";
-import { ImageNodeView } from "./ImageNodeView";
-import { TextNodeView } from "./TextNodeView";
-import { VideoNodeView } from "./VideoNodeView";
+import { NodeView } from "./NodeView";
 
 interface Props {
     store: CollectionNodeStore
@@ -33,27 +29,28 @@ export class NodeCollectionView extends React.Component<Props> {
     }
     
     render(){
-        let store = this.props.store;
-        let staticID = 0;
+        const store = this.props.store;
+        const staticID = 0;
 
         return (  
                 // maps each item in the store to be rendered in the canvas based on the node type
                 store.nodes.map(nodeStore => {
+                    const type = nodeStore.type
                     switch (nodeStore.type) {
                         case StoreType.Text:
-                            return (<TextNodeView id = {staticID} key={nodeStore.Id} store={nodeStore as TextNodeStore}/>)
+                            return (<NodeView type={type} id = {staticID} key={nodeStore.Id} store={nodeStore as TextNodeStore}/>)
 
                         case StoreType.Video:
-                            return (<VideoNodeView id = {staticID} key={nodeStore.Id} store={nodeStore as VideoNodeStore}/>)
+                            return (<NodeView type={type} id = {staticID} key={nodeStore.Id} store={nodeStore as VideoNodeStore}/>)
 
                         case StoreType.Image:
-                            return (<ImageNodeView id = {staticID} key={nodeStore.Id} store={nodeStore as ImageNodeStore}/>)
+                            return (<NodeView type={type} id = {staticID} key={nodeStore.Id} store={nodeStore as ImageNodeStore}/>)
 
                         case StoreType.Iframe:
-                            return (<IframeNodeView id = {staticID} key={nodeStore.Id} store={nodeStore as IframeNodeStore}/>)
+                            return (<NodeView type={type} id = {staticID} key={nodeStore.Id} store={nodeStore as IframeNodeStore}/>)
 
                         case StoreType.Collection:
-                            return (<CollectionNodeView id = {staticID} key={nodeStore.Id} store={nodeStore as CollectionNodeStore} />)
+                            return (<NodeView type={type} id = {staticID} key={nodeStore.Id} store={nodeStore as CollectionNodeStore} />)
 
                         default:
                             break;

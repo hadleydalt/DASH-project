@@ -12,6 +12,9 @@ export class NodeStore {
 
     public nodeName = "";
 
+    /*Set upon instantiation and determines whether the Store is nested inside a collection or not. */
+    public nested;
+
     @observable
     public x: number = 0;
 

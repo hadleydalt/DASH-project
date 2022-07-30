@@ -11,7 +11,7 @@ interface Props {
     store: CollectionNodeStore
 }
 
-/* THe NodeCollectionView class acts as a "canvas" that appears in the CollectionNodeView. The nested nodes are rendered onto this 
+/* The NodeCollectionView class acts as a "canvas" that appears in the CollectionNodeView. The nested nodes are rendered onto this 
 canvas. */
 
 export class NodeCollectionView extends React.Component<Props> {

@@ -1,13 +1,13 @@
+import * as React from 'react';
 import { observer } from "mobx-react";
 import { NodeCollectionStore } from "../../stores/NodeCollectionStore";
 import "./FreeFormCanvas.scss";
-import * as React from 'react';
 import { TextNodeStore } from "../../stores/TextNodeStore";
 import { ImageNodeStore } from "../../stores/ImageNodeStore";
 import { VideoNodeStore } from "../../stores/VideoNodeStore";
 import { StoreType, variables } from "../../global/Variables";
 import { IframeNodeStore } from "../../stores/IframeNodeStore";
-import { NodeForm } from "./Sidebar";
+import { Sidebar } from "./Sidebar";
 import { CollectionNodeStore } from "../../stores/CollectionNodeStore";
 import { NodeView } from "../nodes/NodeView";
 
@@ -17,6 +17,8 @@ interface FreeFormProps {
 
 @observer
 export class FreeFormCanvas extends React.Component<FreeFormProps> {
+
+    /* Handles the moving and dragging of the Canvas. */
 
     private isPointerDown: boolean;
 
@@ -82,7 +84,7 @@ export class FreeFormCanvas extends React.Component<FreeFormProps> {
                     }
                 </div>
             </div>
-            <NodeForm />
+            <Sidebar />
             </div>
         );
     }

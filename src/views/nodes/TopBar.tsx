@@ -7,6 +7,8 @@ interface TopBarProps {
     store: NodeStore;
 }
 
+/* A TopBar which allows the moving and dragging of the note. */
+
 @observer
 export class TopBar extends React.Component<TopBarProps> {
 

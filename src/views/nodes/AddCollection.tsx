@@ -4,7 +4,7 @@ import { CollectionNodeStore } from '../../stores/CollectionNodeStore'
 import { NodeCollectionView } from './NodeCollectionView'
 import { ResizeIcon } from './ResizeIcon'
 
-/* Handles the styling of a Collection note */
+/* Handles the styling of a Collection note's default content */
 
 export default function AddCollection(props) {
     const store = props.store

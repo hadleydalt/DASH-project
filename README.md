@@ -1,9 +1,8 @@
 # Dash Web Redesign Model
 
-UPDATES FROM 2022 
+UPDATE 2022 
 
-* At the time of coding this web app, my knowledge of good coding practices were limited. I had just finished an introductory CS course which taught only Java, and this was my only experience with programming. 
-* I intend to refactor the code when I get a chance. Please be aware this is not how I would engineer the code today. 
+* I have refactored this code since initially writing it. At the time of coding this web app, my knowledge of good coding practices were limited. I had just finished an introductory CS course which taught only Java, and this was my only experience with programming. 
 
 RUNNING THE APP 
 

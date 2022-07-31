@@ -70,6 +70,8 @@ export class NodeView extends React.Component<NodeProps> {
         deleted: false
     }
 
+    /* Handles adding the note to a Folder */
+
     handleExpand() {
         if (this.state.expanded === false){
             this.setState({expanded: true});
@@ -86,6 +88,8 @@ export class NodeView extends React.Component<NodeProps> {
             }
         }
     }
+
+    /* Handles revealing the note's information menu */
 
     handleOpenCloseFolderContents() {
         if (this.state.folderContentsOpen === false){
@@ -116,7 +120,7 @@ export class NodeView extends React.Component<NodeProps> {
         e.stopPropagation();
     }
 
-    /* Organizes the notes in the top left corner when the user chooses to view them */
+    /* Organizes the selected note in the top left corner to highlight it */
 
     showNode(n: NodeStore) {
         n.x = (10 - variables.amDisplacedX);
@@ -154,7 +158,7 @@ export class NodeView extends React.Component<NodeProps> {
         n.nested = true;
         n.nodeID = 0;
 
-        if (type === StoreType.Collection) {
+        if (type === StoreType.Collection) { // Determines the x and y location of the note, which is particular if the note is nested in a Collection
             x = -(constants.nodeWidth)
             count = 0
         } else {
@@ -169,20 +173,20 @@ export class NodeView extends React.Component<NodeProps> {
     }
 
     render() {
-        const store = this.props.store;
-        const type = this.props.type;
-        const index = this.state.addedTo - 1
-        const label = this.folderNameLabels[index]
-        const contents = parentFolderArray[index].contents
-        const numContents = contents.length
+        const store = this.props.store; // the Store value for the note
+        const type = this.props.type; // the type of note
+        const index = this.state.addedTo - 1 // the index of the Folder that the note has been added to, if any
+        const label = this.folderNameLabels[index] // the name of the Folder the note has been added to, if any
+        const contents = parentFolderArray[index].contents // the contents of the Folder the note has been added to
+        const numContents = contents.length // the number of contents in the Folder 
 
         return (
             <div>
                 {this.state.deleted ? 
                     null : 
 
-                    /* Handles Note Topbar configuration, including moving and dragging, adding Note to a Folder, and viewing the other contents
-                    in the Folder the note has been added to. */
+                    /* Handles Note Topbar configuration, including moving and dragging, and revealing the information menu which allows 1) adding Note to a Folder, 
+                    and 2) viewing the other contents in the Folder the note has been added to. */
 
                     <div 
                         className="node text-node" 
@@ -195,6 +199,8 @@ export class NodeView extends React.Component<NodeProps> {
 
                     <TopBar store={store} />
 
+                    {/* If the note has been added to a Folder, a "View/Close Folder Contents" button enables the user to open or close a menu of the Folder's contents  */}
+
                     {this.state.added ? 
                         <button 
                             className="show-list" 
@@ -203,6 +209,8 @@ export class NodeView extends React.Component<NodeProps> {
                             {this.state.folderContentsOpen ? "Close Folder Contnts": "View Folder Contents"}
                         </button> : null}
 
+                    {/* If the note has NOT been added to a Folder, a "+" button enables the user to add it to a Folder  */}
+
                     {!store.nested && !this.state.added ? 
                         <button 
                             className="atc-button" 
@@ -210,6 +218,8 @@ export class NodeView extends React.Component<NodeProps> {
                             onClick={this.handleExpand}>
                             {this.state.expanded ? "-": "+"}
                         </button> : null}
+
+                    {/* If the user has pressed the "+" button, a menu displays all the Folders the user has made. The user can then select the Folder to which they will add the note.  */}
 
                     {this.state.expanded && !this.state.added ?
                         <div className="atc-menu-wrapper">
@@ -222,6 +232,9 @@ export class NodeView extends React.Component<NodeProps> {
                                     </span>
                                 })}
                         </div> : null}
+
+                {/* If the note has been added to a Folder, pressing "View Folder Contents" displays a menu with the other notes that are also 
+                in that Folder. The user can click on any of these notes and the selected note will display in the top left corner. */}
 
                 {this.state.folderContentsOpen ? 
                     <div>
@@ -244,6 +257,8 @@ export class NodeView extends React.Component<NodeProps> {
 
                 <ResizeIcon store={store}></ResizeIcon>
 
+                {/* Handles the default content of the note depending on its type  */}
+
                 <div className="scroll-box">
                     <div className="content">
                         {type === StoreType.Text ? 
@@ -260,6 +275,8 @@ export class NodeView extends React.Component<NodeProps> {
                         }
                     </div>
                 </div>
+
+                {/* Option to delete the note. */}
 
                 {store.nested ? 
                     <button 

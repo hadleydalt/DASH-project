@@ -52,8 +52,8 @@ export class FolderCreator extends React.Component {
           </label>
         </form>
         <button className = "create-button" onClick={this.handleSubmit}>Create</button>
-        <div className = "folders">
-          {this.allFolderNames.map((name, index) => {
+        <div className = "folders"> {/* Display existing Folder names */}
+          {this.allFolderNames.map((name, index) => { 
             <div key={index} className = "folders-each">{name}</div>
           })}
         </div>
